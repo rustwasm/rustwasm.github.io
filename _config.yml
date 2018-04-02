@@ -17,7 +17,7 @@ title: This week in Rust-WASM
 email: sendilkumarn@live.com
 description: >- # this means to ignore newlines until "baseurl:"
   Stay up to date with events, learning resources, and recent developments in Rust WASM community.
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://rustwasm.github.io/this-week-in-rust-wasm" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: sendilkumarn
 github_username:  sendilkumarn
