@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to this week in Rust-WASM!"
 date:   2018-04-02 19:01:46 +0200
-categories: updates
+categories: weekly updates
 ---
 Hello and welcome to the first issue of *This Week in Rust+WASM*!
 
