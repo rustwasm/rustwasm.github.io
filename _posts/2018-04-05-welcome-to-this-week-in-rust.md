@@ -5,7 +5,7 @@ title:  "Welcome to this week in Rust and WebAssembly!"
 
 Hello and welcome to the first issue of *This Week in Rust and WebAssembly*!
 
-[Rust](http://rust-lang.org) is a systems language pursuing the trifecta: safety, concurrency, and speed.
+[Rust](https://rust-lang.org) is a systems language pursuing the trifecta: safety, concurrency, and speed.
 
 [WebAssembly](http://webassembly.org) is designed as a portable target for compilation of high-level languages like C, C++, and Rust, enabling deployment on the web for client and server applications.
 
@@ -17,7 +17,7 @@ Tweet us at [@rustwasm](https://twitter.com/rustwasm) or send us a pull request.
 
 ## News and Releases
 
-* [The `lld` linker landed in nightly Rust!](rust-lang/rust#48125) Expect faster `.wasm` compilation, smaller `.wasm` binaries when using `lto = true`, support for custom `.wasm` sections, and more.
+* [The `lld` linker landed in nightly Rust!](https://github.com/rust-lang/rust/pull/48125) Expect faster `.wasm` compilation, smaller `.wasm` binaries when using `lto = true`, support for custom `.wasm` sections, and more.
 
 * [`wasm-pack`](https://github.com/ashleygwilliams/wasm-pack) packs up the `.wasm` and publishes it to npm
 
