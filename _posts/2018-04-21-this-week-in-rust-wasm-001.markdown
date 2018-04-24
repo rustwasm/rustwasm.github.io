@@ -3,7 +3,7 @@ layout: post
 title:  "This Week in Rust and WebAssembly 001"
 date:   2018-04-21 21:15:00 +0200
 ---
-Hello and welcome to the another issue of *This Week in Rust and WebAssembly*!
+Hello and welcome to another issue of *This Week in Rust and WebAssembly*!
 
 [Rust](http://rust-lang.org) is a systems language pursuing the trifecta: safety, concurrency, and speed.
 
