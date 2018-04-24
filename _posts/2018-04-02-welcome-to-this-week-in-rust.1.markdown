@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Welcome to this week in Rust-WASM!"
+title:  "Welcome to this week in Rust and WebAssembly!"
 date:   2018-04-02 19:01:46 +0200
 ---
-Hello and welcome to the first issue of *This Week in Rust+WASM*!
+Hello and welcome to the first issue of *This Week in Rust and WebAssembly*!
 
 [Rust](http://rust-lang.org) is a systems language pursuing the trifecta: safety, concurrency, and speed.
 
-[WASM](http://webassembly.org) is designed as a portable target for compilation of high-level languages like C/C++/Rust, enabling deployment on the web for client and server applications.
+[WebAssembly](http://webassembly.org) is designed as a portable target for compilation of high-level languages like C/C++/Rust, enabling deployment on the web for client and server applications.
 
 This is a weekly summary of its progress and community.
 
