@@ -32,3 +32,8 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 ## Upcoming Events and Talks
 
 * TODO
+
+## Requests for Contribution
+
+* [Join the Rust and WebAssembly Working Group!][get-involved]
+* TODO: insert new help-wanted/easy/etc issues from rust and wasm projects here...
