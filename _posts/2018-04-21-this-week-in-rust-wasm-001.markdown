@@ -21,7 +21,7 @@ Tweet us at [@rustwasm](https://twitter.com/rustwasm) or send us a pull request.
     * [Debugging](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/debugging.html)
     * [Time profiling](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/time-profiling.html)
     * [Code size profiling](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/code-size.html)
-* [Svelte was renamed to Twiggy. It is a code size profier for WebAssembly, written in Rust](https://github.com/rustwasm/twiggy)
+* [Svelte was renamed to Twiggy. It is a code size profiler for WebAssembly, written in Rust](https://github.com/rustwasm/twiggy)
     - [Twiggy is integrated into WebAssembly Studio](https://twitter.com/fitzgen/status/987135974160265216)
     - [Analyze bloat from monomorphisation of generic functions](https://github.com/rustwasm/twiggy/pull/40)
 * [What will it take to get `ggez` (a lightweight 2D games framework) on WebAssembly?](https://wiki.alopex.li/GgezOnWasm)
