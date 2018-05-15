@@ -26,7 +26,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 * [wasm-to-rust](https://github.com/CryZe/wasm-to-rust)
     - The wasm-to-rust tool allows you to compile any WebAssembly binary into Rust source code that you can then compile with Rust.
 * [wasmboy-rs](https://github.com/CryZe/wasmboy-rs)
-    -  Tool to compile a Gameboy emulator written in AssemblyScript (WebAssembly subset of TypeScript) to Rust 
+    -  Tool to compile a Gameboy emulator written in AssemblyScript (WebAssembly subset of TypeScript) to Rust
 
 ## News and Releases
 * [wee_alloc 0.4.0 released](https://github.com/rustwasm/wee_alloc/blob/master/CHANGELOG.md#040)
@@ -49,11 +49,12 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 * [Rust and WebAssembly tutorial](https://freemasen.github.io/wasm_tutorial/)
 * [Face detection in WebAssembly](https://www.reddit.com/r/rust/comments/8gg7i1/implement_a_face_detectorpicojs_in_rust_and/)
 * [A Rust + WebAssembly + Web Workers fractal renderer](https://www.reddit.com/r/rust/comments/8hdq5r/a_rust_javascript_web_workers_fractal_renderer/)
+* [Faciliter le développement d'applications Web performantes avec WebAssembly](https://mixitconf.org/2018/faciliter-le-developpement-d-applications-web-performantes-avec-webassembly)
 
 
 ## Requests for Contribution
-* Request for library 
+* Request for library
     - [slim web component library](https://github.com/rust-lang-nursery/rust-wasm/issues/162)
     - [mpsc channels library built on top of the postMessage API](https://github.com/rust-lang-nursery/rust-wasm/issues/163)
-* Request for contributors 
+* Request for contributors
     - [Design a tree-map visualization for twiggy in WebAssembly Studio](https://github.com/wasdk/WebAssemblyStudio/issues/163)
