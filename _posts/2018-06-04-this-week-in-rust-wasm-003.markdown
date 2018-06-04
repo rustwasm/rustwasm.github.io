@@ -25,7 +25,8 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
     - Debug panics on wasm32-unknown-unknown easier.
 * [Snowhash](https://joshleeb.com/posts/rust-wasm-snowhash/)
     - Generates unique ❄️ for your hash.
-
+* [Webpack plugin for Rust WebAssembly](https://github.com/xtuc/rust-plugin)
+    - Right now, it just runs wasm-opt for you. Eventually, it will also be a one-stop-shop for running wasm-snip and other post-cargo build wasm tools. It is already integrated into [rust_wasm_template](https://github.com/rustwasm/rust_wasm_template)
 
 ## News and Releases
 * [wasmi port that works on Intel SGX](https://twitter.com/mgattozzi/status/1000370042331070466)
@@ -33,12 +34,11 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 * [cat(1) implemented on WebAssembly + Cervus](https://www.reddit.com/r/rust/comments/8mhddt/cat1_implemented_on_webassembly_cervus/)
 * [nalgebra gained support for wasm32-unknown-unknown](http://nalgebra.org/wasm_and_embedded_programming/)
 * [wasm-pack  0.3.0 released](https://twitter.com/ag_dubs/status/1002185432581492736)
-
+* [wasm-snip is now moved into rustwasm organization](https://github.com/rustwasm/wasm-snip)
 
 ## Articles, Blog Posts, and Talks
 * [New Rustacean podcast: Crates you should know: The wasm tools.](https://newrustacean.com/show_notes/cysk/wasm/index.html)
-* [Webpack and WebAssembly](https://speakerdeck.com/sendilkumarn/webpack-and-webassembly) by sendilkumarn(https://twitter.com/sendilkumarn) 
-
+* [Webpack and WebAssembly](https://speakerdeck.com/sendilkumarn/webpack-and-webassembly) by [sendilkumarn](https://twitter.com/sendilkumarn) 
 ## Requests for Contribution
 * Request for contributors
     - [adding wasm-bindgen support to rand](https://www.reddit.com/r/rust/comments/8msrfp/help_add_wasmbindgen_support_to_rand/)
