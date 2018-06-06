@@ -15,8 +15,6 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 **Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly working group!][get-involved]**
 
-[get-involved]: https://github.com/rust-lang-nursery/rust-wasm/blob/master/README.md#get-involved
-
 ## New Tools, Crates, and Projects
 
 * TODO
@@ -37,3 +35,16 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 * [Join the Rust and WebAssembly Working Group!][get-involved]
 * TODO: insert new help-wanted/easy/etc issues from rust and wasm projects here...
+
+[get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
+
+## `rustwasm` Projects Activity
+
+Recently merged pull requests to projects in the [`rustwasm` GitHub
+organization][rustwasm-org]:
+
+[rustwasm-org]: https://github.com/rustwasm
+
+TODO: insert the output of `pulls_since -o rustwasm -s dd.mm.yyyy` here, where
+"dd.mm.yyyy" is the date the *last* newsletter was published. See
+https://github.com/budziq/pulls_since or run `cargo install pulls_since`.
