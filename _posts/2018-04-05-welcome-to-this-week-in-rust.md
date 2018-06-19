@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Welcome to this week in Rust and WebAssembly!"
 ---
 
