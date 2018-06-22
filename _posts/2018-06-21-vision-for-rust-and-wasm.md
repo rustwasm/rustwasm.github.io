@@ -19,19 +19,8 @@ This blog post will expand on these aspirations and describe where we stand in
 relation to them right now. In a series of follow up posts, we will talk about
 the next steps for each major component of the Rust and WebAssembly ecosystem.
 
-<style>
-hr {
-    margin-top: 2em;
-    margin-bottom: 2em;
-}
-</style>
-
---------------------------------------------------------------------------------
-
-> [Are you interested in helping us make these ideals into reality? Join the Rust
-and WebAssembly domain working group!][get-involved]
-
---------------------------------------------------------------------------------
+**[Are you interested in helping us make these ideals into reality? Join the
+Rust and WebAssembly domain working group!][get-involved]**
 
 ## Why Focus on Performance-Sensitive Code?
 
