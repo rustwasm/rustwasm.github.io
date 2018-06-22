@@ -4,6 +4,10 @@ title: Our Vision for Rust and WebAssembly
 
 <meta charset="utf-8" />
 
+Rust and WebAssembly can combine in *many* delightful ways. To consolidate our
+efforts and have the largest, most-positive impact we can, the Rust and
+WebAssembly domain working group is focusing on one vision:
+
 **Surgically inserting Rust compiled to WebAssembly should be the best choice
 for speeding up the most performance-sensitive JavaScript code paths.** Do *not*
 throw away your existing code base, because Rust [plays well with
