@@ -11,8 +11,8 @@ WebAssembly domain working group is focusing on one vision:
 **Surgically inserting Rust compiled to WebAssembly should be the best choice
 for speeding up the most performance-sensitive JavaScript code paths. Do *not*
 throw away your existing code base, because Rust [plays well with
-others][better-for-all]. Regardless if you are a Rust or Web developer, your
-natural workflow shouldn't change because Rust compiled to wasm integrates
+others][better-for-all]. Regardless of whether you are a Rust or Web developer,
+your natural workflow shouldn't change because Rust compiled to wasm integrates
 seamlessly into your preferred tools.**
 
 This blog post will expand on these aspirations and describe where we stand in
@@ -40,14 +40,15 @@ with the inner workings of each JavaScript implementation's JIT. We can have
 
 ## Do <u>Not</u> Rewrite — Integrate
 
-Rust compiled to WebAssembly doesn't have a runtime. This enables both small
-`.wasm` binary sizes and `.wasm` binary sizes that are proportional to the
-amount of Rust code that is being compiled to WebAssembly. Binary size is of
-huge importance since the `.wasm` must be downloaded over the network. The
-proportionality means you only pay (in code size) for what you use, and enables
-incremental and partial adoption of Rust into existing JavaScript code bases.
-Existing code bases don't need to be thrown away: we can port only our most
-performance-sensitive JavaScript functions to Rust to gain immediate benefits.
+Rust compiled to WebAssembly doesn't have a runtime. This results in small
+`.wasm` binary sizes that are proportional to the amount of Rust code that is
+being compiled to WebAssembly. Binary size is of huge importance since the
+`.wasm` must be downloaded over the network. The proportionality means you only
+pay (in code size) for what you use. In turn, that means it is feasible for
+existing JavaScript code bases to incrementally and partially adopt Rust.
+
+Keep the code that already works: we can port only our most
+performance-sensitive JavaScript functions to Rust and gain immediate benefits.
 
 ## Keep Your Workflow
 
@@ -63,7 +64,7 @@ If you are a Rust hacker and want to compile your crate to `.wasm` and share it
 on npm, you shouldn't have to change your workflow either. In fact, you
 shouldn't even need to install npm, Node.js, and a whole JavaScript development
 environment. `wasm-pack` will compile, optimize, and generate JavaScript
-bindings for your crate. And then it will upload it to npm for you too!
+bindings for your crate. And then it will publish it to npm for you too!
 
 ## Current Status
 
