@@ -9,11 +9,11 @@ efforts and have the largest, most-positive impact we can, the Rust and
 WebAssembly domain working group is focusing on one vision:
 
 **Surgically inserting Rust compiled to WebAssembly should be the best choice
-for speeding up the most performance-sensitive JavaScript code paths.** Do *not*
+for speeding up the most performance-sensitive JavaScript code paths. Do *not*
 throw away your existing code base, because Rust [plays well with
 others][better-for-all]. Regardless if you are a Rust or Web developer, your
 natural workflow shouldn't change because Rust compiled to wasm integrates
-seamlessly into your preferred tools.
+seamlessly into your preferred tools.**
 
 This blog post will expand on these aspirations and describe where we stand in
 relation to them right now. In a series of follow up posts, we will talk about
