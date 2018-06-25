@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "This Week in Rust and WebAssembly 003"
 date:   2018-06-04 13:20:31 +0200
 ---
