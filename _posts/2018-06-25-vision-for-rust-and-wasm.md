@@ -34,7 +34,7 @@ performance. It is free from the non-deterministic garbage collection
 pauses. Programmers have control over indirection, monomorphization, and memory
 layout.
 
-With Rust, we don't need to be a performance gurus who are intimately familiar
+With Rust, we don't need to be performance gurus who are intimately familiar
 with the inner workings of each JavaScript implementation's JIT. We can have
 [speed without wizardry][].
 
