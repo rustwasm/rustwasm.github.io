@@ -106,7 +106,7 @@ use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
 extern {
-    fn alert(s: &str);
+    pub fn alert(s: &str);
 }
 
 #[wasm_bindgen]
