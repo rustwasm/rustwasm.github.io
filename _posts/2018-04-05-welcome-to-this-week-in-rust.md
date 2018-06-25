@@ -13,7 +13,7 @@ This is a weekly summary of its progress and community.
 
 Tweet us at [@rustwasm](https://twitter.com/rustwasm) or send us a pull request. Want to get involved? [We love contributions!][get-involved]
 
-[get-involved]: https://github.com/rustwasm/rust-wasm/blob/master/README.md#get-involved
+[get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
 
 ## News and Releases
 
