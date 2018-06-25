@@ -16,7 +16,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 **Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly working group!][get-involved]**
 
-[get-involved]: https://github.com/rust-lang-nursery/rust-wasm/blob/master/README.md#get-involved
+[get-involved]: https://github.com/rustwasm/rust-wasm/blob/master/README.md#get-involved
 
 ## New Tools, Crates, and Projects
 * [rust_wasm_template](https://github.com/rustwasm/rust_wasm_template)

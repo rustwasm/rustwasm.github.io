@@ -16,7 +16,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 **Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly working group!][get-involved]**
 
-[get-involved]: https://github.com/rust-lang-nursery/rust-wasm/blob/master/README.md#get-involved
+[get-involved]: https://github.com/rustwasm/rust-wasm/blob/master/README.md#get-involved
 
 ## New Tools, Crates, and Projects
 * [Cervus](https://github.com/cervus-v/cervus)
@@ -38,7 +38,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 * [Text adventure / fighting game made with rust and WebAssembly](https://ldjam.com/events/ludum-dare/41/text-em-up)
 * [http added WebAssembly to their CI](https://github.com/hyperium/http#198)
 * [Replacing JS parser with Rust using WebAssembly resulted 50.8x faster](https://twitter.com/mnt_io/status/994191317923192832)
-* [Chrono can be used in your Rust and WebAssembly library](https://github.com/rust-lang-nursery/rust-wasm/issues/169)
+* [Chrono can be used in your Rust and WebAssembly library](https://github.com/rustwasm/rust-wasm/issues/169)
 * [musl's libm compiled to wasm with clang 7 and then compiled to Rust](https://gist.github.com/CryZe/3daab58b5b4e2e77c37b03a49645e2e3)
 
 
@@ -54,7 +54,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 ## Requests for Contribution
 * Request for library
-    - [slim web component library](https://github.com/rust-lang-nursery/rust-wasm/issues/162)
-    - [mpsc channels library built on top of the postMessage API](https://github.com/rust-lang-nursery/rust-wasm/issues/163)
+    - [slim web component library](https://github.com/rustwasm/rust-wasm/issues/162)
+    - [mpsc channels library built on top of the postMessage API](https://github.com/rustwasm/rust-wasm/issues/163)
 * Request for contributors
     - [Design a tree-map visualization for twiggy in WebAssembly Studio](https://github.com/wasdk/WebAssemblyStudio/issues/163)
