@@ -156,7 +156,7 @@ publishing Rust-generated WebAssembly that you would like to interoperate with
 JavaScript, in the browser, or with Node.js.][wasm-pack] `wasm-pack` helps you
 build and publish Rust-generated WebAssembly to the npm registry to be used
 alongside any other JavaScript package in workflows that you already use, such
-as a bundler like [webpack][] or [greenkeeper][].
+as a bundler like [webpack][] or a service like [greenkeeper][].
 
 [![wasm-pack cartoon](/images/wasm-pack-cartoon.png)](/images/wasm-pack-cartoon.png)
 
