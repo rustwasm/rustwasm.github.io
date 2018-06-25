@@ -10,16 +10,16 @@ Hello and welcome to another issue of *This Week in Rust and WebAssembly*!
 
 These Weeks in Rust and WebAssembly.
 
-Tweet us at [@rustwasm](https://twitter.com/rustwasm) or send us a pull request. Want to get involved? [We love contributions](https://github.com/rust-lang-nursery/rust-wasm/blob/master/README.md)
+Tweet us at [@rustwasm](https://twitter.com/rustwasm) or send us a pull request. Want to get involved? [We love contributions](https://github.com/rustwasm/team/blob/master/README.md)
 
 ## News
 * [WebAssembly Studio - Online IDE](https://hacks.mozilla.org/2018/04/sneak-peek-at-webassembly-studio/)
-* New, in-depth tutorial: [Conway's Game of Life in Rust and WebAssembly](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/introduction.html). Topics covered include:
-    * [Setting up the toolchain and making a hello world](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/setup.html)
-    * [Designing Rust programs for WebAssembly](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/implementing.html)
-    * [Debugging](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/debugging.html)
-    * [Time profiling](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/time-profiling.html)
-    * [Code size profiling](https://rust-lang-nursery.github.io/rust-wasm/game-of-life/code-size.html)
+* New, in-depth tutorial: [Conway's Game of Life in Rust and WebAssembly](https://rustwasm.github.io/book/game-of-life/introduction.html). Topics covered include:
+    * [Setting up the toolchain and making a hello world](https://rustwasm.github.io/book/game-of-life/setup.html)
+    * [Designing Rust programs for WebAssembly](https://rustwasm.github.io/book/game-of-life/implementing.html)
+    * [Debugging](https://rustwasm.github.io/book/game-of-life/debugging.html)
+    * [Time profiling](https://rustwasm.github.io/book/game-of-life/time-profiling.html)
+    * [Code size profiling](https://rustwasm.github.io/book/game-of-life/code-size.html)
 * [Svelte was renamed to Twiggy. It is a code size profiler for WebAssembly, written in Rust](https://github.com/rustwasm/twiggy)
     - [Twiggy is integrated into WebAssembly Studio](https://twitter.com/fitzgen/status/987135974160265216)
     - [Analyze bloat from monomorphisation of generic functions](https://github.com/rustwasm/twiggy/pull/40)
