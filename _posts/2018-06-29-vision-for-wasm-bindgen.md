@@ -40,9 +40,10 @@ by the ECMAScript standard, are being made available through the
 `wasm_bindgen::js` module. For example, the `Object.freeze` function is
 available as `wasm_bindgen::js::Object::freeze`.
 
-*But we aren't done yet, and we need more help!* Adding more of these global API
-bindings is a great way to start with `wasm-bindgen` and there is lots of work
-that can be done in concurrent pull requests from various contributors!
+[*But we aren't done yet, and we need more help!*][js-globals] Adding more of
+these global API bindings is a great way to start with `wasm-bindgen` and there
+is lots of work that can be done in concurrent pull requests from various
+contributors!
 
 **Check out the [ECMAScript global APIs meta issue][js-globals] to help out!**
 
