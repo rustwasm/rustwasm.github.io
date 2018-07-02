@@ -14,6 +14,12 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 **Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly working group!][get-involved]**
 
+<!-- TODO: check recent r/rust and users.rust-lang.org posts for "wasm" and "webassembly: -->
+<!-- https://www.reddit.com/r/rust/search?q=wasm&sort=relevance&restrict_sr=on&t=month -->
+<!-- https://www.reddit.com/r/rust/search?q=webassembly&restrict_sr=on&sort=relevance&t=month -->
+<!-- https://users.rust-lang.org/search?q=wasm%20after%3A2018-06-01 -->
+<!-- https://users.rust-lang.org/search?q=webassembly%20after%3A2018-06-01 -->
+
 ## New Tools, Crates, and Projects
 
 * TODO
