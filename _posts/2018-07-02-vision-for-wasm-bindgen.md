@@ -1,5 +1,6 @@
 ---
 title: Our Vision for wasm-bindgen
+date: 2018-07-02
 ---
 
 [The last blog post laid out the Rust and WebAssembly domain working group's
