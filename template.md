@@ -15,6 +15,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 **Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly working group!][get-involved]**
 
 <!-- TODO: check recent r/rust and users.rust-lang.org posts for "wasm" and "webassembly: -->
+<!-- https://github.com/rustwasm/team/issues/79 -->
 <!-- https://www.reddit.com/r/rust/search?q=wasm&sort=relevance&restrict_sr=on&t=month -->
 <!-- https://www.reddit.com/r/rust/search?q=webassembly&restrict_sr=on&sort=relevance&t=month -->
 <!-- https://users.rust-lang.org/search?q=wasm%20after%3A2018-06-01 -->
@@ -38,7 +39,9 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 ## Requests for Contribution
 
-* [Join the Rust and WebAssembly Working Group!][get-involved]
+* [**Join the Rust and WebAssembly Working Group!**][get-involved]
+  * [All issues labeled "good first issue" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22)
+  * [All issues labeled "help wanted" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22)
 * TODO: insert new help-wanted/easy/etc issues from rust and wasm projects here...
 
 [get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
