@@ -12,8 +12,8 @@ the `js-sys` crate, we can work with `Object`s, `Array`s, `Function`s, `Map`s,
 `Set`s, etc... without writing the `#[wasm_bindgen]` imports by hand.
 
 For example, we can invoke JavaScript [`Function`][mdn-function] callbacks and
-time how long they take to execute with `Date.now()`, and we don't need to write
-any JS imports ourselves:
+time how long they take to execute with [`Date.now()`][mdn-date-now], and we
+don't need to write any JS imports ourselves:
 
 {% highlight rust %}
 extern crate js_sys;
@@ -84,3 +84,4 @@ the `js-sys` crate thus far! 💖
 [mdn-qsa]: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
 [web-sys-contributing]: https://rustwasm.github.io/wasm-bindgen/web-sys.html
 [web-sys-issues]: https://github.com/rustwasm/wasm-bindgen/issues?q=is%3Aissue+is%3Aopen+label%3Aweb-sys
+[mdn-date-now]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now
