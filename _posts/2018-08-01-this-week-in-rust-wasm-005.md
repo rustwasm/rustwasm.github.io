@@ -40,5 +40,6 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 * Help build the `web-sys` crate by enabling bindings generation for more WebIDL interfaces!
   * [Information on contributing to `web-sys`](https://rustwasm.github.io/wasm-bindgen/web-sys.html)
   * [Issues tracking adding various Web APIs to `web-sys`](https://github.com/rustwasm/wasm-bindgen/issues?q=is%3Aissue+is%3Aopen+label%3Aweb-sys)
+  * [Issues to migrate `wasm_bindgen` crate's test to `wasm_bindgen_test`](https://github.com/rustwasm/wasm-bindgen/issues/603)
 
 [get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
