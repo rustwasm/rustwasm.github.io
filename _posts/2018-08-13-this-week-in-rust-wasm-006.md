@@ -1,0 +1,50 @@
+---
+title:  "This Week in Rust and WebAssembly 006"
+---
+
+Hello and welcome to another issue of *This Week in Rust and WebAssembly*!
+
+[Rust](https://rust-lang.org) is a systems language pursuing the trifecta: safety, concurrency, and speed.
+
+[WebAssembly](http://webassembly.org) is a stack-based virtual machine and instruction set. It is fast, safe, portable, and part of the open Web platform. By compiling to WebAssembly, we can run Rust code on the Web!
+
+This is a weekly summary of Rust and WebAssembly's progress and community.
+
+Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) or [send us a pull request](https://github.com/rustwasm/rustwasm.github.io).
+
+**Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly working group!][get-involved]**
+
+## New Tools, Crates, and Projects
+
+* [Railway diagram generator for Rust macro_rules! macros with a wasm demo](https://www.reddit.com/r/rust/comments/96q6jb/show_reddit_a_syntaxdiagram_generator_for_macro/)
+* [A work-in-progress pull request to expose Wasm SIMD intrinsics to stdsimd](https://github.com/rust-lang-nursery/stdsimd/pull/549)
+* [WIP prototype of using DWARF debug info in Firefox's debugger.html to debug inlined stack frames in Rust+Wasm programs](https://drive.google.com/file/d/1Yf1gXBSWNdSzXomy8GKUOiPuZVFAASfw/view)
+
+## News and Releases
+
+* [An official subcharter of the W3C wasm WG for debugging has been created](https://github.com/WebAssembly/debugging)
+
+## Articles, Blog Posts, and Talks
+
+* Cleaned up, curated and opinionated "Tools" section into "Tools You Should Know" [section](https://rustwasm.github.io/book/tools.html) to the book
+* Added a curated and opinionated "Crates You Should Know" [section](https://rustwasm.github.io/book/crates.html) to the book
+* [@ashleygwilliams](https://github.com/ashleygwilliams) super awesome talk at Rust Berlin - [slides](https://rustwasm.github.io/hello-wasm-bindgen/#1)
+* [Saving millions of dollars with Rust and WebAssembly](https://twitter.com/jxxf/status/1027358517462626304)
+* AR paint project, built with js + rust/wasm at [wafflejs](https://wafflejs.com/) - [slides](https://slides.cwervo.com/wafflejs-webar-2018-08/#/)
+
+## RFCs
+
+* [RFC Proposal for supporting JavaScript method inheritance using Rust traits.](https://github.com/rustwasm/rfcs/pull/3) New RFC!
+
+## Requests for Contribution
+
+* [**Join the Rust and WebAssembly Working Group!**][get-involved]
+  * [All issues labeled "good first issue" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22)
+  * [All issues labeled "help wanted" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22)
+* [Expose bindings to *ALL* the global JS things](https://github.com/rustwasm/wasm-bindgen/issues/275)
+* Help build the `web-sys` crate by enabling bindings generation for more WebIDL interfaces!
+  * [Information on contributing to `web-sys`](https://rustwasm.github.io/wasm-bindgen/web-sys.html)
+  * [Issues tracking adding various Web APIs to `web-sys`](https://github.com/rustwasm/wasm-bindgen/issues?q=is%3Aissue+is%3Aopen+label%3Aweb-sys)
+* [Add extends = ... attributes to js-sys types](https://github.com/rustwasm/wasm-bindgen/issues/670)
+
+[get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
