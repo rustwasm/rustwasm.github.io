@@ -18,7 +18,10 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 * [Railway diagram generator for Rust macro_rules! macros with a wasm demo](https://www.reddit.com/r/rust/comments/96q6jb/show_reddit_a_syntaxdiagram_generator_for_macro/)
 * [A work-in-progress pull request to expose Wasm SIMD intrinsics to stdsimd](https://github.com/rust-lang-nursery/stdsimd/pull/549)
-* [WIP prototype of using DWARF debug info in Firefox's debugger.html to debug inlined stack frames in Rust+Wasm programs](https://drive.google.com/file/d/1Yf1gXBSWNdSzXomy8GKUOiPuZVFAASfw/view)
+* WIP prototype of using DWARF debug info in Firefox's debugger.html to debug inlined stack frames in Rust+Wasm programs
+  * [gif](https://drive.google.com/file/d/1Yf1gXBSWNdSzXomy8GKUOiPuZVFAASfw/view)
+  * WIP spec work: [here](https://yurydelendik.github.io/webassembly-dwarf/) and [here](https://gist.github.com/yurydelendik/802f36983d50cedb05f984d784dc5159)
+  * WIP branches: [here](https://github.com/yurydelendik/debugger.html/tree/x-scopes) and [here](https://github.com/yurydelendik/emscripten/tree/x-scopes)
 
 ## News and Releases
 
