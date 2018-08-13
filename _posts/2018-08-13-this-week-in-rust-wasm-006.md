@@ -29,11 +29,11 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 ## Articles, Blog Posts, and Talks
 
-* Cleaned up, curated and opinionated "Tools" section into "Tools You Should Know" [section](https://rustwasm.github.io/book/tools.html) to the book
+* Cleaned up, curated and added an opinionated "Tools" section into the "Tools You Should Know" [section](https://rustwasm.github.io/book/tools.html) as a part of the book.
 * Added a curated and opinionated "Crates You Should Know" [section](https://rustwasm.github.io/book/crates.html) to the book
-* [@ashleygwilliams](https://github.com/ashleygwilliams) super awesome talk at Rust Berlin - [slides](https://rustwasm.github.io/hello-wasm-bindgen/#1)
+* [@ashleygwilliams](https://github.com/ashleygwilliams) gave a super awesome talk at Rust Berlin - [slides](https://rustwasm.github.io/hello-wasm-bindgen/#1)
 * [Saving millions of dollars with Rust and WebAssembly](https://twitter.com/jxxf/status/1027358517462626304)
-* AR paint project, built with js + rust/wasm at [wafflejs](https://wafflejs.com/) - [slides](https://slides.cwervo.com/wafflejs-webar-2018-08/#/)
+* AR paint project, built with Js + Rust/wasm at [wafflejs](https://wafflejs.com/) - [slides](https://slides.cwervo.com/wafflejs-webar-2018-08/#/)
 
 ## RFCs
 
