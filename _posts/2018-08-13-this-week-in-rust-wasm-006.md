@@ -26,6 +26,10 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 ## News and Releases
 
 * [An official subcharter of the W3C wasm WG for debugging has been created](https://github.com/WebAssembly/debugging)
+* [Announcing `wasm-bindgen` 0.2.16](https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0216)
+* [Announcing initial release of `wasm-bindgen-futures`](https://crates.io/crates/wasm-bindgen-futures)
+* [Announcing `js-sys` 0.2.1](https://github.com/rustwasm/wasm-bindgen/blob/master/crates/js-sys/CHANGELOG.md#021)
+
 
 ## Articles, Blog Posts, and Talks
 
