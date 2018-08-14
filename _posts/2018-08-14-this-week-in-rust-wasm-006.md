@@ -39,6 +39,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 * [@ashleygwilliams](https://github.com/ashleygwilliams) gave a super awesome talk at Rust Berlin. [Here are the slides.](https://rustwasm.github.io/hello-wasm-bindgen/#1) Recording coming soon!
 * AR paint project, built with Js + Rust/wasm at [wafflejs](https://wafflejs.com/) - [slides](https://slides.cwervo.com/wafflejs-webar-2018-08/#/)
 * "Leveraging Jupyter, Rust, and WebAssembly for Browser-Based Visual Data Exploration" [video](https://www.youtube.com/watch?v=5dl_m_6T2bU) [slides](https://munkm.github.io/2018-07-13-scipy/#/) -- a talk given by [@munkm](https://github.com/munkm) at SciPy on July 13 about using rust/wasm backed modules for visualizing datasets in jupypter notebooks.
+* [Ray Tracing in Rust+Wasm and in JavaScript](http://matt-harrison.com/raytracing-webassembly-vs-javascript/)
 
 ## RFCs
 
