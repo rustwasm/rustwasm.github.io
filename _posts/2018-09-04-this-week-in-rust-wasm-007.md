@@ -29,7 +29,10 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 ## Articles, Blog Posts, and Talks
 
-* [[Hywan](https://github.com/Hywan) started a series “From Rust to beyond” - Check this WASM episode](https://mnt.io/2018/08/22/from-rust-to-beyond-the-webassembly-galaxy/)
+* [From Rust to beyond: The WebAssembly Galaxy](https://mnt.io/2018/08/22/from-rust-to-beyond-the-webassembly-galaxy/)
+  * [@Hywan](https://github.com/Hywan) wrote a parser for WordPress's Gutenberg
+    document format in Rust and WebAssembly, and it is *much* faster than the
+    original JavaScript implementation.
 * [@sendilkumarn](https://github.com/sendilkumarn) is giving a talk on Rust and WebAssembly at [Rust Amsterdam](https://www.meetup.com/Rust-Amsterdam/events/253425558/)
 
 ## Requests for Contribution
