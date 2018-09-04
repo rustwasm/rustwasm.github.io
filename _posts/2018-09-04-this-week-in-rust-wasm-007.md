@@ -19,6 +19,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 * [A Sudoku Solver written in Rust and compiled to WebAssembly](https://emerentius.github.io/sudoku_web/)
 * [Wasabi: a dynamic analysis framework for WebAssembly](http://wasabi.software-lab.org/)
   * Wasabi is written in Rust and built on top of WABT
+* [`greenwasm`](https://github.com/Kimundi/greenwasm) is a WebAssembly engine written in Rust, designed to mirror the standard's specification as closely as possible.
 
 ## News and Releases
 
