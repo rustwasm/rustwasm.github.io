@@ -17,6 +17,8 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 ## New Tools, Crates, and Projects
 
 * [A Sudoku Solver written in Rust and compiled to WebAssembly](https://emerentius.github.io/sudoku_web/)
+* [Wasabi: a dynamic analysis framework for WebAssembly](http://wasabi.software-lab.org/)
+  * Wasabi is written in Rust and built on top of WABT
 
 ## News and Releases
 
@@ -28,7 +30,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 ## Articles, Blog Posts, and Talks
 
 * [[Hywan](https://github.com/Hywan) started a series “From Rust to beyond” - Check this WASM episode](https://mnt.io/2018/08/22/from-rust-to-beyond-the-webassembly-galaxy/)
-* [@sendilkumarn](https://github.com/sendilkumarn) giving a talk on Rust and WebAssembly at [Rust Amsterdam](https://www.meetup.com/Rust-Amsterdam/events/253425558/) 
+* [@sendilkumarn](https://github.com/sendilkumarn) is giving a talk on Rust and WebAssembly at [Rust Amsterdam](https://www.meetup.com/Rust-Amsterdam/events/253425558/)
 
 ## Requests for Contribution
 
