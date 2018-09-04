@@ -23,8 +23,7 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 ## News and Releases
 
-* [The Game of Life tutorial now uses wasm-pack and has a section on publishing your wasm-game-of-life package to npm!](https://github.com/rustwasm/book#78)
-* [The implementation of the Webassembly core spec in pure Rust.](https://crates.io/search?q=greenwasm)
+* [The Game of Life tutorial now uses `wasm-pack` and has a section on publishing your `wasm-game-of-life` package to npm!](https://github.com/rustwasm/book#78)
 * [Announcing `wasm-bindgen` 0.2.19](https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0219-and-0218)
 * [Announcing `js-sys` 0.2.4](https://github.com/rustwasm/wasm-bindgen/blob/master/crates/js-sys/CHANGELOG.md#024)
 
