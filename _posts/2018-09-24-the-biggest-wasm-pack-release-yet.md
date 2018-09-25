@@ -8,6 +8,9 @@ WebAssembly workflow we've always dreamed of. Yes, details will change in the
 future (and most likely in semver-breaking ways), but `wasm-pack` has found its
 niche and is well on the way to filling it.
 
+> What is `wasm-pack`? `wasm-pack` is your one-stop shop for building and
+> testing Rust-generated WebAssembly, as well as publishing it to NPM.
+
 `wasm-pack build` is effectively incremental now. It will automatically Do The
 Right Thing with `wasm-bindgen` binary installs: find the exact correct version
 *and* cache installs so that re-builds are speedy.
