@@ -14,36 +14,38 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 **Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly working group!][get-involved]**
 
-## New Tools, Crates, and Projects
+## News and Blog Posts
 
-* [Format rust code in the browser with `rustfmt` compiled to wasm! ](https://alexcrichton.github.io/rustfmt-wasm/)
+*Want to make sure something ends up on this list next time we publish an issue?
+[Leave a comment on this issue.](https://github.com/rustwasm/team/issues/79)*
+
+* [**The Biggest `wasm-pack` Release Yet**](https://rustwasm.github.io/2018/09/24/the-biggest-wasm-pack-release-yet.html)
+* [**Announcing the `web-sys` crate!**](https://rustwasm.github.io/2018/09/26/announcing-web-sys.html)
+* [Programming WebAssembly with Rust — The Book!!](https://medium.com/@KevinHoffman/programming-webassembly-with-rust-the-book-7c4a890fcf97) Kevin Hoffman is writing a book on Rust and Wasm for the Pragmatic Programmers book publisher.
+* [Rust and WebAssembly with Nick Fitzgerald.](http://fitzgeraldnick.com/2018/10/01/sfhtml5-rust-and-wasm-talk.html) Video recording and slides from the most recent SFHTML5 meetup that was all about Wasm.
+* [Format rust code in the browser with `rustfmt` compiled to wasm!](https://alexcrichton.github.io/rustfmt-wasm/)
 * [Olin is a server-side WebAssembly platform](https://olin-http-example.herokuapp.com/)
 * [The P64Lang parser and interpreter running as a wasm module](https://www.polaris64.net/resources/programming/p64lang_wasm/)
+* [How `wasm-bindgen` Facilitates Interop Between Rust and JavaScript](https://blog.ryanlevick.com/posts/wasm-bindgen-interop/)
+* [@sendilkumarn](https://twitter.com/sendilkumarn) will be giving a talk titled "Do things blazingly fast with WebAssembly" at [Voxxed Days Ticino 2018](https://cfpvdt18.confinabox.com/talk/XAU-2186/Do_things_blazingly_fast_with_WebAssembly)
+* [Isomorphic Desktop Apps with Rust (Electron and Wasm)](https://speice.io/2018/09/isomorphic-apps.html)
+* [Smithy progress update: how I decreased WebAssembly bundle size by 90%](https://medium.com/@robert.balicki_2494/smithy-progress-update-how-i-decreased-webassembly-bundle-size-by-90-e7fe194b2f58)
 
-## News and Releases
+## Updates from [`rustwasm/*`](https://github.com/rustwasm)
 
-* [Mario pixel art using `web-sys` and `js-sys` crates in wasm-bindgen](https://twitter.com/T5uku5hi/status/1037730970609307648)
-* [Announcing `wasm-pack` 0.5.0](https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#%EF%B8%8F-050)
-* [Announcing `wasm-bindgen` 0.2.23](https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0223)
-* [Announcing `js-sys` 0.3.0](https://crates.io/crates/js-sys)
-* [Announcing `web-sys` 0.3.0](https://crates.io/crates/web-sys)
-
-## Articles, Blog Posts, and Talks
-
-* Added new sections to `wasm-bindgen` guide
+* [Released `wasm-pack` 0.5.0](https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#%EF%B8%8F-050)
+* [Released `wasm-bindgen` 0.2.23](https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0223)
+* [Released `js-sys` 0.3.0](https://crates.io/crates/js-sys)
+* [Released `web-sys` 0.3.0](https://crates.io/crates/web-sys)
+* Added new sections to `wasm-bindgen` guide:
   * [Writing tests for Rust and WebAssembly programs using `wasm-bindgen-test`](https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html)
   * [Working with untyped JS values in the `wasm-bindgen`](https://rustwasm.github.io/wasm-bindgen/reference/accessing-properties-of-untyped-js-values.html)
   * [`web-sys`](https://rustwasm.github.io/wasm-bindgen/web-sys/index.html)
-* [How Wasm-Bindgen Facilitates Interop Between Rust and Javascript](https://blog.ryanlevick.com/posts/wasm-bindgen-interop/)
-* [@sendilkumarn](https://twitter.com/sendilkumarn) is giving a talk on `Do things blazingly fast with WebAssembly` at [Voxxed Days Ticino 2018](https://cfpvdt18.confinabox.com/talk/XAU-2186/Do_things_blazingly_fast_with_WebAssembly)
 
 ## Requests for Contribution
 
 * [**Join the Rust and WebAssembly Working Group!**][get-involved]
   * [All issues labeled "good first issue" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22)
-  * [All issues labeled "help wanted" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22)* [Expose bindings to *ALL* the global JS things](https://github.com/rustwasm/wasm-bindgen/issues/275)
-* Help build the `web-sys` crate by enabling bindings generation for more WebIDL interfaces!
-  * [Information on contributing to `web-sys`](https://rustwasm.github.io/wasm-bindgen/web-sys.html)
-  * [Issues tracking adding various Web APIs to `web-sys`](https://github.com/rustwasm/wasm-bindgen/issues?q=is%3Aissue+is%3Aopen+label%3Aweb-sys)
+  * [All issues labeled "help wanted" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22)
 
 [get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved

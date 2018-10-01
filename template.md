@@ -21,19 +21,14 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 <!-- https://users.rust-lang.org/search?q=wasm%20after%3A2018-06-01 -->
 <!-- https://users.rust-lang.org/search?q=webassembly%20after%3A2018-06-01 -->
 
-## New Tools, Crates, and Projects
+## News and Blog Posts
+
+*Want to make sure something ends up on this list next time we publish an issue?
+[Leave a comment on this issue.](https://github.com/rustwasm/team/issues/79)*
 
 * TODO
 
-## News and Releases
-
-* TODO
-
-## Articles, Blog Posts, and Talks
-
-* TODO
-
-## Upcoming Events and Talks
+## Updates from [`rustwasm/*`](https://github.com/rustwasm)
 
 * TODO
 
@@ -46,13 +41,13 @@ Did we miss something? Tweet to us at [@rustwasm](https://twitter.com/rustwasm) 
 
 [get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
 
-## `rustwasm` Projects Activity
+<!-- ## `rustwasm` Projects Activity -->
 
-Recently merged pull requests to projects in the [`rustwasm` GitHub
-organization][rustwasm-org]:
+<!-- Recently merged pull requests to projects in the [`rustwasm` GitHub -->
+<!-- organization][rustwasm-org]: -->
 
-[rustwasm-org]: https://github.com/rustwasm
+<!-- [rustwasm-org]: https://github.com/rustwasm -->
 
-TODO: insert the output of `pulls_since -o rustwasm -s dd.mm.yyyy` here, where
-"dd.mm.yyyy" is the date the *last* newsletter was published. See
-https://github.com/budziq/pulls_since or run `cargo install pulls_since`.
+<!-- TODO: insert the output of `pulls_since -o rustwasm -s dd.mm.yyyy` here, where -->
+<!-- "dd.mm.yyyy" is the date the *last* newsletter was published. See -->
+<!-- https://github.com/budziq/pulls_since or run `cargo install pulls_since`. -->
