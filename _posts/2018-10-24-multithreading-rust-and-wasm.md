@@ -449,8 +449,8 @@ inconsequential modifications][ray-patches] I was able to use the project *as
 is* on the web.
 
 > As a side note, this is one of the awesome aspects of Rust and Cargo. It took
-> no time at all to find a raytracer, integrate it, and compile it to wasm and
-> running in a browser.
+> no time at all to find a raytracer, integrate it, compile it to wasm, and
+> run in a browser.
 
 With raytracing (or at least how this raytracer worked) it's an embarassingly
 parallel task as all pixels of an image are rendered entirely independently of
