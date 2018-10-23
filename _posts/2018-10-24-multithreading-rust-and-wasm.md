@@ -8,9 +8,9 @@ When WebAssembly was first shipped it was an [MVP] which, while minimal, has
 spawned a huge number of exciting projects which work today across all major
 browsers. Rust has capitalized on the wasm MVP's success as well with tools
 like [`wasm-bindgen`] and [`wasm-pack`] by making the MVP feel less minimal.
-WebAssembly is yet more ambitious, though! Since inception it's always been
-intended to extend the [WebAssembly specification][spec] with new features and
-functionality.
+WebAssembly is [yet more ambitious][post-mvp], though! Since inception it's
+always been intended to extend the [WebAssembly specification][spec] with new
+features and functionality.
 
 One of the features I'm particularly excited about coming down the pike for
 WebAssembly is the [threads] proposal. The threading proposal was unfortunately
@@ -643,3 +643,4 @@ Discord](https://discord.gg/6SHrCn), or follow along on GitHub with either
 [procedural macro]: https://doc.rust-lang.org/nightly/reference/procedural-macros.html
 [`wasm-opt`]: https://github.com/webassembly/binaryen
 [`Atomics.waitAsync`]: https://github.com/tc39/proposal-atomics-wait-async
+[post-mvp]: https://hacks.mozilla.org/2018/10/webassemblys-post-mvp-future/
