@@ -42,7 +42,7 @@ While one might naively expect that the idea of "WebAssembly threads" is
 something like "add pthreads" or "add `std::thread`" to wasm, the current
 proposal for threads in WebAssembly is actually quite different! Instead of
 providing a full library experience the threads proposal is instead specifying
-the fundamental building blocks upon wich you can build a threading library.
+the fundamental building blocks upon which you can build a threading library.
 
 #### Atomic Instructions
 
@@ -387,7 +387,7 @@ instance of memory!
 
 Instead we'll need to arrange for memory to be imported not exported. That can
 be a bit of a pain to set up and work with, though, so `wasm-bindgen` can
-continue to take care of instantation in the JS bindings so users don't have to
+continue to take care of instantiation in the JS bindings so users don't have to
 worry about it.
 
 Note that for now LLVM/LLD also don't currently implement a memory object that's
@@ -452,7 +452,7 @@ is* on the web.
 > no time at all to find a raytracer, integrate it, compile it to wasm, and
 > run in a browser.
 
-With raytracing (or at least how this raytracer worked) it's an embarassingly
+With raytracing (or at least how this raytracer worked) it's an embarrassingly
 parallel task as all pixels of an image are rendered entirely independently of
 all others. This meant we could rig up a way to [fan out work for pixels amongst
 worker threads][worker-threads] pretty easily.
