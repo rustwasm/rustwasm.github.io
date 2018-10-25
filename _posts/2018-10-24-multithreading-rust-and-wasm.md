@@ -277,7 +277,7 @@ theory lots of runway for us to figure out something to help us out!
 
 I'd hate to leave you with a cliffhanger like this, though! While not all of the
 above questions have great answers today, I've been working on at least a
-*functioning* solution to many of the in `wasm-bindgen` specifically. Let's take
+*functioning* solution to many of the issues in `wasm-bindgen` specifically. Let's take
 a look at that and see if we can actually demo threads and WebAssembly today!
 
 ### Threads and `wasm-bindgen`
@@ -303,7 +303,7 @@ questions with this newfound power.
 
 #### Injecting thread-local `global`s
 
-Although LLVM/LLD dont't currently have the ability to emit custom `global`
+Although LLVM/LLD don't currently have the ability to emit custom `global`
 variables, we do in `wasm-bindgen`! This is an easy method to implement
 thread-local storage, so let's have `wasm-bindgen` inject two globals:
 
@@ -315,7 +315,7 @@ thread-local storage, so let's have `wasm-bindgen` inject two globals:
 2. Next, a TCB slot. A TCB is a "thread control block" and is typically used to
    store an allocated structure in threading runtimes. This allocated structure
    is an entry point for lots of other runtime-related functionality, but for
-   now we'll primarily used this as storage for user-defined thread-local
+   now we'll primarily use this as storage for user-defined thread-local
    values. Or, in other words, this is how we'll implement [`thread_local!`].
 
 It's easy enough to add two `global` variables of type `i32` to the wasm module,
@@ -359,7 +359,7 @@ these steps:
 
 2. We know we're the first thread (the main thread) if our thread ID is zero.
    This is a great time to initialize memory, so `wasm-bindgen` can flag all our
-   data segments as `passive`, and if our ID 0 is 0 we can call `memory.init`.
+   data segments as `passive`, and if our ID is 0 we can call `memory.init`.
 
 3. If our thread ID isn't 0, then we know that we're a spawned thread. LLVM
    already arranged for there to be a `global` for our stack pointer, but its
@@ -407,7 +407,7 @@ awesome to have a story for bundlers for large-scale integration. Unfortunately
 I ran into a few snags like [you can't access the
 `WebAssembly.Module`][webpack-wasm-module] and it also wasn't clear to me how
 workers would use a different instantiation path that would `onmessage` to wait
-for the module/memory and the instantiate after receiving. Fear not, though, I'm
+for the module/memory and then instantiate after receiving. Fear not, though, I'm
 sure we'll figure out a bundler story for this one way or another!
 
 Next I turned to `wasm-bindgen`'s [`--no-modules`] option to see if something
