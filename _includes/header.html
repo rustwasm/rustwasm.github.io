@@ -3,7 +3,10 @@
         <div class="wrapper">
           {%- assign default_paths = site.pages | map: "path" -%}
           {%- assign page_paths = site.header_pages | default: default_paths -%}
-          <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+          <a class="site-title" rel="author" href="{{ "/" | relative_url }}">
+            <img src="{{ "/assets/rustwasm.png" | relative_url }}" style="max-height: 2em"/>
+            {{ site.title | escape }}
+          </a>
 
           {%- if page_paths -%}
             <nav class="site-nav">
@@ -19,7 +22,7 @@
               </label>
 
               <div class="trigger">
-                  <a class="page-link" href="https://rustwasm.github.io/book/">📚 Book</a>
+                  <a class="page-link" href="https://rustwasm.github.io/book/">📚 Learn</a>
                   <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
                 {%- for path in page_paths -%}
                   {%- assign my_page = site.pages | where: "path", path | first -%}
