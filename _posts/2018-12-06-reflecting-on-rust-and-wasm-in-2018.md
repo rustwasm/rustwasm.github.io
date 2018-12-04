@@ -206,7 +206,8 @@ polish it.
 
 ## Thank You for a Wonderful 2018! 💖
 
-Thanks to everyone who contributed to Rust and WebAssembly in 2018!
+Thanks to everyone who contributed to Rust and WebAssembly in 2018! (Apologies
+if we missed anyone in this list!)
 
 * 0xazure
 * Aaron Turon
