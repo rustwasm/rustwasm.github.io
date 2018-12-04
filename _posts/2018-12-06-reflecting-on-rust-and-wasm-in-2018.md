@@ -206,8 +206,215 @@ polish it.
 
 ## Thank You for a Wonderful 2018! 💖
 
-Thanks to everyone who contributed to Rust and WebAssembly in 2018! Here's to an
-equally awesome and exciting 2019!
+Thanks to everyone who contributed to Rust and WebAssembly in 2018!
+
+* 0xazure
+* Aaron Turon
+* Aditya Arora
+* Aidan Hobson Sayers
+* Aleksey Kladov
+* Alex Crichton
+* Alex Macleod
+* Alexander Kryvomaz
+* Alfie John
+* Anders Pitman
+* Andrew Champion
+* Andrew Chin
+* Andy Bell
+* Anna Bogus
+* Anton Danilkin
+* Ashley Williams
+* Ben Merritt
+* Benjamin Kampmann
+* Blixt
+* Bradlee Speice
+* Cameron Taggart
+* Camille TJHOA
+* Chinedu Francis Nwafili
+* Chris Goller
+* Chris Kolodin
+* Christian Bourjau
+* Christopher Lane Hinson
+* Cldfire
+* Corbin Uselton
+* Corey Farwell
+* Craig Disselkoen
+* Dan Fockler
+* Dan Reeves
+* Daniel Gollahon
+* Daniele Esposti
+* Danielle Pham
+* Darren Tsung
+* David Flemström
+* David McNeil
+* David O'Connor
+* DebugSteven
+* Dimitrii Nemkov
+* Dmitry Kashitsyn
+* Eduard Kyvenko
+* Erick Tryzelaar
+* Erika Kloss
+* Evan Shaw
+* Felix Schütt
+* Florian Gilcher
+* Frank Hassanabad
+* Frazer McLean
+* Gergely Nagy
+* Guy Waldman
+* Hendrik Sollich
+* Henrik Sjööh
+* Herman J. Radtke III
+* Hidehito Yabuuchi
+* Ian Duke
+* Ian McIntyre
+* Ingvar Stepanyan
+* Ioannis Valasakis
+* Ivan Enderlin
+* J. Ryan Stinnett
+* Jamen Marz
+* Jamie Kyle
+* Jan Willem Henckel
+* Jan-Erik Rediger
+* Jannik Keye
+* Jason Davies
+* Jason Wohlgemuth
+* Jesper Håkansson
+* Jim Blandy
+* Joel Gallant
+* Johann Hofmann
+* Johannes Henninger
+* John Lewis
+* Jonas Trollvik
+* Jonathan Kingston
+* Jonathan Sundqvist
+* Josh Triplett
+* Joshua Liebow-Feeser
+* Joshua Sheard
+* Josmar Dias
+* João Lucas Lucchetta
+* Julius Rakow
+* Junjie Huang
+* Katharina Fey
+* Kevin Hoffman
+* Kirill Bulatov
+* Kyle Lin
+* Lachezar Lechev
+* Laurentiu Nicola
+* Liigo Zhuang
+* LongYinan
+* Luke Wagner
+* Mackenzie Clark
+* Mackiovello
+* Manas Karekar
+* Marcin Baraniecki
+* Mario Reder
+* Mark Andrus Roberts
+* Mark Hintz
+* Markus Stange
+* Mason Stallmo
+* Matias Insaurralde
+* Matt Harrison
+* Matt Howell
+* Matt Kraai
+* Matt Long
+* MaxD / vj userZero
+* MaxXor
+* Michael Gattozzi
+* Michael Gerhaeuser
+* Michael Hoffmann
+* Mirclus
+* Nathan Froyd
+* Nick Fitzgerald
+* Nik Graf
+* Nikolay Volf
+* Noah Lemen
+* Noumir Poutipou
+* OJ Kwon
+* Pascal Brandt
+* Pascal Hertleif
+* Pat Hickey
+* Peter Trotman
+* R. Andrew Ohana
+* Rahul Sharma
+* Ralph Giles
+* Renée Kooi
+* Ricardo Ambrogi
+* Richard Dodd (dodj)
+* Robert Masen
+* Roberto Huertas
+* Rongjian Zhang
+* Ruben Schmidmeister
+* Ryan Levick
+* Sallar Kaboli
+* Santiago Pastorino
+* Satoshi Amemiya
+* Scott Johnson
+* Sebastian Köln
+* Sendil Kumar N
+* Sergey Pepyakin
+* Sharad Chand
+* Sonny Scroggin
+* Sophie Alpert
+* Spencer Wilson
+* Stefan Novak
+* Stefan Zimmermann
+* Stephan Renatus
+* Stephan Wolski
+* Steve Klabnik
+* Sven Sauleau
+* T. Nagasawa
+* Tao He
+* Ted Mielczarek
+* Theemathas Chirananthavat
+* Thiago Pontes
+* Thomas Eizinger
+* Tim Ryan
+* Tobias Bieniek
+* Tomohide Takao
+* Tomáš Hübelbauer
+* Tyler Laing
+* Tyler Wilcock
+* William Lundstedt
+* YUyz
+* Yoshua Wuyts
+* Yury Delendik
+* Yuval Kohavi
+* Zachary Pierce
+* Zack Pierce
+* afdw
+* alkahest
+* andy-bell
+* arjunyel
+* ashley williams
+* belfz
+* bokuweb
+* bspeice
+* csmoe
+* data-pup
+* dependabot[bot]
+* frankhassanbad
+* gaurikholkar
+* gnzlbg
+* huangjj27
+* janczer
+* johnthagen
+* kohensu
+* konstin
+* kryptan
+* kzvi
+* limira
+* na-g
+* pup
+* robert masen
+* robertdurst
+* sarahmeyer
+* sepiropht
+* sigmaSd
+* soryrawyer
+* teovoinea
+* toversus
+* twilco
+* xeqlol
 
 [rust-2018]: TODO
 [case-for-rust-wasm-2018]: https://mgattozzi.com/rust-wasm/
