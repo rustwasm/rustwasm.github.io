@@ -422,7 +422,7 @@ if we missed anyone in this list!)
 [rust-2019-call-for-blogs]: TODO https://github.com/rust-lang/blog.rust-lang.org/pull/292
 [rust-wasm-rfcs]: https://github.com/rustwasm/rfcs
 [hashtag]: https://twitter.com/search?q=%23RustWasm2019
-[rust-wasm-2019-issue]: TODO
+[rust-wasm-2019-issue]: https://github.com/rustwasm/team/issues/241
 [RFC process]: https://rustwasm.github.io/rfcs/001-the-rfc-process.html
 [Bjarne Stroustrup]: https://en.wikipedia.org/wiki/Bjarne_Stroustrup
 [announcing-web-sys]: https://rustwasm.github.io/2018/09/26/announcing-web-sys.html
