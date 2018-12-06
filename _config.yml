@@ -32,10 +32,10 @@ plugins:
 # to override the default setting.
 exclude:
   - template.md
+  - vendor/bundle/
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules
-#   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
