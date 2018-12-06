@@ -417,9 +417,9 @@ if we missed anyone in this list!)
 * twilco
 * xeqlol
 
-[rust-2018]: TODO
+[rust-2018]: https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html
 [case-for-rust-wasm-2018]: https://mgattozzi.com/rust-wasm/
-[rust-2019-call-for-blogs]: TODO https://github.com/rust-lang/blog.rust-lang.org/pull/292
+[rust-2019-call-for-blogs]: https://blog.rust-lang.org/2018/12/06/call-for-rust-2019-roadmap-blogposts.html
 [rust-wasm-rfcs]: https://github.com/rustwasm/rfcs
 [hashtag]: https://twitter.com/search?q=%23RustWasm2019
 [rust-wasm-2019-issue]: https://github.com/rustwasm/team/issues/241
