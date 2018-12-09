@@ -51,13 +51,13 @@ of [atomic instructions][atomics]. In Rust parlance this means that
 [`AtomicUsize`] and friends will actually compile to atomic operations, whereas
 today they're [simply lowered to single-threaded equivalents][wasm-singlethread]
 (as there's no threads!). While essential, these aren't too too thrilling just
-yet until you hit [`wait` and `wake`][wait-and-wake].
+yet until you hit [`wait` and `notify`][wait-and-notify].
 
 Atomic modifications allow us to perform some level of synchronization, but
 full synchronization often requires actual blocking of a thread until another is
-finished. This is where the `i32.atomic.wait` and `atomic.wake` instructions
+finished. This is where the `i32.atomic.wait` and `atomic.notify` instructions
 come into play. First we can block a thread (atomically) using
-[`i32.atomic.wait`], and then another thread can execute [`atomic.wake`] to wake
+[`i32.atomic.wait`], and then another thread can execute [`atomic.notify`] to wake
 up a thread blocked on the same address. I believe this is similar to [futexes]
 on Linux, although I've never used them myself!
 
@@ -632,9 +632,9 @@ Discord](https://discord.gg/6SHrCn), or follow along on GitHub with either
 [ray-patches]: https://github.com/alexcrichton/raytracer/compare/master...update-deps
 [firefox-spec-bug]: https://bugzilla.mozilla.org/show_bug.cgi?id=1496582
 [dlmalloc]: https://github.com/alexcrichton/dlmalloc-rs
-[wait-and-wake]: https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#wait-and-wake-operators
+[wait-and-notify]: https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#wait-and-notify-operators
 [`i32.atomic.wait`]: https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#wait
-[`atomic.wake`]: https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#wake
+[`atomic.notify`]: https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#notify
 [`ArrayBuffer`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
 [`Arc`]: https://doc.rust-lang.org/std/sync/struct.Arc.html
 [`start`]: http://webassembly.github.io/spec/core/syntax/modules.html#start-function
