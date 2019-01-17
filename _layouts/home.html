@@ -1,71 +1,27 @@
 ---
+layout: default
+unwrapped: true
 ---
+{%- if page.title -%}
+<h1 class="page-heading">{{ page.title }}</h1>
+{%- endif -%}
 
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<section id="call-to-action">
+  <div class="wrapper">
+    <img src="{{ "/assets/wasm-ferris.png" | relative_url }}"/>
+    <h2>Learn Rust and WebAssembly</h2>
+    <p>
+      <a href="docs.html">Read the Rust and WebAssembly documentation</a> to
+      learn how to design, develop, test, debug, profile, and publish Rust and
+      WebAssembly libraries and applications.
+    </p>
+    <h2>Get Involved</h2>
+    <p>
+      <a href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">Join the Rust and WebAssembly domain working group!</a> Help us craft the future of Rust and WebAssembly.
+    </p>
+  </div>
+</section>
 
-  {%- include head.html -%}
-
-  <body>
-
-    {%- include header.html -%}
-
-    <main class="page-content" aria-label="Content">
-      <div class="home">
-        {%- if page.title -%}
-        <h1 class="page-heading">{{ page.title }}</h1>
-        {%- endif -%}
-
-        <section id="call-to-action">
-          <div class="wrapper">
-            <img src="{{ "/assets/wasm-ferris.png" | relative_url }}"/>
-            <h2>Learn Rust and WebAssembly</h2>
-            <p>
-              <a href="https://rustwasm.github.io/book/">Read the Rust and WebAssembly book</a> to
-              learn how to design, develop, test, debug, profile, and publish Rust and
-              WebAssembly libraries and applications.
-            </p>
-            <h2>Get Involved</h2>
-            <p>
-              <a href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">Join the Rust and WebAssembly domain working group!</a> Help us craft the future of Rust and WebAssembly.
-            </p>
-          </div>
-        </section>
-
-        {{ content }}
-
-        <div class="wrapper">
-          {%- if site.posts.size > 0 -%}
-          <section>
-            <h2 class="post-list-heading">{{ page.list_title | default: "Blog Posts" }}</h2>
-            <ul class="post-list">
-              {%- for post in site.posts -%}
-              <li>
-                {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-                <span class="post-meta">{{ post.date | date: date_format }}</span>
-                <h3>
-                  <a class="post-link" href="{{ post.url | relative_url }}">
-                    {{ post.title | escape }}
-                  </a>
-                </h3>
-                {%- if site.show_excerpts -%}
-                {{ post.excerpt }}
-                {%- endif -%}
-              </li>
-              {%- endfor -%}
-            </ul>
-
-            <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-          </section>
-          {%- endif -%}
-        </div>
-      </div>
-    </main>
-
-    {%- include footer.html -%}
-
-    {%- include analytics.html -%}
-
-  </body>
-
-</html>
+<div class="wrapper">
+  {{ content }}
+</div>

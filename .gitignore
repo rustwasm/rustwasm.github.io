@@ -3,3 +3,8 @@ _site
 .jekyll-metadata
 .bundle
 vendor
+repos/wasm-bindgen
+repos/book
+repos/wasm-pack
+_site
+_build.yml

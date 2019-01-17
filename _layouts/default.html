@@ -8,9 +8,13 @@
     {%- include header.html -%}
 
     <main class="page-content" aria-label="Content">
+      {%- if layout.unwrapped -%}
+      {{ content }}
+      {%- else -%}
       <div class="wrapper">
         {{ content }}
       </div>
+      {%- endif -%}
     </main>
 
     {%- include footer.html -%}

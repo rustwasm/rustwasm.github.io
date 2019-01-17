@@ -33,6 +33,7 @@ plugins:
 exclude:
   - template.md
   - vendor/bundle/
+  - repos
 #   - Gemfile
 #   - Gemfile.lock
 #   - node_modules
