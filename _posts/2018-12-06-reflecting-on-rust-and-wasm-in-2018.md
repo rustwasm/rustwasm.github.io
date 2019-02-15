@@ -38,7 +38,7 @@ Rust 2018 shipped.
 ### Goal: ☑ Zero-Cost JavaScript Interoperation
 
 Rust enables fast *and* expressive code by leveraging zero-cost abstractions. We
-wanted to apply this principal to our whole JS interop infrastructure. Yes, you
+wanted to apply this principle to our whole JS interop infrastructure. Yes, you
 can write your own boilerplate to pass DOM nodes to Rust-generated wasm, but you
 shouldn't have to, and the provided infrastructure should be as fast as if you
 *did* hand-code it. If you call IndexedDB APIs, that shouldn't bloat your
