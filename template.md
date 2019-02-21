@@ -24,6 +24,7 @@ or [send us a pull request](https://github.com/rustwasm/rustwasm.github.io).
 <!-- https://www.reddit.com/r/rust/search?q=webassembly&restrict_sr=on&sort=relevance&t=month -->
 <!-- https://users.rust-lang.org/search?q=wasm%20after%3A2018-06-01 -->
 <!-- https://users.rust-lang.org/search?q=webassembly%20after%3A2018-06-01 -->
+<!-- https://twitter.com/rustwasm -->
 
 ## News and Blog Posts from Around the Web
 
@@ -63,6 +64,8 @@ working group!][get-involved]**
 * [All issues labeled "good first issue" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22)
 * [All issues labeled "help wanted" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22)
 
+[get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
+
 ### New Good First Issues
 
 * TODO: add all of
@@ -74,5 +77,3 @@ working group!][get-involved]**
 * TODO: add all of
   https://github.com/issues?utf8=%E2%9C%93&q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22+created%3A%3E%3DYYYY-MM-DD
   here, or remove this sub-section if none
-
-[get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
