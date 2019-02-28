@@ -42,10 +42,21 @@ or [send us a pull request](https://github.com/rustwasm/rustwasm.github.io).
 * TODO: insert any new RFCs here. If none, add only
   "None". https://github.com/issues?q=repo%3Arustwasm%2Frfcs+created%3A%3E%3DYYYY-MM-DD
 
+#### Final Comment Period RFCs
+
+* TODO insert any RFCs in FCP here. If none, add only "None".
+
 #### Merged RFCs
 
 * TODO insert any merged RFCs here. If none, add only
   "none". https://github.com/issues?utf8=%E2%9C%93&q=repo%3Arustwasm%2Frfcs+merged%3A%3E%3DYYYY-MM-DD
+
+### Working Group Meetings
+
+* [Watch the recording of this week's working group meeting on
+  YouTube](https://www.youtube.com/watch?v=3YjN69U6ySE)
+* [Come join us at next week's working group
+  meeting!](https://github.com/rustwasm/team/issues/258)
 
 <!-- TODO: insert links to everything labeled "TWiRaWA" here. Categorize by repo, -->
 <!-- alphetical order. -->
