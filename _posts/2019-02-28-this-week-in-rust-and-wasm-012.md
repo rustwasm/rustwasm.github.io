@@ -36,6 +36,10 @@ or [send us a pull request](https://github.com/rustwasm/rustwasm.github.io).
 * [WebAssembly Troubles part 4: Microwasm.](http://troubles.md/posts/microwasm/)
   The culmination of a series of posts about issues the author has with
   WebAssembly, along with proposals for how to fix them.
+* [Generating snow with Rust and
+  Wasm](https://twitter.com/HelloRenj/status/1100499645401366535)
+  * [Live demo](https://zen-liskov-772f98.netlify.com/)
+  * [Source](https://github.com/renjithgr/wasm-make-some-snow)
 
 ## Updates from [`rustwasm/*`](https://github.com/rustwasm)
 
