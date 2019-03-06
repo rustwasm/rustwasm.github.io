@@ -32,7 +32,7 @@ projects are managed by the working group; there are other unofficial
 documentation resources as well!
 
 Many of these resources take the form of "books"; we collectively call
-these "The Rust WebAssembly Bookshelf." Some are large, some are small.
+these "The Rust and WebAssembly Bookshelf." Some are large, some are small.
 
 # Learn about Rust and WebAssembly
 
