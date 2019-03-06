@@ -23,3 +23,23 @@
 section {
     clear: both;
 }
+
+#installer {
+  text-align: center;
+}
+
+#installer .button {
+  background-color: #6556EC;
+  border-color: #6556EC;
+  height: 20%;
+  font-size: 1.8rem;
+  padding: 1.8rem;
+  color: #fff;
+  font-weight: 600;
+  line-height: 38px;
+  border-radius: 4px;
+  display: inline-block;
+}
+#installer .button:hover {
+  text-decoration: none;
+}

@@ -4,3 +4,12 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
+
+<div id="installer">
+  <a class="button button-primary" href="https://rustwasm.github.io/wasm-pack/installer">✨ Install wasm-pack 0.6.0 ✨</a>
+  <p>{{ site.wasm-pack-publish-date }} |
+    <a href="https://github.com/rustwasm/wasm-pack/releases/tag/{{- site.wasm-pack-tag -}}">
+      Release Notes
+    </a>
+  </p>
+</div>
