@@ -27,7 +27,7 @@ h2 {
 </style>
 
 Welcome to an overview of the documentation provided by the [Rust
-WebAssembly Working Group](https://github.com/rustwasm). All of these
+and WebAssembly Working Group](https://github.com/rustwasm). All of these
 projects are managed by the working group; there are other unofficial
 documentation resources as well!
 
