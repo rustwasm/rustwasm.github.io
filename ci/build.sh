@@ -35,4 +35,3 @@ mv repos/wasm-pack/docs/book _site/docs/wasm-pack
 
 mdbook build repos/book
 mv repos/book/book _site/docs/book
-
