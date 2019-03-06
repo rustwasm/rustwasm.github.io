@@ -47,7 +47,7 @@ great place to get started:
 [The Rust Wasm Book](docs/book) describes how to use Rust and
 WebAssembly together. There's a tutorial to create an end to end project
 using Rust and WebAssembly and finally the book concludes with reference
-sections full of general, good to know, information, to explore more
+sections full of general, good-to-know information to explore more
 with Rust and WebAssembly.
 
 # Dive Into Rust and WebAssembly
