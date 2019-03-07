@@ -4,11 +4,6 @@ trigger:
 jobs:
   - job: publish
     steps:
-      - bash: |
-          set -e
-          curl https://sh.rustup.rs -sSf | sh -s -- -y
-          echo "##vso[task.prependpath]$HOME/.cargo/bin"
-        displayName: Install rust
       - script: |
           set -e
           curl -L https://github.com/rust-lang-nursery/mdBook/releases/download/v0.2.1/mdbook-v0.2.1-x86_64-unknown-linux-musl.tar.gz | tar xzf -
@@ -19,9 +14,13 @@ jobs:
           versionSpec: '>= 2.4'
           addToPath: true
       - script: |
-          gem install bundler
-          bundle install --retry=3 --jobs=4
+          gem install bundler -v 1.16.5 && bundle install --retry=3 --jobs=4
         displayName: Install ruby deps
+      - bash: |
+          set -e
+          curl https://sh.rustup.rs -sSf | sh -s -- -y
+          echo "##vso[task.prependpath]$HOME/.cargo/bin"
+        displayName: Install rust
       - script: ./ci/build.sh
         displayName: Build site
       - script: curl -LsSf https://git.io/fhJ8n | rustc - && (cd _site && ../rust_out)
