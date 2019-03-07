@@ -18,7 +18,9 @@ jobs:
         inputs:
           versionSpec: '>= 2.4'
           addToPath: true
-      - script: bundler install
+      - script: |
+          gem install bundler
+          bundle install --retry=3 --jobs=4
         displayName: Install ruby deps
       - script: ./ci/build.sh
         displayName: Build site
