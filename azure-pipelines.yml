@@ -34,4 +34,4 @@ jobs:
         displayName: "Push to gh-pages"
         condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/src'))
         env:
-          GITHUB_DEPLOY_KEY: '$(GITHUB_DEPLOY_KEY_MAIN)'
+          GITHUB_DEPLOY_KEY: '$(GITHUB_DEPLOY_KEY)'
