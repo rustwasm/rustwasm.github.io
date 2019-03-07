@@ -1,5 +1,5 @@
 trigger:
-  - master
+  - src
 
 jobs:
   - job: publish
@@ -23,7 +23,15 @@ jobs:
         displayName: Install rust
       - script: ./ci/build.sh
         displayName: Build site
-      - script: curl -LsSf https://git.io/fhJ8n | rustc - && (cd _site && ../rust_out)
-        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+      - script: |
+          set -e
+          source ci/setup-git.sh
+          cd _site
+          git init
+          git add .
+          git commit -m "Deploy $BUILD_SOURCEVERSION"
+          git push git@github.com:rustwasm/rustwasm.github.io master:master -f
+        displayName: "Push to gh-pages"
+        condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/src'))
         env:
-          GITHUB_DEPLOY_KEY: $(GITHUB_DEPLOY_KEY)
+          GITHUB_DEPLOY_KEY: '$(GITHUB_DEPLOY_KEY_MAIN)'
