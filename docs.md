@@ -1,31 +1,5 @@
 # Rust and WebAssembly Documentation
 
-<style>
-nav {
-    display: none;
-}
-#search-input {
-    width: calc(100% - 58px);
-}
-#search-but {
-    cursor: pointer;
-}
-#search-but, #search-input {
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    outline: none;
-    font-size: 0.7em;
-    background-color: #fff;
-}
-#search-but:hover, #search-input:focus {
-    border-color: #55a9ff;
-}
-h2 {
-    font-size: 18px;
-}
-</style>
-
 Welcome to an overview of the documentation provided by the [Rust
 and WebAssembly Working Group](https://github.com/rustwasm). All of these
 projects are managed by the working group; there are other unofficial
