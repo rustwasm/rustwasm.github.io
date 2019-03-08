@@ -1,4 +1,4 @@
-% Rust and WebAssembly Documentation
+# Rust and WebAssembly Documentation
 
 <style>
 nav {
