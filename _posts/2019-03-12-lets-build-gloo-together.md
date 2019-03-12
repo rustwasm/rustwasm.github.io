@@ -94,7 +94,7 @@ the issues][issues] on Gloo's GitHub repository.
 
 [roadmap]: https://github.com/rustwasm/rfcs/pull/7
 [Gloo]: https://github.com/rustwasm/gloo
-[Tide]: https://rust-lang-nursery.github.io/wg-net/2018/09/11/tide.html
+[Tide]: https://rustasync.github.io/team/2018/09/11/tide.html
 [console_log]: https://crates.io/crates/console_log
 [discord]: https://discord.gg/rust-lang
 [all-hands]: https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html#wasm-at-the-2019-rust-all-hands
