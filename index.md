@@ -6,7 +6,7 @@ layout: home
 ---
 
 <div id="installer">
-  <a class="button button-primary" href="https://rustwasm.github.io/wasm-pack/installer">✨ Install wasm-pack 0.6.0 ✨</a>
+  <a class="button button-primary" href="https://rustwasm.github.io/wasm-pack/installer">✨ Install wasm-pack {{ site.wasm-pack-tag }} ✨</a>
   <p>{{ site.wasm-pack-publish-date }} |
     <a href="https://github.com/rustwasm/wasm-pack/releases/tag/{{- site.wasm-pack-tag -}}">
       Release Notes
