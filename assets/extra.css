@@ -43,3 +43,7 @@ section {
 #installer .button:hover {
   text-decoration: none;
 }
+
+pre, code {
+    font-size: 90% !important;
+}
