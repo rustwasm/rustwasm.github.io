@@ -74,13 +74,13 @@ web_sys::window()
     .clear_timeout_with_handle(timeout_id);
 ```
 
-## The `callback` Layer
+## The `callbacks` Layer
 
 When we look at the raw `web-sys` usage, there is a bit of type conversion
 noise, some unfortunate method names, and a handful of `unwrap`s for ignoring
 edge-case scenarios where we prefer to fail loudly rather than limp along. We
 can clean all these things up with the first of our "mid-level" API layers,
-which in the case of timers is the `callback` module in the `gloo_timers` crate
+which in the case of timers is the `callbacks` module in the `gloo_timers` crate
 (which is also re-exported from the `gloo` umbrella crate as `gloo::timers`).
 
 The first "mid-level" API built on top of the `-sys` bindings exposes all the
@@ -90,9 +90,9 @@ functions with `js_sys::Function`, we take any `F: FnOnce()`. This layer is
 essentially the least opinionated direct API translation to Rust.
 
 ```rust
-use gloo::timers::callback::Timeout;
+use gloo::timers::callbacks::Timeout;
 // Alternatively, we could use the `gloo_timers` crate without the rest of Gloo:
-// use gloo_timers::callback::Timeout;
+// use gloo_timers::callbacks::Timeout;
 
 // Already, much nicer!
 let timeout = Timeout::new(500, move || {
@@ -116,7 +116,7 @@ example, this means we implement a `Future` backed by `setTimeout`, and a
 
 ```rust
 use futures::prelude::*;
-use gloo::timers::future::TimeoutFuture;
+use gloo::timers::futures::TimeoutFuture;
 
 // By using futures, we can use all the future combinator methods to build up a
 // description of some asynchronous task.
@@ -150,7 +150,7 @@ excited for `async`/`await` as well!
 That's all the layers we have for the `setTimeout` and `setInterval`
 APIs. Different Web APIs will have different sets of layers, and this is
 fine. Not every Web API uses callbacks, so it doesn't make sense to always have
-a `callback` module in every Gloo crate. The important part is that we are
+a `callbacks` module in every Gloo crate. The important part is that we are
 actively identifying layers, making them public and reusable, and building
 higher-level layers on top of lower-level layers.
 
@@ -166,8 +166,8 @@ correctness!
 Another future direction is adding more integration layers with more parts of
 the larger Rust crates ecosystem. For example, adding functional reactive
 programming-style layers via [the `futures-signals`
-crate][integrate-futures-signals] that the [`dominator`][dominator] framework is
-built upon.
+crate][integrate-futures-signals] which is also used by the
+[`dominator`][dominator] framework.
 
 ## Events
 
@@ -181,27 +181,65 @@ On top of [`web_sys::Event`][web-sys-event] and
 [`web_sys::EventTarget::add_event_listener_with_callback`][web-sys-add-listener],
 we are building a layer for [adding and removing event
 listeners][raii-listeners] and managing their lifetimes from Rust via RAII-style
-automatic cleanup upon drop. This will enable usage like this:
+automatic cleanup upon drop.
+
+We can use this API to make idiomatic Rust types that attach event listeners
+that automatically get removed from the DOM when the types is dropped:
 
 ```rust
+use futures::sync::oneshot;
 use gloo::events::EventListener;
 
-// Get an event target from somewhere. Maybe a DOM element or maybe the window
-// or document.
-let target: web_sys::EventTarget = unimplemented!();
+// A prompt for the user.
+pub struct Prompt {
+    receiver: oneshot::Receiver<String>,
 
-let listener = EventListener::new(&target, "click", |event: web_sys::Event| {
-    // Cast the `Event` into a `MouseEvent`
-    let mouse_event = event.dyn_into::<web_sys::MouseEvent>().unwrap();
+    // Automatically removed from the DOM on drop!
+    listener: EventListener,
+}
 
-    // Do stuff on click...
-});
+impl Prompt {
+    pub fn new() -> Prompt {
+        // Create an `<input>` to prompt the user for something and attach it to the DOM.
+        let input: web_sys::HtmlInputElement = unimplemented!();
 
-// If we want to remove the listener, we just drop it:
-drop(listener);
+        // Create a oneshot channel for sending/receiving the user's input.
+        let (sender, receiver) = oneshot::channel();
 
-// Alternatively, if we want to listen forever, we can use `forget`:
-listener.forget();
+        // Attach an event listener to the input element.
+        let listener = EventListener::new(&input, "input", move |_event: &web_sys::Event| {
+            // Get the input element's value.
+            let value = input.value();
+
+            // Send the input value over the oneshot channel.
+            sender.send(value)
+                .expect_throw(
+                    "receiver should not be dropped without first removing DOM listener"
+                );
+        });
+
+        Prompt {
+            receiver,
+            listener,
+        }
+    }
+}
+
+// A `Prompt` is also a future, that resolves after the user input!
+impl Future for Prompt {
+    type Item = String;
+    type Error = ();
+
+    fn poll(&mut self) -> Poll<Self::Item, Self::Error> {
+        self.receiver
+            .poll()
+            .map_err(|_| {
+                unreachable!(
+                    "we don't drop the sender without either sending a value or dropping the whole Prompt"
+                )
+            })
+    }
+}
 ```
 
 On top of that layer, we are using Rust's trait system to design [a
@@ -212,12 +250,18 @@ event types that you listen to:
 ```rust
 use gloo::events::{ClickEvent, on};
 
-// Again, get an event target from somewhere.
+// Get an event target from somewhere.
 let target: web_sys::EventTarget = unimplemented!();
 
-// Listen to the "click" event, and get a nicer event type!
+// Listen to the "click" event, know that you didn't misspell the event as
+// "clik", and also get a nicer event type!
 let click_listener = on(&target, move |e: &ClickEvent| {
-    // Do stuff on click...
+    // The `ClickEvent` type has nice getters for the `MouseEvent` that
+    // `"click"` events are guaranteed to yield. No need to dynamically cast
+    // an `Event` to a `MouseEvent`.
+    let (x, y) = event.mouse_position();
+
+    // ...
 });
 ```
 
