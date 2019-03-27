@@ -70,7 +70,7 @@ let id = web_sys::window()
 
 // Then, if we ever decide we want to cancel the timeout, we do this:
 web_sys::window()
-    .expect("should have a `window`)
+    .expect("should have a `window`")
     .clear_timeout_with_handle(timeout_id);
 ```
 
