@@ -184,7 +184,7 @@ listeners][raii-listeners] and managing their lifetimes from Rust via RAII-style
 automatic cleanup upon drop.
 
 We can use this API to make idiomatic Rust types that attach event listeners
-that automatically get removed from the DOM when the types is dropped:
+that automatically get removed from the DOM when the type is dropped:
 
 ```rust
 use futures::sync::oneshot;
