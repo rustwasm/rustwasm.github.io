@@ -72,9 +72,6 @@ or [send us a pull request](https://github.com/rustwasm/rustwasm.github.io).
 **Want to get involved in Rust and WebAssembly? [Join the Rust and WebAssembly
 working group!][get-involved]**
 
-* [All issues labeled "good first issue" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22)
-* [All issues labeled "help wanted" in the `rustwasm/*` repositories](https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22)
-
 [get-involved]: https://github.com/rustwasm/team/blob/master/README.md#get-involved
 
 ### New Good First Issues
