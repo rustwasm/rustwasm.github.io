@@ -282,7 +282,7 @@ Let's build Gloo together! Want to get involved?
 [Gloo]: https://github.com/rustwasm/gloo
 [set-timeout]: https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout
 [announcing-web-sys]: https://rustwasm.github.io/2018/09/26/announcing-web-sys.html
-[host-bindings]: https://github.com/WebAssembly/host-bindings/blob/master/proposals/host-bindings/Overview.md
+[host-bindings]: https://github.com/WebAssembly/webidl-bindings/blob/9ada880991a26081279ee6b74e26502f5046a010/proposals/host-bindings/Overview.md
 [state-machine-future]: https://github.com/fitzgen/state_machine_future
 [integrate-futures-signals]: https://github.com/rustwasm/gloo/issues/33
 [dominator]: https://github.com/Pauan/rust-dominator
