@@ -63,7 +63,7 @@ let js_val = closure.as_ref();
 let js_func = js_val.unchecked_ref::<js_sys::Function>();
 
 // Finally, call the `window.setTimeout` API.
-let id = web_sys::window()
+let timeout_id = web_sys::window()
     .expect("should have a `window`")
     .set_timeout_with_callback_and_timeout_and_arguments_0(js_func, 500)
     .expect("should set a timeout OK");
