@@ -28,7 +28,7 @@ bundler exec jekyll build --config _config.yml,_build.yml
 
 mkdir -p _site/docs
 mdbook build repos/wasm-bindgen/guide
-mv repos/wasm-bindgen/guide/book _site/docs/wasm-bindgen
+mv repos/wasm-bindgen/guide/book/html _site/docs/wasm-bindgen
 
 mdbook build repos/wasm-pack/docs
 mv repos/wasm-pack/docs/book _site/docs/wasm-pack
