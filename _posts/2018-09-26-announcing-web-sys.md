@@ -47,7 +47,7 @@ same battle-tested strategy that every browser engine uses to generate
 JavaScript-to-C++ glue code (or in [Servo's](https://servo.org/) case,
 JavaScript-to-Rust) for its implementation of these APIs. Furthermore, it is yet
 another way that `wasm-bindgen` is future-compatible with [the host bindings
-proposal.](https://github.com/WebAssembly/host-bindings/blob/master/proposals/host-bindings/Overview.md)
+proposal.](https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md)
 The host bindings proposal will allow WebAssembly to directly call into native
 DOM methods without going through a JavaScript shim, promising to eventually
 unlock even-faster-than-JS DOM performance since calls from wasm can be

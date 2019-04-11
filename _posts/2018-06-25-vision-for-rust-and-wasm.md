@@ -238,7 +238,7 @@ working group and help build the future of Rust and WebAssembly now!][get-involv
 [speed without wizardry]: http://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html
 [webpack-rust-plugin]: https://github.com/xtuc/rust-plugin
 [book]: https://rustwasm.github.io/book/
-[host-bindings]: https://github.com/WebAssembly/host-bindings/blob/master/proposals/host-bindings/Overview.md
+[host-bindings]: https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md
 [wasm-bindgen]: https://github.com/rustwasm/wasm-bindgen
 [wasm-pack]: https://github.com/rustwasm/wasm-pack
 [wasm-snip]: https://github.com/rustwasm/wasm-snip

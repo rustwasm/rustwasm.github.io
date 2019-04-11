@@ -98,7 +98,7 @@ AST! We need more folks like `@ohanar` willing to step up in the same way. 🙏
 
 [ohanar]: https://github.com/ohanar
 [vision-rust-wasm]: https://rustwasm.github.io/2018/06/25/vision-for-rust-and-wasm.html
-[host-bindings]: https://github.com/WebAssembly/host-bindings/blob/master/proposals/host-bindings/Overview.md
+[host-bindings]: https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md
 [wasm-bindgen]: https://github.com/rustwasm/wasm-bindgen
 [readme]: https://github.com/rustwasm/wasm-bindgen/blob/master/README.md
 [design]: https://github.com/rustwasm/wasm-bindgen/blob/master/DESIGN.md

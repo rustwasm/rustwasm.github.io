@@ -427,7 +427,7 @@ if we missed anyone in this list!)
 [Bjarne Stroustrup]: https://en.wikipedia.org/wiki/Bjarne_Stroustrup
 [announcing-web-sys]: https://rustwasm.github.io/2018/09/26/announcing-web-sys.html
 [wasm-bindgen]: https://github.com/rustwasm/wasm-bindgen
-[host-bindings]: https://github.com/WebAssembly/host-bindings/blob/master/proposals/host-bindings/Overview.md
+[host-bindings]: https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md
 [NPM]: https://www.npmjs.com/
 [wasm-pack]: https://github.com/rustwasm/wasm-pack
 [book]: https://rustwasm.github.io/book/
