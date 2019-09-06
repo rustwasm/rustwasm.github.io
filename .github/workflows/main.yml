@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - src
+  schedule:
+    # Once a day at 9am run the build
+    - cron:  '0 9 * * *'
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.x'
+    - name: Install Rust
+      run: rustup update stable && rustup default stable
+    - run: gem install bundler -v 1.16.5 && bundle install --retry=3 --jobs=4
+    - run: cargo install mdbook --version 0.2.3
+    - run: ./ci/build.sh
+
+    - name: Push to gh-pages
+      run: |
+        cd _site
+        git init
+        git add .
+        git -c user.name='ci' -c user.email='ci' commit -m init
+        git push -f -q https://git:${{ secrets.github_token }}@github.com/${{ github.repository }} HEAD:master
