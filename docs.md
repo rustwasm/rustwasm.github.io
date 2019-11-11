@@ -32,7 +32,7 @@ If you'd like a deeper dive into Rust and WebAssembly, these resources
 are for you. These books are good to look into after you've gone through
 the tutorial in [The Rust Wasm Book](docs/book) or you already have some
 familiarity with Rust, WebAssembly, and JavaScript. These books go into
-more depth about the Rust WebAssesmbly tools and crates.
+more depth about the Rust WebAssembly tools and crates.
 
 ### The `wasm-bindgen` Guide
 
