@@ -47,7 +47,7 @@ curious.
 
 ### The `wasm-pack` Book
 
-[The `wasm-pack` Book](docs/wasm-pack) covers the Rust to WebAssembly
+[The `wasm-pack` Book](https://rustwasm.github.io/docs/wasm-pack/) covers the Rust to WebAssembly
 workflow tool. This book covers prerequistes, project setup, and
 available commands for `wasm-pack`. The `wasm-pack` book has quick start
 guides to using generated templates and highlights how the workflow with
