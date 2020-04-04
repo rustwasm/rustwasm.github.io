@@ -20,7 +20,7 @@ great place to get started:
 
 ### The Rust Wasm Book
 
-[The Rust Wasm Book](docs/book) describes how to use Rust and
+[The Rust Wasm Book](https://rustwasm.github.io/docs/book/) describes how to use Rust and
 WebAssembly together. There's a tutorial to create an end to end project
 using Rust and WebAssembly and finally the book concludes with reference
 sections full of general, good-to-know information to explore more
@@ -30,13 +30,13 @@ with Rust and WebAssembly.
 
 If you'd like a deeper dive into Rust and WebAssembly, these resources
 are for you. These books are good to look into after you've gone through
-the tutorial in [The Rust Wasm Book](docs/book) or you already have some
+the tutorial in [The Rust Wasm Book](https://rustwasm.github.io/docs/book/) or you already have some
 familiarity with Rust, WebAssembly, and JavaScript. These books go into
 more depth about the Rust WebAssembly tools and crates.
 
 ### The `wasm-bindgen` Guide
 
-[The `wasm-bindgen` Guide](docs/wasm-bindgen) covers the `wasm-bindgen`
+[The `wasm-bindgen` Guide](https://rustwasm.github.io/docs/wasm-bindgen/) covers the `wasm-bindgen`
 tool and crate. `wasm-bindgen` is a Rust library and CLI tool that
 facilitate high-level interactions between wasm modules and JavaScript.
 This is great to read if you're seeking more information about how
