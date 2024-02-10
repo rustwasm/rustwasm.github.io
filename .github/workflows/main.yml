@@ -7,6 +7,7 @@ on:
   schedule:
     # Once a day at 9am run the build
     - cron:  '0 9 * * *'
+  workflow_dispatch:
 
 jobs:
   publish:
