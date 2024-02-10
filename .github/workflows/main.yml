@@ -14,10 +14,10 @@ jobs:
     name: Publish
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-ruby@v1
+    - uses: actions/checkout@v4
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.x'
+        ruby-version: '2'
     - name: Install Rust
       run: rustup update stable && rustup default stable
     - run: gem install bundler -v 1.16.5 && bundle install --retry=3 --jobs=4
