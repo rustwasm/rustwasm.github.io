@@ -21,7 +21,7 @@ jobs:
     - name: Install Rust
       run: rustup update stable && rustup default stable
     - run: gem install bundler -v 1.16.5 && bundle install --retry=3 --jobs=4
-    - run: cargo install mdbook --version 0.2.3
+    - run: cargo install mdbook --version 0.2.3 --no-default-features
     - run: ./ci/build.sh
 
     - name: Push to gh-pages
