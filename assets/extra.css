@@ -1,0 +1,49 @@
+#call-to-action {
+    margin-top: -30px;
+    margin-bottom: 30px;
+    background-color: #403D58;
+    color: #fff;
+    padding: 30px;
+}
+
+#call-to-action a {
+    color: #FECD2F;
+}
+
+#call-to-action h2 {
+    font-weight: bold;
+}
+
+#call-to-action img {
+    float: right;
+    max-width: 45%;
+    padding-left: 5%;
+}
+
+section {
+    clear: both;
+}
+
+#installer {
+  text-align: center;
+}
+
+#installer .button {
+  background-color: #6556EC;
+  border-color: #6556EC;
+  height: 20%;
+  font-size: 1.8rem;
+  padding: 1.8rem;
+  color: #fff;
+  font-weight: 600;
+  line-height: 38px;
+  border-radius: 4px;
+  display: inline-block;
+}
+#installer .button:hover {
+  text-decoration: none;
+}
+
+pre, code {
+    font-size: 90% !important;
+}
