@@ -38,3 +38,4 @@ mv repos/book/book _site/docs/book
 
 mkdir -p _site/wasm-pack/installer
 cp repos/wasm-pack/docs/_installer/init.sh _site/wasm-pack/installer/init.sh
+ed -i 's/\$VERSION/v0.13.1/' _site/wasm-pack/installer/init.sh
