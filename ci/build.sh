@@ -35,3 +35,6 @@ mv repos/wasm-pack/docs/book _site/docs/wasm-pack
 
 mdbook build repos/book
 mv repos/book/book _site/docs/book
+
+mkdir -p _site/wasm-pack/installer
+cp repos/wasm-pack/docs/_installer/init.sh _site/wasm-pack/installer/init.sh
