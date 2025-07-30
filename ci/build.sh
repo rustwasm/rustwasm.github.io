@@ -27,9 +27,11 @@ echo "wasm-pack-publish-date: $wasm_pack_publish_date" >> _build.yml
 bundler exec jekyll build --config _config.yml,_build.yml
 
 mkdir -p _site/docs
+cp -r wasm-bindgen-theme repos/wasm-bindgen/guide/theme
 mdbook build repos/wasm-bindgen/guide
 mv repos/wasm-bindgen/guide/book/html _site/docs/wasm-bindgen
 
+cp -r wasm-pack-theme repos/wasm-pack/docs/theme
 mdbook build repos/wasm-pack/docs
 mv repos/wasm-pack/docs/book _site/docs/wasm-pack
 
