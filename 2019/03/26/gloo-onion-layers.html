@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Gloo Update: Onion Layers, Timers, and Events | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Gloo Update: Onion Layers, Timers, and Events" />
+<meta name="author" content="Nick Fitzgerald" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="About two weeks ago, we kicked off our effort to collectively build Gloo, a modular toolkit for building fast and reliable Web apps and libraries with Rust and Wasm. We knew we wanted to explicitly cultivate the Rust and Wasm library ecosystem by spinning out reusable, standalone libraries: things that would help you out whether you were writing a green-field Web app in pure-Rust, building your own framework, or surgically inserting some Rust-generated Wasm into an existing JavaScript project. What was still fuzzy, and which we didn’t know yet, was how we were going design and expose these reusable bits." />
+<meta property="og:description" content="About two weeks ago, we kicked off our effort to collectively build Gloo, a modular toolkit for building fast and reliable Web apps and libraries with Rust and Wasm. We knew we wanted to explicitly cultivate the Rust and Wasm library ecosystem by spinning out reusable, standalone libraries: things that would help you out whether you were writing a green-field Web app in pure-Rust, building your own framework, or surgically inserting some Rust-generated Wasm into an existing JavaScript project. What was still fuzzy, and which we didn’t know yet, was how we were going design and expose these reusable bits." />
+<link rel="canonical" href="https://rustwasm.github.io/2019/03/26/gloo-onion-layers.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2019/03/26/gloo-onion-layers.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-26T00:00:00+00:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nick Fitzgerald"},"headline":"Gloo Update: Onion Layers, Timers, and Events","dateModified":"2019-03-26T00:00:00+00:00","datePublished":"2019-03-26T00:00:00+00:00","description":"About two weeks ago, we kicked off our effort to collectively build Gloo, a modular toolkit for building fast and reliable Web apps and libraries with Rust and Wasm. We knew we wanted to explicitly cultivate the Rust and Wasm library ecosystem by spinning out reusable, standalone libraries: things that would help you out whether you were writing a green-field Web app in pure-Rust, building your own framework, or surgically inserting some Rust-generated Wasm into an existing JavaScript project. What was still fuzzy, and which we didn’t know yet, was how we were going design and expose these reusable bits.","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2019/03/26/gloo-onion-layers.html"},"url":"https://rustwasm.github.io/2019/03/26/gloo-onion-layers.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Gloo Update: Onion Layers, Timers, and Events</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-03-26T00:00:00+00:00" itemprop="datePublished">Mar 26, 2019
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Nick Fitzgerald</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>About two weeks ago, we <a href="https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html">kicked off</a> our effort to collectively
+build <a href="https://github.com/rustwasm/gloo">Gloo</a>, a modular toolkit for building fast and reliable Web apps and
+libraries with Rust and Wasm. We knew we wanted to explicitly cultivate the Rust
+and Wasm library ecosystem by spinning out reusable, standalone libraries:
+things that would help you out whether you were writing a green-field Web app in
+pure-Rust, building your own framework, or surgically inserting some
+Rust-generated Wasm into an existing JavaScript project. What was still fuzzy,
+and which we didn’t know yet, was <em>how</em> we were going design and expose these
+reusable bits.</p>
+
+<h2 id="onion-layered-apis">Onion-Layered APIs</h2>
+
+<p>I’m pleased to tell you that that after some collaborative discussion in issue
+threads, we’ve come up with a promising approach to designing Gloo APIs, and
+we’ve since formalized it a bit in <code class="highlighter-rouge">CONTRIBUTING.md</code>. I’ve nicknamed this
+approach “onion-layered” API design.</p>
+
+<p>Briefly, we want to build mid-level abstraction libraries on top of raw <code class="highlighter-rouge">-sys</code>
+bindings, build futures and streams integration on top of the mid-level APIs,
+and build high-level APIs on top of all that. But — crucially —
+every layer should be publicly exposed and reusable.</p>
+
+<p>While this approach to API design is certainly not novel, we want to very
+deliberately follow it so that we</p>
+
+<ul>
+  <li>maximize reusability for the larger ecosystem, and</li>
+  <li>exercise our mid-level APIs when building higher-level APIs, to ensure their
+generality and suitability for acting as a solid foundation.</li>
+</ul>
+
+<p>As we go through and examine each layer, I’ll use <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout">the <code class="highlighter-rouge">setTimeout</code> and
+<code class="highlighter-rouge">setInterval</code> Web APIs</a> as a running example.</p>
+
+<h2 id="the-core-wasm-bindgen-js-sys-and-web-sys">The Core: <code class="highlighter-rouge">wasm-bindgen</code>, <code class="highlighter-rouge">js-sys</code>, and <code class="highlighter-rouge">web-sys</code></h2>
+
+<p>The innermost layer are raw bindings built on top of <a href="https://rustwasm.github.io/2018/09/26/announcing-web-sys.html"><code class="highlighter-rouge">wasm-bindgen</code>, <code class="highlighter-rouge">js-sys</code>
+and <code class="highlighter-rouge">web-sys</code></a>. These bindings are fast, have a light code
+size foot print, and are future-compatible with <a href="https://github.com/WebAssembly/webidl-bindings/blob/9ada880991a26081279ee6b74e26502f5046a010/proposals/host-bindings/Overview.md">the host bindings
+proposal</a>.</p>
+
+<p>What they are <em>not</em> is super ergonomic to use all of the time. Using raw
+<code class="highlighter-rouge">web-sys</code> bindings directly can sometimes feel like making raw <code class="highlighter-rouge">libc</code> calls
+instead of leveraging Rust’s nice <code class="highlighter-rouge">std</code> abstractions.</p>
+
+<p>Here is doing some operation after a 500 millisecond timeout using raw <code class="highlighter-rouge">web-sys</code>
+bindings:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">wasm_bindgen</span><span class="p">::{</span><span class="nn">closure</span><span class="p">::</span><span class="n">Closure</span><span class="p">,</span> <span class="n">JsCast</span><span class="p">};</span>
+
+<span class="c">// Create a Rust `FnOnce` closure that is exposed to JavaScript.</span>
+<span class="k">let</span> <span class="n">closure</span> <span class="o">=</span> <span class="nn">Closure</span><span class="p">::</span><span class="nf">once</span><span class="p">(</span><span class="k">move</span> <span class="p">||</span> <span class="p">{</span>
+    <span class="nf">do_some_operation</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c">// Get the JavaScript function that reflects our Rust closure.</span>
+<span class="k">let</span> <span class="n">js_val</span> <span class="o">=</span> <span class="n">closure</span><span class="nf">.as_ref</span><span class="p">();</span>
+<span class="k">let</span> <span class="n">js_func</span> <span class="o">=</span> <span class="n">js_val</span><span class="py">.unchecked_ref</span><span class="p">::</span><span class="o">&lt;</span><span class="nn">js_sys</span><span class="p">::</span><span class="n">Function</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="c">// Finally, call the `window.setTimeout` API.</span>
+<span class="k">let</span> <span class="n">timeout_id</span> <span class="o">=</span> <span class="nn">web_sys</span><span class="p">::</span><span class="nf">window</span><span class="p">()</span>
+    <span class="nf">.expect</span><span class="p">(</span><span class="s">"should have a `window`"</span><span class="p">)</span>
+    <span class="nf">.set_timeout_with_callback_and_timeout_and_arguments_0</span><span class="p">(</span><span class="n">js_func</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    <span class="nf">.expect</span><span class="p">(</span><span class="s">"should set a timeout OK"</span><span class="p">);</span>
+
+<span class="c">// Then, if we ever decide we want to cancel the timeout, we do this:</span>
+<span class="nn">web_sys</span><span class="p">::</span><span class="nf">window</span><span class="p">()</span>
+    <span class="nf">.expect</span><span class="p">(</span><span class="s">"should have a `window`"</span><span class="p">)</span>
+    <span class="nf">.clear_timeout_with_handle</span><span class="p">(</span><span class="n">timeout_id</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="the-callbacks-layer">The <code class="highlighter-rouge">callbacks</code> Layer</h2>
+
+<p>When we look at the raw <code class="highlighter-rouge">web-sys</code> usage, there is a bit of type conversion
+noise, some unfortunate method names, and a handful of <code class="highlighter-rouge">unwrap</code>s for ignoring
+edge-case scenarios where we prefer to fail loudly rather than limp along. We
+can clean all these things up with the first of our “mid-level” API layers,
+which in the case of timers is the <code class="highlighter-rouge">callbacks</code> module in the <code class="highlighter-rouge">gloo_timers</code> crate
+(which is also re-exported from the <code class="highlighter-rouge">gloo</code> umbrella crate as <code class="highlighter-rouge">gloo::timers</code>).</p>
+
+<p>The first “mid-level” API built on top of the <code class="highlighter-rouge">-sys</code> bindings exposes all the
+same functionality and the same design that the Web does, but uses proper Rust
+types. For example, at this layer, instead of taking untyped JavaScript
+functions with <code class="highlighter-rouge">js_sys::Function</code>, we take any <code class="highlighter-rouge">F: FnOnce()</code>. This layer is
+essentially the least opinionated direct API translation to Rust.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">gloo</span><span class="p">::</span><span class="nn">timers</span><span class="p">::</span><span class="nn">callbacks</span><span class="p">::</span><span class="n">Timeout</span><span class="p">;</span>
+<span class="c">// Alternatively, we could use the `gloo_timers` crate without the rest of Gloo:</span>
+<span class="c">// use gloo_timers::callbacks::Timeout;</span>
+
+<span class="c">// Already, much nicer!</span>
+<span class="k">let</span> <span class="n">timeout</span> <span class="o">=</span> <span class="nn">Timeout</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="k">move</span> <span class="p">||</span> <span class="p">{</span>
+    <span class="nf">do_some_operation</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="c">// If we ever decide we want to cancel our delayed operation, all we do is drop</span>
+<span class="c">// the `timeout` now:</span>
+<span class="k">drop</span><span class="p">(</span><span class="n">timeout</span><span class="p">);</span>
+
+<span class="c">// Or if we never want to cancel, we can use `forget`:</span>
+<span class="n">timeout</span><span class="nf">.forget</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h2 id="layering-on-futures-and-streams">Layering on Futures and Streams</h2>
+
+<p>The next layer to add is integrating with popular traits and libraries in the
+Rust ecosystem, like <code class="highlighter-rouge">Future</code>s or <code class="highlighter-rouge">serde</code>. For our running <code class="highlighter-rouge">gloo::timers</code>
+example, this means we implement a <code class="highlighter-rouge">Future</code> backed by <code class="highlighter-rouge">setTimeout</code>, and a
+<code class="highlighter-rouge">Stream</code> implementation backed by <code class="highlighter-rouge">setInterval</code>.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">futures</span><span class="p">::</span><span class="nn">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">gloo</span><span class="p">::</span><span class="nn">timers</span><span class="p">::</span><span class="nn">futures</span><span class="p">::</span><span class="n">TimeoutFuture</span><span class="p">;</span>
+
+<span class="c">// By using futures, we can use all the future combinator methods to build up a</span>
+<span class="c">// description of some asynchronous task.</span>
+<span class="k">let</span> <span class="n">my_future</span> <span class="o">=</span> <span class="nn">TimeoutFuture</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+    <span class="nf">.and_then</span><span class="p">(|</span><span class="n">_</span><span class="p">|</span> <span class="p">{</span>
+        <span class="c">// Do some operation after 500 milliseconds...</span>
+        <span class="nf">do_some_operation</span><span class="p">();</span>
+
+        <span class="c">// and then wait another 500 milliseconds...</span>
+        <span class="nn">TimeoutFuture</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+    <span class="p">})</span>
+    <span class="nf">.map</span><span class="p">(|</span><span class="n">_</span><span class="p">|</span> <span class="p">{</span>
+        <span class="c">// after which we do another operation!</span>
+        <span class="nf">do_another_operation</span><span class="p">();</span>
+    <span class="p">})</span>
+    <span class="nf">.map_err</span><span class="p">(|</span><span class="n">err</span><span class="p">|</span> <span class="p">{</span>
+        <span class="nf">handle_error</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+    <span class="p">});</span>
+
+<span class="c">// Spawn our future to run it!</span>
+<span class="nn">wasm_bindgen_futures</span><span class="p">::</span><span class="nf">spawn_local</span><span class="p">(</span><span class="n">my_future</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Note that we use <code class="highlighter-rouge">futures</code> 0.1 for now, because we’ve fought tooth and nail to
+get the Wasm ecosystem on stable Rust, but as soon as the new
+<code class="highlighter-rouge">std::future::Future</code> design is stable, we plan to switch over. We are very
+excited for <code class="highlighter-rouge">async</code>/<code class="highlighter-rouge">await</code> as well!</p>
+
+<h2 id="more-layers">More Layers?</h2>
+
+<p>That’s all the layers we have for the <code class="highlighter-rouge">setTimeout</code> and <code class="highlighter-rouge">setInterval</code>
+APIs. Different Web APIs will have different sets of layers, and this is
+fine. Not every Web API uses callbacks, so it doesn’t make sense to always have
+a <code class="highlighter-rouge">callbacks</code> module in every Gloo crate. The important part is that we are
+actively identifying layers, making them public and reusable, and building
+higher-level layers on top of lower-level layers.</p>
+
+<p>We will likely add even higher-level layers to other Web APIs where it makes
+sense. For example, the <a href="https://github.com/rustwasm/gloo/issues/47">File API</a>’s <code class="highlighter-rouge">FileReader</code> interface exposes methods
+that you shouldn’t call until after certain events have fired, and any attempt
+to call them earlier will throw. We can codify this as <a href="https://github.com/fitzgen/state_machine_future">a state machine-based
+<code class="highlighter-rouge">Future</code></a>, that doesn’t even give you the ability to call
+those methods until after the relevant events have fired and the state machine
+reaches a certain state. Leveraging types at compile time for ergonomics and
+correctness!</p>
+
+<p>Another future direction is adding more integration layers with more parts of
+the larger Rust crates ecosystem. For example, adding functional reactive
+programming-style layers via <a href="https://github.com/rustwasm/gloo/issues/33">the <code class="highlighter-rouge">futures-signals</code>
+crate</a> which is also used by the
+<a href="https://github.com/Pauan/rust-dominator"><code class="highlighter-rouge">dominator</code></a> framework.</p>
+
+<h2 id="events">Events</h2>
+
+<p>One of the active bits of design work going on in Gloo right now is how to craft
+our event targets and listeners layer. Events are used across most of the Web
+APIs, so it is very important we get this design right, as it will sit
+underneath many of our other crates. While we haven’t 100% nailed down the
+design yet, I really like where we are headed.</p>
+
+<p>On top of <a href="https://docs.rs/web-sys/0.3.17/web_sys/struct.Event.html"><code class="highlighter-rouge">web_sys::Event</code></a> and
+<a href="https://docs.rs/web-sys/0.3.17/web_sys/struct.EventTarget.html#method.add_event_listener_with_callback"><code class="highlighter-rouge">web_sys::EventTarget::add_event_listener_with_callback</code></a>,
+we are building a layer for <a href="https://github.com/rustwasm/gloo/issues/30">adding and removing event
+listeners</a> and managing their lifetimes from Rust via RAII-style
+automatic cleanup upon drop.</p>
+
+<p>We can use this API to make idiomatic Rust types that attach event listeners
+that automatically get removed from the DOM when the type is dropped:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">futures</span><span class="p">::</span><span class="nn">sync</span><span class="p">::</span><span class="n">oneshot</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">gloo</span><span class="p">::</span><span class="nn">events</span><span class="p">::</span><span class="n">EventListener</span><span class="p">;</span>
+
+<span class="c">// A prompt for the user.</span>
+<span class="k">pub</span> <span class="k">struct</span> <span class="n">Prompt</span> <span class="p">{</span>
+    <span class="n">receiver</span><span class="p">:</span> <span class="nn">oneshot</span><span class="p">::</span><span class="n">Receiver</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="p">,</span>
+
+    <span class="c">// Automatically removed from the DOM on drop!</span>
+    <span class="n">listener</span><span class="p">:</span> <span class="n">EventListener</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">impl</span> <span class="n">Prompt</span> <span class="p">{</span>
+    <span class="k">pub</span> <span class="k">fn</span> <span class="nf">new</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="n">Prompt</span> <span class="p">{</span>
+        <span class="c">// Create an `&lt;input&gt;` to prompt the user for something and attach it to the DOM.</span>
+        <span class="k">let</span> <span class="n">input</span><span class="p">:</span> <span class="nn">web_sys</span><span class="p">::</span><span class="n">HtmlInputElement</span> <span class="o">=</span> <span class="nd">unimplemented!</span><span class="p">();</span>
+
+        <span class="c">// Create a oneshot channel for sending/receiving the user's input.</span>
+        <span class="k">let</span> <span class="p">(</span><span class="n">sender</span><span class="p">,</span> <span class="n">receiver</span><span class="p">)</span> <span class="o">=</span> <span class="nn">oneshot</span><span class="p">::</span><span class="nf">channel</span><span class="p">();</span>
+
+        <span class="c">// Attach an event listener to the input element.</span>
+        <span class="k">let</span> <span class="n">listener</span> <span class="o">=</span> <span class="nn">EventListener</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">,</span> <span class="s">"input"</span><span class="p">,</span> <span class="k">move</span> <span class="p">|</span><span class="n">_event</span><span class="p">:</span> <span class="o">&amp;</span><span class="nn">web_sys</span><span class="p">::</span><span class="n">Event</span><span class="p">|</span> <span class="p">{</span>
+            <span class="c">// Get the input element's value.</span>
+            <span class="k">let</span> <span class="n">value</span> <span class="o">=</span> <span class="n">input</span><span class="nf">.value</span><span class="p">();</span>
+
+            <span class="c">// Send the input value over the oneshot channel.</span>
+            <span class="n">sender</span><span class="nf">.send</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="nf">.expect_throw</span><span class="p">(</span>
+                    <span class="s">"receiver should not be dropped without first removing DOM listener"</span>
+                <span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="n">Prompt</span> <span class="p">{</span>
+            <span class="n">receiver</span><span class="p">,</span>
+            <span class="n">listener</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c">// A `Prompt` is also a future, that resolves after the user input!</span>
+<span class="k">impl</span> <span class="n">Future</span> <span class="k">for</span> <span class="n">Prompt</span> <span class="p">{</span>
+    <span class="k">type</span> <span class="n">Item</span> <span class="o">=</span> <span class="nb">String</span><span class="p">;</span>
+    <span class="k">type</span> <span class="n">Error</span> <span class="o">=</span> <span class="p">();</span>
+
+    <span class="k">fn</span> <span class="nf">poll</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="k">self</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">Poll</span><span class="o">&lt;</span><span class="nn">Self</span><span class="p">::</span><span class="n">Item</span><span class="p">,</span> <span class="nn">Self</span><span class="p">::</span><span class="n">Error</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">self</span><span class="py">.receiver</span>
+            <span class="nf">.poll</span><span class="p">()</span>
+            <span class="nf">.map_err</span><span class="p">(|</span><span class="n">_</span><span class="p">|</span> <span class="p">{</span>
+                <span class="nd">unreachable!</span><span class="p">(</span>
+                    <span class="s">"we don't drop the sender without either sending a value or dropping the whole Prompt"</span>
+                <span class="p">)</span>
+            <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>On top of that layer, we are using Rust’s trait system to design <a href="https://github.com/rustwasm/gloo/issues/43">a
+higher-level, static events API</a> that will make the events
+casting safe and statically-checked, and make sure you don’t have typos in the
+event types that you listen to:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">gloo</span><span class="p">::</span><span class="nn">events</span><span class="p">::{</span><span class="n">ClickEvent</span><span class="p">,</span> <span class="n">on</span><span class="p">};</span>
+
+<span class="c">// Get an event target from somewhere.</span>
+<span class="k">let</span> <span class="n">target</span><span class="p">:</span> <span class="nn">web_sys</span><span class="p">::</span><span class="n">EventTarget</span> <span class="o">=</span> <span class="nd">unimplemented!</span><span class="p">();</span>
+
+<span class="c">// Listen to the "click" event, know that you didn't misspell the event as</span>
+<span class="c">// "clik", and also get a nicer event type!</span>
+<span class="k">let</span> <span class="n">click_listener</span> <span class="o">=</span> <span class="nf">on</span><span class="p">(</span><span class="o">&amp;</span><span class="n">target</span><span class="p">,</span> <span class="k">move</span> <span class="p">|</span><span class="n">e</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">ClickEvent</span><span class="p">|</span> <span class="p">{</span>
+    <span class="c">// The `ClickEvent` type has nice getters for the `MouseEvent` that</span>
+    <span class="c">// `"click"` events are guaranteed to yield. No need to dynamically cast</span>
+    <span class="c">// an `Event` to a `MouseEvent`.</span>
+    <span class="k">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">event</span><span class="nf">.mouse_position</span><span class="p">();</span>
+
+    <span class="c">// ...</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>These event APIs are still works in progress and have some kinks to work out,
+but I’m very excited for them, and we hope to get a lot of mileage out of them
+as we build other Gloo crates that internally use them.</p>
+
+<h2 id="get-involved">Get Involved!</h2>
+
+<p>Let’s build Gloo together! Want to get involved?</p>
+
+<ul>
+  <li><a href="https://discord.gg/rust-lang">Join the <code class="highlighter-rouge">#WG-wasm</code> channel on the Rust Discord server!</a></li>
+  <li><a href="https://github.com/rustwasm/gloo">Follow the <code class="highlighter-rouge">rustwasm/gloo</code> repository on GitHub and check out its
+<code class="highlighter-rouge">CONTRIBUTING.md</code></a></li>
+</ul>
+
+
+  </div><a class="u-url" href="/2019/03/26/gloo-onion-layers.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

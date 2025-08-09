@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Our Vision for wasm-bindgen | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Our Vision for wasm-bindgen" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The last blog post laid out the Rust and WebAssembly domain working group’s overall vision for Rust and WebAssembly. In this blog post, we will dive into the details of wasm-bindgen, the future we envision for it, and how you can help us build that future." />
+<meta property="og:description" content="The last blog post laid out the Rust and WebAssembly domain working group’s overall vision for Rust and WebAssembly. In this blog post, we will dive into the details of wasm-bindgen, the future we envision for it, and how you can help us build that future." />
+<link rel="canonical" href="https://rustwasm.github.io/2018/07/02/vision-for-wasm-bindgen.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2018/07/02/vision-for-wasm-bindgen.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-07-02T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"Our Vision for wasm-bindgen","dateModified":"2018-07-02T00:00:00+00:00","datePublished":"2018-07-02T00:00:00+00:00","description":"The last blog post laid out the Rust and WebAssembly domain working group’s overall vision for Rust and WebAssembly. In this blog post, we will dive into the details of wasm-bindgen, the future we envision for it, and how you can help us build that future.","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2018/07/02/vision-for-wasm-bindgen.html"},"url":"https://rustwasm.github.io/2018/07/02/vision-for-wasm-bindgen.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Our Vision for wasm-bindgen</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-07-02T00:00:00+00:00" itemprop="datePublished">Jul 2, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><a href="https://rustwasm.github.io/2018/06/25/vision-for-rust-and-wasm.html">The last blog post laid out the Rust and WebAssembly domain working group’s
+overall vision for Rust and WebAssembly.</a> In this blog post,
+we will dive into the details of <code class="highlighter-rouge">wasm-bindgen</code>, the future we envision for it,
+and <em>how you can help us build that future</em>.</p>
+
+<p><a href="https://github.com/rustwasm/wasm-bindgen"><code class="highlighter-rouge">wasm-bindgen</code> facilitates communication between JavaScript and Rust compiled
+to WebAssembly.</a> It allows you to speak in terms of Rust structs,
+JavaScript classes, strings, etc… instead of only the integers and floats
+supported by WebAssembly’s raw calling convention. You only pay for what you
+use, so using <code class="highlighter-rouge">alert</code> won’t pull in unused bindings for <code class="highlighter-rouge">requestAnimationFrame</code>.
+Additionally, it is designed to support the upcoming <a href="https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md">“Host Bindings”
+proposal</a>, which will eliminate the need for any kind of
+JavaScript shim functions between WebAssembly functions and native DOM
+functions. This promises to unlock even-faster-than-JavaScript DOM access, since
+DOM API calls can be validated at the time that the WebAssembly is compiled, and
+won’t need to be dynamically checked on every invocation.</p>
+
+<h2 id="wasm-bindgen-is-a-shared-foundation">wasm-bindgen is a Shared Foundation</h2>
+
+<p>We are building a shared foundation for an ecosystem of Rust crates that target
+JavaScript environments with wasm-bindgen. Sharing a foundation means sharing
+raw <code class="highlighter-rouge">extern</code> imports. Every library that uses the Web’s
+<code class="highlighter-rouge">window.requestAnimationFrame</code> function or ECMAScript’s <code class="highlighter-rouge">Object.freeze</code> function
+shouldn’t need to write the <code class="highlighter-rouge">extern</code> imports themselves.</p>
+
+<p>Having bindings to all these APIs already in one place should make it easy for
+people to write really neat libraries like <a href="https://github.com/rustwasm/team/issues/163">MPSC channels built on top of the
+<code class="highlighter-rouge">postMessage</code> API</a> and other utility crates for the Web.</p>
+
+<h3 id="sharing-ecmascript-global-apis">Sharing ECMAScript Global APIs</h3>
+
+<p>The global APIs that are available in every JavaScript environment, as defined
+by the ECMAScript standard, are being made available through the
+<code class="highlighter-rouge">wasm_bindgen::js</code> module. For example, the <code class="highlighter-rouge">Object.freeze</code> function is
+available as <code class="highlighter-rouge">wasm_bindgen::js::Object::freeze</code>.</p>
+
+<p><a href="https://github.com/rustwasm/wasm-bindgen/issues/275"><em>But we aren’t done yet, and we need more help!</em></a> Adding more of
+these global API bindings is a great way to start with <code class="highlighter-rouge">wasm-bindgen</code> and there
+is lots of work that can be done in concurrent pull requests from various
+contributors!</p>
+
+<p><strong>Check out the <a href="https://github.com/rustwasm/wasm-bindgen/issues/275">ECMAScript global APIs meta issue</a> to help out!</strong></p>
+
+<h3 id="sharing-web-apis">Sharing Web APIs</h3>
+
+<p>ECMAScript’s global APIs aren’t the end of the story – we also need shared
+bindings for the Web’s DOM APIs, such as <code class="highlighter-rouge">window.requestAnimationFrame</code>,
+<code class="highlighter-rouge">Node.prototype.appendChild</code>, and <code class="highlighter-rouge">WebSocket</code>.</p>
+
+<p>All of the Web’s API types, functions, and methods are specified with
+<a href="https://heycam.github.io/webidl/">WebIDL</a>, so we are working on a new WebIDL frontend to
+<code class="highlighter-rouge">wasm-bindgen</code>. When the WebIDL frontend is ready, we plan on taking the
+interface definitions for all the Web APIs from all their standards and
+automatically generating a big <code class="highlighter-rouge">-sys</code> style crate from them.</p>
+
+<p>What do we mean by a new “frontend”? Recall the simplified description of
+<code class="highlighter-rouge">wasm-bindgen</code>’s architecture today from the last blog post. It is a procedural
+macro that parses <code class="highlighter-rouge">#[wasm_bindgen]</code> annotations that describe <code class="highlighter-rouge">extern</code>
+JavaScript imports and Rust things to export to JavaScript into an abstract
+syntax tree (AST). Then, it walks the AST and produces two results: Rust glue to
+use imported JavaScript things, JavaScript glue to use exported Rust things. We
+call the code responsible for parsing <code class="highlighter-rouge">#[wasm_bindgen]</code> declarations into the
+AST the “procedural macro frontend”.</p>
+
+<style>
+img {
+  max-height: 300px;
+  max-width: 300px;
+}
+</style>
+
+<p><a href="/images/wasm-bindgen-architecture-current.png"><img src="/images/wasm-bindgen-architecture-current.png" alt="wasm-bindgen's current architecture" /></a></p>
+
+<p>With the WebIDL frontend, we are introducing a new way to create the AST:
+parsing WebIDL and turning its definitions into <code class="highlighter-rouge">wasm-bindgen</code>’s AST. When using
+the WebIDL frontend, there are no <code class="highlighter-rouge">#[wasm_bindgen]</code> annotations or procedural
+macros involved anymore, but the rest of the pipeline after the AST is
+constructed is the same.</p>
+
+<p><a href="/images/new-wasm-bindgen-architecture.png"><img src="/images/new-wasm-bindgen-architecture.png" alt="wasm-bindgen's new architecture with a WebIDL frontend" /></a></p>
+
+<p>Does this sound cool to you? <strong>Check out <a href="https://github.com/rustwasm/wasm-bindgen/issues?q=is%3Aissue+is%3Aopen+label%3Afrontend%3Awebidl">issues labeled “frontend:webidl” in
+the <code class="highlighter-rouge">wasm-bindgen</code> repository</a> to help us build the WebIDL
+frontend!</strong> The WebIDL frontend’s code lives in <code class="highlighter-rouge">wasm-bindgen/crates/webidl</code>,
+and if you have any questions, don’t hesitate to ping <code class="highlighter-rouge">fitzgen</code> in <code class="highlighter-rouge">#rust-wasm</code>
+on irc.mozilla.org or drop a comment in the relevant issue.</p>
+
+<p>Special shout out to <a href="https://github.com/ohanar"><code class="highlighter-rouge">@ohanar</code></a>, who has been doing a wonderful job
+adding support for converting various WebIDL constructs into <code class="highlighter-rouge">wasm-bindgen</code>’s
+AST! We need more folks like <code class="highlighter-rouge">@ohanar</code> willing to step up in the same way. 🙏</p>
+
+
+  </div><a class="u-url" href="/2018/07/02/vision-for-wasm-bindgen.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>
