@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>This Week in Rust and WebAssembly 14 | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="This Week in Rust and WebAssembly 14" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hello and welcome to another issue of This Week in Rust and WebAssembly!" />
+<meta property="og:description" content="Hello and welcome to another issue of This Week in Rust and WebAssembly!" />
+<link rel="canonical" href="https://rustwasm.github.io/2019/03/21/this-week-in-rust-and-wasm-014.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2019/03/21/this-week-in-rust-and-wasm-014.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-21T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"This Week in Rust and WebAssembly 14","dateModified":"2019-03-21T00:00:00+00:00","datePublished":"2019-03-21T00:00:00+00:00","description":"Hello and welcome to another issue of This Week in Rust and WebAssembly!","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2019/03/21/this-week-in-rust-and-wasm-014.html"},"url":"https://rustwasm.github.io/2019/03/21/this-week-in-rust-and-wasm-014.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">This Week in Rust and WebAssembly 14</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-03-21T00:00:00+00:00" itemprop="datePublished">Mar 21, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Hello and welcome to another issue of <em>This Week in Rust and WebAssembly</em>!</p>
+
+<p><a href="https://rust-lang.org">Rust</a> is a systems language pursuing the trifecta:
+safety, concurrency, and speed.</p>
+
+<p><a href="http://webassembly.org">WebAssembly</a> is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!</p>
+
+<p>This is a weekly summary of Rust and WebAssembly’s progress and community.</p>
+
+<p>Did we miss something? Tweet to us at <a href="https://twitter.com/rustwasm">@rustwasm</a>
+or <a href="https://github.com/rustwasm/rustwasm.github.io">send us a pull request</a>.</p>
+
+<p><strong>Want to get involved in Rust and WebAssembly? <a href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">Join the Rust and WebAssembly working group!</a></strong></p>
+
+<h2 id="news-and-blog-posts-from-around-the-web">News and Blog Posts from Around the Web</h2>
+
+<p><em>Want to make sure something ends up on this list next time we publish an issue?
+<a href="https://github.com/rustwasm/team/issues/79">Leave a comment on this issue.</a></em></p>
+
+<ul>
+  <li><a href="https://hacks.mozilla.org/2019/03/fast-bump-allocated-virtual-doms-with-rust-and-wasm/"><strong>Fast, Bump-Allocated Virtual DOMs with Rust and
+Wasm</strong></a></li>
+  <li><a href="https://github.com/David-OConnor/seed/blob/master/CHANGELOG.md#v030">Version 0.3 of the <code class="highlighter-rouge">seed</code> framework was
+released</a></li>
+  <li><a href="https://github.com/web-dom/web-dom"><code class="highlighter-rouge">web-dom</code> is an alternative way to access the DOM from
+Rust</a></li>
+  <li><a href="https://twitter.com/ensembl/status/1106140169575514113">Ensembl 2020 (a genome browser) will use Rust and
+Wasm</a></li>
+  <li><a href="https://users.rust-lang.org/t/another-small-step-to-wasm-compatibility-actix-actors-in-the-browser/26318">The <code class="highlighter-rouge">actix</code> project is working on getting their actors running as Wasm on the
+Web</a></li>
+  <li><a href="https://twitter.com/alesgeno/status/1107662063168614400">Demo: a real-time pitch detector Web application (and reusable library
+crate!) made with Rust and
+Wasm</a></li>
+  <li><a href="https://rust.godbolt.org/z/PZqG56">The Godbolt Compiler Explorer can show Wasm disassembly, with color-coded
+highlighting showing which Rust source text compiled into which Wasm
+instructions</a></li>
+</ul>
+
+<h2 id="updates-from-rustwasm">Updates from <a href="https://github.com/rustwasm"><code class="highlighter-rouge">rustwasm/*</code></a></h2>
+
+<h3 id="rfcs">RFCs</h3>
+
+<h4 id="new-rfcs">New RFCs</h4>
+
+<ul>
+  <li><a href="https://github.com/rustwasm/rfcs/pull/10">Add <code class="highlighter-rouge">watch</code> and <code class="highlighter-rouge">serve</code> subcommands to
+<code class="highlighter-rouge">wasm-pack</code></a></li>
+</ul>
+
+<h4 id="final-comment-period-rfcs">Final Comment Period RFCs</h4>
+
+<p>None.</p>
+
+<h4 id="merged-rfcs">Merged RFCs</h4>
+
+<ul>
+  <li><a href="https://github.com/rustwasm/rfcs/pull/7"><strong>2019 Roadmap 🎉</strong></a></li>
+  <li><a href="https://github.com/rustwasm/rfcs/pull/8">Enable depending on NPM packages</a></li>
+</ul>
+
+<h3 id="working-group-meetings">Working Group Meetings</h3>
+
+<ul>
+  <li><a href="https://youtu.be/uYySHPCuLz0">Watch the recording of this week’s working group meeting on
+YouTube</a></li>
+  <li><a href="https://github.com/rustwasm/team/issues/262">Come join us at next week’s working group
+meeting!</a></li>
+</ul>
+
+<h3 id="gloo">Gloo</h3>
+
+<ul>
+  <li><a href="https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html">Gloo is the modular toolkit we decided to collectively build in our 2019
+roadmap.</a>
+We’ve been having lots of good discussion about scope and API design in issue
+threads! (Not doing lots of PRs quite yet.)</li>
+  <li>@OddCoincidence <a href="https://github.com/rustwasm/gloo/pull/24">added support for
+<code class="highlighter-rouge">setInterval</code></a> to <code class="highlighter-rouge">gloo-timers</code>.</li>
+</ul>
+
+<h3 id="rustwasmgithubio"><code class="highlighter-rouge">rustwasm.github.io</code></h3>
+
+<ul>
+  <li>@DebugSteven <a href="https://github.com/rustwasm/rustwasm.github.io/pull/43">removed some unused CSS
+rules</a> from our
+Website’s stylesheets.</li>
+</ul>
+
+<h3 id="rust-webpack-template"><code class="highlighter-rouge">rust-webpack-template</code></h3>
+
+<ul>
+  <li>@alexcrichton <a href="https://github.com/rustwasm/rust-webpack-template/pull/120">upgraded the
+template</a> to the
+Rust 2018 edition.</li>
+</ul>
+
+<h3 id="twiggy">Twiggy</h3>
+
+<ul>
+  <li>@data-pup <a href="https://github.com/rustwasm/twiggy/pull/265">upgraded Twiggy</a> to
+the Rust 2018 edition.</li>
+  <li>@data-pup <a href="https://github.com/rustwasm/twiggy/pull/268">added more tests</a> for
+the <code class="highlighter-rouge">twiggy diff</code> subcommand.</li>
+</ul>
+
+<h3 id="wasm-bindgen"><code class="highlighter-rouge">wasm-bindgen</code></h3>
+
+<ul>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0239"><strong>We released <code class="highlighter-rouge">wasm-bindgen</code> version 0.2.39!
+🎉</strong></a></li>
+  <li>@c410-f3r made <code class="highlighter-rouge">wasm-bindgen</code>’s generated TypeScript interfaces’ functions’
+argument names be <a href="https://github.com/rustwasm/wasm-bindgen/pull/1344">preserved from the Rust
+source</a> instead of being
+generated symbols.</li>
+  <li>@ibaryshnikov <a href="https://github.com/rustwasm/wasm-bindgen/pull/1336">cleaned up</a>
+our Web GL example.</li>
+  <li>@nstoddard <a href="https://github.com/rustwasm/wasm-bindgen/pull/1333">added immutability
+whitelisting</a> for
+<code class="highlighter-rouge">Uint8Array</code>, <code class="highlighter-rouge">ArrayBufferView</code>, and <code class="highlighter-rouge">BufferSource</code>.</li>
+  <li>@RReverser <a href="https://github.com/rustwasm/wasm-bindgen/pull/1372">fixed some copy-paste
+errors</a> in documentation
+for <code class="highlighter-rouge">Int32Array</code> and <code class="highlighter-rouge">Uint32Array</code></li>
+  <li>@RReverser <a href="https://github.com/rustwasm/wasm-bindgen/pull/1371">cleaned up and de-duplicated our binding
+definitions</a> to the
+different kinds of typed arrays!</li>
+  <li>@c410-f3r <a href="https://github.com/rustwasm/wasm-bindgen/pull/1356">expanded the
+testing</a> of our emitted
+TypeScript interface definitions.</li>
+  <li>@alexcrichton <a href="https://github.com/rustwasm/wasm-bindgen/pull/1353">added the <code class="highlighter-rouge">#[wasm_bindgen(raw_module = "...")]</code>
+attribute</a> to the
+<code class="highlighter-rouge">wasm-bindgen</code> proc-macro.</li>
+  <li>@konradsz <a href="https://github.com/rustwasm/wasm-bindgen/pull/1351">fixed the number-slices example’s JS
+imports.</a></li>
+  <li>@alexlapa <a href="https://github.com/rustwasm/wasm-bindgen/pull/1350">enabled passing optional imported
+<code class="highlighter-rouge">enum</code>s</a> over the FFI
+boundary.</li>
+</ul>
+
+<h3 id="wasm-pack"><code class="highlighter-rouge">wasm-pack</code></h3>
+
+<ul>
+  <li><a href="https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#%EF%B8%8F-070"><strong>We released <code class="highlighter-rouge">wasm-pack</code> version 0.7.0!
+🎉</strong></a></li>
+  <li>@alexcrichton <a href="https://github.com/rustwasm/wasm-pack/pull/567">added support for the <code class="highlighter-rouge">web</code>
+target</a> to <code class="highlighter-rouge">wasm-pack</code>. This
+target uses browsers’ native support for ES modules, and doesn’t require the
+use of a JS bundler.</li>
+  <li>@alexcrichton <a href="https://github.com/rustwasm/wasm-pack/pull/547">started migrating <code class="highlighter-rouge">wasm-pack</code>’s CLI
+output</a> towards our 1.0 vision
+for <code class="highlighter-rouge">wasm-pack</code> output. Notably, <code class="highlighter-rouge">cargo build</code>’s colors and progress bar
+should work now.</li>
+  <li>@alexcrichton <a href="https://github.com/rustwasm/wasm-pack/pull/590">added a
+smorgasbord</a> of docs
+improvements.</li>
+  <li>@drager <a href="https://github.com/rustwasm/wasm-pack/pull/552">added support for non-<code class="highlighter-rouge">rustup</code>-based Rust development
+environments</a> to <code class="highlighter-rouge">wasm-pack</code>.</li>
+  <li>@ashleygwilliams <a href="https://github.com/rustwasm/wasm-pack/pull/576">added a quickstart doc
+page</a> for using <code class="highlighter-rouge">wasm-pack</code>
+with Webpack.</li>
+</ul>
+
+<h3 id="wasm-pack-template"><code class="highlighter-rouge">wasm-pack-template</code></h3>
+
+<ul>
+  <li>@alexcrichton <a href="https://github.com/rustwasm/wasm-pack-template/pull/37">upgraded the
+template</a> to the Rust
+2018 edition.</li>
+</ul>
+
+<h2 id="requests-for-contribution">Requests for Contribution</h2>
+
+<p><strong>Want to get involved in Rust and WebAssembly? <a href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">Join the Rust and WebAssembly
+working group!</a></strong></p>
+
+<ul>
+  <li><a href="https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html"><strong>Let’s Build Gloo
+Together</strong></a></li>
+  <li><a href="https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22">All issues labeled “good first issue” in the <code class="highlighter-rouge">rustwasm/*</code>
+repositories</a></li>
+  <li><a href="https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22">All issues labeled “help wanted” in the <code class="highlighter-rouge">rustwasm/*</code>
+repositories</a></li>
+</ul>
+
+<h3 id="new-good-first-issues">New Good First Issues</h3>
+
+<ul>
+  <li><a href="https://github.com/rustwasm/gloo/issues/36">Gloo: Make the timers crate follow submodule
+design</a></li>
+</ul>
+
+  </div><a class="u-url" href="/2019/03/21/this-week-in-rust-and-wasm-014.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

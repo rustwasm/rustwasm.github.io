@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Announcing the web-sys crate! | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Announcing the web-sys crate!" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="We are pleased to announce the first release of the web-sys crate! It provides raw bindings to all the Web’s APIs: everything from DOM manipulation to WebGL to Web Audio to timers to fetch and more!" />
+<meta property="og:description" content="We are pleased to announce the first release of the web-sys crate! It provides raw bindings to all the Web’s APIs: everything from DOM manipulation to WebGL to Web Audio to timers to fetch and more!" />
+<link rel="canonical" href="https://rustwasm.github.io/2018/09/26/announcing-web-sys.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2018/09/26/announcing-web-sys.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-09-26T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"Announcing the web-sys crate!","dateModified":"2018-09-26T00:00:00+00:00","datePublished":"2018-09-26T00:00:00+00:00","description":"We are pleased to announce the first release of the web-sys crate! It provides raw bindings to all the Web’s APIs: everything from DOM manipulation to WebGL to Web Audio to timers to fetch and more!","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2018/09/26/announcing-web-sys.html"},"url":"https://rustwasm.github.io/2018/09/26/announcing-web-sys.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Announcing the web-sys crate!</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-09-26T00:00:00+00:00" itemprop="datePublished">Sep 26, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><strong>We are pleased to announce the first release of <a href="https://rustwasm.github.io/wasm-bindgen/web-sys/index.html">the <code class="highlighter-rouge">web-sys</code>
+crate!</a> It provides
+raw bindings to all the Web’s APIs: everything from DOM manipulation to WebGL to
+Web Audio to timers to <code class="highlighter-rouge">fetch</code> and more!</strong></p>
+
+<p>Almost three months ago, we laid out <a href="../../07/02/vision-for-wasm-bindgen.html">our vision for
+<code class="highlighter-rouge">wasm-bindgen</code>:</a></p>
+
+<blockquote>
+  <p>We are building a shared foundation for an ecosystem of Rust crates that
+target JavaScript environments with <code class="highlighter-rouge">wasm-bindgen</code>. Sharing a foundation means
+sharing raw <code class="highlighter-rouge">extern</code> imports. Every library that uses the Web’s
+<code class="highlighter-rouge">window.requestAnimationFrame</code> function or ECMAScript’s <code class="highlighter-rouge">Object.freeze</code>
+function shouldn’t need to write the <code class="highlighter-rouge">extern</code> imports themselves.</p>
+</blockquote>
+
+<p>We observed that the Web has a <em>huge</em> number of APIs and that adding support for
+all of them by hand would be a Sisyphean task. However, all these APIs are
+standardized with the same interface definition language, and we realized that
+we could leverage that to mechanically generate a crate containing every single
+Web API:</p>
+
+<blockquote>
+  <p>All of the Web’s API types, functions, and methods are specified with
+<a href="https://heycam.github.io/webidl/">WebIDL</a>, so we are working on a new WebIDL
+frontend to <code class="highlighter-rouge">wasm-bindgen</code>. When the WebIDL frontend is ready, we plan on
+taking the interface definitions for all the Web APIs from all their standards
+and automatically generating a big <code class="highlighter-rouge">-sys</code> style crate from them.</p>
+</blockquote>
+
+<p><a style="max-width: 300px; float: right; padding: 1.5em; font-size: 80%" href="/images/new-wasm-bindgen-architecture.png">
+  <img alt="wasm-bindgen's new architecture with a WebIDL frontend" src="/images/new-wasm-bindgen-architecture.png" />
+  <code class="highlighter-rouge">wasm-bindgen</code>’s new architecture with its WebIDL frontend.
+</a></p>
+
+<p>This plan has finally been realized in the <code class="highlighter-rouge">web-sys</code> crate! We added a frontend
+to <code class="highlighter-rouge">wasm-bindgen</code> that slurps in WebIDL interface definitions and emits
+<code class="highlighter-rouge">wasm-bindgen</code>’s internal abstract syntax tree (AST). This frontend is the
+<code class="highlighter-rouge">wasm-bindgen-webidl</code> crate. Once we have the AST, emitting zero-overhead Rust
+and JavaScript glue code to do type conversion and shepherding of function
+parameters and return values is the same as normal <code class="highlighter-rouge">#[wasm_bindgen]</code>
+annotations.</p>
+
+<p>Is using WebIDL to mechanically generate glue code a new idea? Nope! This is the
+same battle-tested strategy that every browser engine uses to generate
+JavaScript-to-C++ glue code (or in <a href="https://servo.org/">Servo’s</a> case,
+JavaScript-to-Rust) for its implementation of these APIs. Furthermore, it is yet
+another way that <code class="highlighter-rouge">wasm-bindgen</code> is future-compatible with <a href="https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md">the host bindings
+proposal.</a>
+The host bindings proposal will allow WebAssembly to directly call into native
+DOM methods without going through a JavaScript shim, promising to eventually
+unlock even-faster-than-JS DOM performance since calls from wasm can be
+statically validated to type check once at compilation time, rather than
+dynamically on every single call. The proposal suggests that the interface to
+the host’s bindings be generated mechanically from WebIDL, and we are doing
+exactly that.</p>
+
+<div style="clear: both" />
+
+<style>h2, h3 { margin-top: 15px; }</style>
+
+<h2 id="the-js-sys-crate-is-100-feature-complete">The <code class="highlighter-rouge">js-sys</code> crate is 100% feature complete!</h2>
+
+<p>A related bit of news is that <a href="https://rustwasm.github.io/2018/07/26/announcing-the-js-sys-crate.html">the <code class="highlighter-rouge">js-sys</code>
+crate</a>
+is now 100% feature complete! It contains raw bindings to every ECMAScript API
+(those APIs that are available both in Node.js and on the Web and any other JS
+environment).</p>
+
+<p>Unlike the <code class="highlighter-rouge">web-sys</code> crate, these are written by hand because there is no WebIDL
+describing these APIs. That would have been great to have, both because it would
+have been easier to implement the <code class="highlighter-rouge">js-sys</code> crate, and because we would have
+avoided bugs along the way. We considered a TypeScript frontend, but did not
+prioritize it because TypeScript does not describe whether or not functions
+throw exceptions.</p>
+
+<h2 id="example-programs">Example Programs</h2>
+
+<p><a href="https://rustwasm.github.io/wasm-bindgen/examples/index.html">We have a growing list of examples of using <code class="highlighter-rouge">web-sys</code>, <code class="highlighter-rouge">js-sys</code>, and
+<code class="highlighter-rouge">wasm-bindgen</code>
+together!</a> The
+following programs are a small selection of these.</p>
+
+<h3 id="a-simple-paint-program-with-2d-canvas">A Simple Paint Program with 2D Canvas</h3>
+
+<p>Click and drag to draw!</p>
+
+<p><a href="https://rustwasm.github.io/wasm-bindgen/examples/paint.html">More information and source code.</a></p>
+
+<iframe src="https://rustwasm.github.io/wasm-bindgen/exbuild/paint/" style="min-width: 662px; min-height: 502px;"></iframe>
+
+<h3 id="an-fm-synthesizer-with-web-audio">An FM Synthesizer with Web Audio</h3>
+
+<p>This example creates an <a href="https://en.wikipedia.org/wiki/Frequency_modulation_synthesis">FM
+synthesizer</a> using
+the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API">WebAudio
+API</a> and
+<code class="highlighter-rouge">web-sys</code>.</p>
+
+<p><a href="https://rustwasm.github.io/wasm-bindgen/examples/web-audio.html">More information and source code.</a></p>
+
+<iframe src="https://rustwasm.github.io/wasm-bindgen/exbuild/webaudio/" style="width: 100%;"></iframe>
+
+<h2 id="friends-">Friends 💖</h2>
+
+<h3 id="contributors-to-web-sys-and-wasm-bindgen-webidl">Contributors to <code class="highlighter-rouge">web-sys</code> and <code class="highlighter-rouge">wasm-bindgen-webidl</code></h3>
+
+<p>Huge thanks to everyone who helped build the <code class="highlighter-rouge">web-sys</code> crate and the Web IDL
+frontend for <code class="highlighter-rouge">wasm-bindgen</code> that made the <code class="highlighter-rouge">web-sys</code> crate possible!</p>
+
+<ul>
+  <li>afdw</li>
+  <li>Alex Crichton</li>
+  <li>Andrew Chin</li>
+  <li>Anton Danilkin</li>
+  <li>Benjamin Kampmann</li>
+  <li>Ben Merritt</li>
+  <li>Jonathan Kingston</li>
+  <li>Julius Rakow</li>
+  <li>Michael Hoffmann</li>
+  <li>Nick Fitzgerald</li>
+  <li>R. Andrew Ohana</li>
+  <li>Richard Dodd (dodj)</li>
+  <li>Ruben Schmidmeister</li>
+  <li>Sendil Kumar N</li>
+  <li>Stephan Wolski</li>
+  <li>teovoinea</li>
+  <li>twilco</li>
+  <li>Tyler Wilcock</li>
+  <li>YUyz</li>
+</ul>
+
+<h3 id="contributors-to-js-sys">Contributors to <code class="highlighter-rouge">js-sys</code></h3>
+
+<p>A second round of applause for everyone who contributed to the <code class="highlighter-rouge">js-sys</code> crate!</p>
+
+<ul>
+  <li>Alexander Kryvomaz</li>
+  <li>Alex Crichton</li>
+  <li>Andrew Chin</li>
+  <li>Anton Danilkin</li>
+  <li>belfz</li>
+  <li>bokuweb</li>
+  <li>Camille TJHOA</li>
+  <li>Chris Kolodin</li>
+  <li>Craig Disselkoen</li>
+  <li>Danielle Pham</li>
+  <li>data-pup</li>
+  <li>Dimitrii Nemkov</li>
+  <li>Frazer McLean</li>
+  <li>gaurikholkar</li>
+  <li>Herman J. Radtke III</li>
+  <li>Ivan Enderlin</li>
+  <li>Jannik Keye</li>
+  <li>Joel Gallant</li>
+  <li>Johannes Henninger</li>
+  <li>Jonas Trollvik</li>
+  <li>Jonathan Sundqvist</li>
+  <li>Kevin Hoffman</li>
+  <li>kzvi</li>
+  <li>Lachezar Lechev</li>
+  <li>Liigo Zhuang</li>
+  <li>Marcin Baraniecki</li>
+  <li>Mason Stallmo</li>
+  <li>Matias Insaurralde</li>
+  <li>Matt Kraai</li>
+  <li>Matt Long</li>
+  <li>Michael Hoffmann</li>
+  <li>Nick Fitzgerald</li>
+  <li>R. Andrew Ohana</li>
+  <li>robertdurst</li>
+  <li>Roberto Huertas</li>
+  <li>Satoshi Amemiya</li>
+  <li>Sendil Kumar N</li>
+  <li>sepiropht</li>
+  <li>Stephan Renatus</li>
+  <li>Thomas Eizinger</li>
+  <li>Tim Ryan</li>
+  <li>T. Nagasawa</li>
+  <li>Tomohide Takao</li>
+  <li>toversus</li>
+  <li>Tyler Laing</li>
+  <li>Tyler Wilcock</li>
+  <li>xeqlol</li>
+</ul>
+
+  </div><a class="u-url" href="/2018/09/26/announcing-web-sys.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

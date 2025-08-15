@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Reflecting on Rust and WebAssembly in 2018 | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Reflecting on Rust and WebAssembly in 2018" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="🎉 The 2018 edition of Rust has officially shipped, and the initial Rust and WebAssembly development story along with it! 🎉" />
+<meta property="og:description" content="🎉 The 2018 edition of Rust has officially shipped, and the initial Rust and WebAssembly development story along with it! 🎉" />
+<link rel="canonical" href="https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-12-06T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"Reflecting on Rust and WebAssembly in 2018","dateModified":"2018-12-06T00:00:00+00:00","datePublished":"2018-12-06T00:00:00+00:00","description":"🎉 The 2018 edition of Rust has officially shipped, and the initial Rust and WebAssembly development story along with it! 🎉","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html"},"url":"https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Reflecting on Rust and WebAssembly in 2018</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-12-06T00:00:00+00:00" itemprop="datePublished">Dec 6, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><a href="https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html"><strong>🎉 The 2018 edition of Rust has officially shipped, and the initial Rust and
+WebAssembly development story along with it! 🎉</strong></a></p>
+
+<p>To see how far we’ve come, let’s reflect on the Rust and WebAssembly story a
+year ago: <code class="highlighter-rouge">rustc</code> could emit WebAssembly binaries for you, but that was about
+it. As far as communication with JavaScript went, you had to work with raw wasm
+imports and exports yourself. That meant you could only pass 32- and 64-bit
+integers and floats back and forth. No Rust structs, JavaScript objects,
+strings, or slices could be passed back forth. And distributing your library’s
+<code class="highlighter-rouge">.wasm</code> so that other downstream projects could depend on it? Good luck.</p>
+
+<p>While it was <a href="https://mgattozzi.com/rust-wasm/">clear there was huge potential for Rust and
+WebAssembly</a>, no one was sure what exactly that
+meant. So when the Rust and WebAssembly domain working group formed, we rallied
+around making this shared vision into a reality:</p>
+
+<blockquote>
+  <h4 id="compiling-rust-to-webassembly-should-be-the-best-choice-for-fast-reliable-code-for-the-web">Compiling Rust to WebAssembly should be the best choice for fast, reliable code for the Web.</h4>
+</blockquote>
+
+<p>As our ideas evolved, we distilled another core value:</p>
+
+<blockquote>
+  <h4 id="rust-and-webassembly-is-here-to-augment-your-javascript-not-replace-it">Rust and WebAssembly is here to <em>augment</em> your JavaScript, not replace it.</h4>
+</blockquote>
+
+<p>The same way that Rust integrates with C libraries and calling conventions on
+native targets, it should play nice with JavaScript and HTML5 APIs on the
+Web. You should <em>not</em> have to rewrite your whole Web application or JavaScript
+library. We cannot realize our vision for Rust and wasm if it means you have to
+start over from scratch; it wouldn’t be practical.</p>
+
+<p>Given these shared values and vision, we set out goals for what we wanted the
+Rust and WebAssembly ecosystem, toolchain, and workflow to look like by the time
+Rust 2018 shipped.</p>
+
+<h3 id="goal--zero-cost-javascript-interoperation">Goal: ☑ Zero-Cost JavaScript Interoperation</h3>
+
+<p>Rust enables fast <em>and</em> expressive code by leveraging zero-cost abstractions. We
+wanted to apply this principle to our whole JS interop infrastructure. Yes, you
+can write your own boilerplate to pass DOM nodes to Rust-generated wasm, but you
+shouldn’t have to, and the provided infrastructure should be as fast as if you
+<em>did</em> hand-code it. If you call IndexedDB APIs, that shouldn’t bloat your
+<code class="highlighter-rouge">.wasm</code> binary with unused bindings to Web GL functions.</p>
+
+<p><a href="https://github.com/rustwasm/wasm-bindgen">We created <code class="highlighter-rouge">wasm-bindgen</code> as the foundation for zero-cost JavaScript
+interoperation.</a> <code class="highlighter-rouge">wasm-bindgen</code> facillitates communication between
+JavaScript and WebAssembly, and generates glue code that you would otherwise
+have to write yourself. On top of <code class="highlighter-rouge">wasm-bindgen</code>, <a href="https://rustwasm.github.io/2018/09/26/announcing-web-sys.html">we built <code class="highlighter-rouge">js-sys</code> (raw
+bindings to ECMAScript APIs) and <code class="highlighter-rouge">web-sys</code> (raw bindings to Web
+APIs)</a>.</p>
+
+<p>Using the <code class="highlighter-rouge">wasm-bindgen</code> ecosystem, we can easily and performantly</p>
+
+<ul>
+  <li>export rich APIs from our Rust-generated wasm libraries, so they are callable
+from JavaScript, and</li>
+  <li>import JavaScript and Web APIs into our Rust-generated wasm.</li>
+</ul>
+
+<p>All in a zero-cost manner.</p>
+
+<p>Additionally, <code class="highlighter-rouge">wasm-bindgen</code> is forward-compatible with the <a href="https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md">WebAssembly host
+bindings proposal</a>. Host bindings will remove the tiny, generated
+JavaScript shim functions that sit between our wasm functions and DOM
+methods. Eventually, host bindings promises to unlock
+even-faster-than-JavaScript DOM access since calls can be statically validated
+once rather than dynamically checked every time.</p>
+
+<h3 id="goal--distributing-rust-generated-wasm-as-an-npm-library">Goal: ☑ Distributing Rust-Generated Wasm as an NPM Library</h3>
+
+<p>Superb integration isn’t only about exporting and importing functionality
+between Rust-generated WebAssembly and JavaScript. It is also fitting into the
+JavaScript’s distribution mechanisms, and a big chunk of that story is
+<a href="https://www.npmjs.com/">NPM</a>.</p>
+
+<p>We <a href="https://github.com/rustwasm/wasm-pack">built <code class="highlighter-rouge">wasm-pack</code></a> to make it easy to create and publish NPM
+packages from your Rust and WebAssembly code. There didn’t used to be any story
+whatsoever for sharing Rust-generated wasm modules. Now, all it takes is:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wasm-pack publish
+</code></pre></div></div>
+
+<h3 id="goal--get-developers-productive-fast">Goal: ☑ Get Developers Productive Fast</h3>
+
+<p>We wrote <a href="https://rustwasm.github.io/book/">a Rust and WebAssembly book</a> that teaches you all the ins and
+outs of WebAssembly development with Rust. It features <a href="https://rustwasm.github.io/book/game-of-life/introduction.html">a tutorial where you
+build an implementation of Conway’s Game of Life</a>, and then you learn
+to write tests for headless browsers, debug wasm code when things go wrong, and
+how to diagnose slow code paths and then speed them up.</p>
+
+<p>We realized that there are a bunch of “post-build” tools you want to run after
+<code class="highlighter-rouge">cargo</code> and <code class="highlighter-rouge">rustc</code> emit the initial <code class="highlighter-rouge">.wasm</code> binary. For usability and developer
+productivity, we expanded <code class="highlighter-rouge">wasm-pack</code>’s role from creating and publishing NPM
+packages to orchestrating all of these tasks. <code class="highlighter-rouge">wasm-pack</code> will manage your
+<code class="highlighter-rouge">wasm-bindgen</code> CLI binaries and install browsers’ WebDriver clients for you
+automatically.</p>
+
+<p>For example, want to run tests in a headless Firefox browser? Just run</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wasm-pack test --headless --firefox
+</code></pre></div></div>
+
+<p>No need to pull your hair out trying to install and configure anything!</p>
+
+<p>Finally, we recognized that getting your Rust and WebAssembly project set up
+initially involves a bit of boilerplate and configuration that new users aren’t
+prepared for and experienced users don’t want to waste time on. So we created a
+variety of project templates for different use cases, so you can hit the ground
+running:</p>
+
+<ul>
+  <li><a href="https://github.com/rustwasm/wasm-pack-template"><code class="highlighter-rouge">wasm-pack-template</code></a> for creating NPM libraries with
+Rust and Wasm.</li>
+  <li><a href="https://github.com/rustwasm/create-wasm-app"><code class="highlighter-rouge">create-wasm-app</code></a> for creating Web applications built on
+top of Rust-generated wasm NPM libraries.</li>
+  <li><a href="https://github.com/rustwasm/rust-webpack-template"><code class="highlighter-rouge">rust-webpack-template</code></a> for creating whole Web
+applications with Rust, WebAssembly, and the Webpack bundler.</li>
+  <li><a href="https://github.com/rustwasm/rust-parcel-template"><code class="highlighter-rouge">rust-parcel-template</code></a> for creating whole Web
+applications with Rust, WebAssembly, and the Parcel bundler.</li>
+</ul>
+
+<h3 id="goal--rust-generated-wasm-should-be-testable-and-debuggable">Goal: ☑ Rust-Generated Wasm Should be Testable and Debuggable</h3>
+
+<p>We recognized that testing and debugging infrastructure are table stakes for
+creating reliable code and developer productivity.</p>
+
+<p>By default, wasm can’t log any panics or errors because it doesn’t have any
+“syscall” or I/O functionality. You have to add imports for that sort of thing
+yourself, and then instantiate the module with the appropriate functions. To
+remedy this problem, and to ensure that panics are always debuggable, we created
+<a href="https://github.com/rustwasm/console_error_panic_hook">the <code class="highlighter-rouge">console_error_panic_hook</code> crate</a>, which
+redirects panic messages into the browser’s devtools console.</p>
+
+<p>While you can always run normal <code class="highlighter-rouge">#[test]</code>s on the native target for portable,
+platform-agnostic code, that isn’t sufficient for testing your library’s
+interaction with the DOM, asynchronous JavaScript promises, or event
+handlers. So we created <a href="https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html">the <code class="highlighter-rouge">wasm-bindgen-test</code>
+infrastructure</a>, and made installing and configuring the
+necessary binaries for headless browser and Node.js testing a breeze with
+<code class="highlighter-rouge">wasm-pack test</code>.</p>
+
+<p>We also had experienced that diagnosing where code size was coming from could be
+hard with WebAssembly. We wanted to know things like which function was calling
+another function, and causing it to be included in the <code class="highlighter-rouge">.wasm</code> binary, so we
+created <a href="https://github.com/rustwasm/twiggy">the Twiggy🌱 code size profiler for WebAssembly</a>.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> Shallow Bytes │ Shallow % │ Retaining Paths
+───────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+           152 ┊     5.40% ┊ wee_alloc::alloc_with_refill::hb32c1bbce9ebda8e
+               ┊           ┊   ⬑ func[2]
+               ┊           ┊       ⬑ &lt;wee_alloc::size_classes::SizeClassAllocPolicy&lt;'a&gt; as wee_alloc::AllocPolicy&gt;::new_cell_for_free_list::h3987e3054b8224e6
+               ┊           ┊           ⬑ func[5]
+               ┊           ┊               ⬑ elem[0]
+               ┊           ┊       ⬑ hello
+               ┊           ┊           ⬑ func[8]
+               ┊           ┊               ⬑ export "hello"
+</code></pre></div></div>
+
+<h2 id="rustwasm2019">#RustWasm2019</h2>
+
+<p>All of our goals have been focused on things we could deliver in tandem with the
+2018 edition. But now that the 2018 edition has shipped, it is time to think
+about what we want to achieve in 2019 and beyond.</p>
+
+<p><strong>This is where you come in!</strong></p>
+
+<p>Following in the larger Rust project’s <a href="https://blog.rust-lang.org/2018/12/06/call-for-rust-2019-roadmap-blogposts.html">tradition</a>,
+we’re asking the community to write blog posts reflecting on Rust and
+WebAssembly in 2018 and proposing goals and directions for Rust and WebAssembly
+in 2019. We’ll read everything, and then propose an <a href="https://github.com/rustwasm/rfcs">RFC</a> for
+the Rust and WebAssembly domain working group’s roadmap in 2019.</p>
+
+<p>Write down your thoughts on whatever your writing platform of choice is. It
+could be:</p>
+
+<ul>
+  <li>Your personal or company blog</li>
+  <li>A GitHub gist</li>
+  <li>A Medium post</li>
+  <li>Any other platform you prefer</li>
+</ul>
+
+<p>We’re looking for posts on many different topics:</p>
+
+<ul>
+  <li>Ideas for community programs</li>
+  <li>Tooling enhancements</li>
+  <li>Ecosystem and library needs</li>
+  <li>Documentation improvements</li>
+  <li>Anything else related to Rust and Wasm!</li>
+</ul>
+
+<p>Tweet your write up with <a href="https://twitter.com/search?q=%23RustWasm2019">the <code class="highlighter-rouge">#RustWasm2019</code> hashtag</a> or drop a link
+on <a href="https://github.com/rustwasm/team/issues/241">this github issue</a>. We’ll aggregate everything
+everyone has written in another big post on this blog. Then, the core Rust and
+WebAssembly working group team will read over all of them and write up an RFC
+for the working group’s 2019 roadmap! This RFC will follow our normal <a href="https://rustwasm.github.io/rfcs/001-the-rfc-process.html">RFC
+process</a> and everyone will have a chance to discuss it, improve it, and help
+polish it.</p>
+
+<h2 id="preliminary-timeline">Preliminary Timeline</h2>
+
+<ul>
+  <li><strong>Now through January 15<sup>th</sup>:</strong> Share your <code class="highlighter-rouge">#RustWasm2019</code> post, read
+posts by others, discuss them, bounce ideas back and forth.</li>
+  <li><strong>End of January:</strong> We’ll formally propose the 2019 roadmap RFC, and then work
+it through the RFC process together as a community.</li>
+  <li><strong>End of February:</strong> We’re aiming for having consensus on the 2019 roadmap and
+merging the RFC before the end of February.</li>
+</ul>
+
+<h2 id="thank-you-for-a-wonderful-2018-">Thank You for a Wonderful 2018! 💖</h2>
+
+<p>Thanks to everyone who contributed to Rust and WebAssembly in 2018! (Apologies
+if we missed anyone in this list!)</p>
+
+<ul>
+  <li>0xazure</li>
+  <li>Aaron Turon</li>
+  <li>Aditya Arora</li>
+  <li>Aidan Hobson Sayers</li>
+  <li>Aleksey Kladov</li>
+  <li>Alex Crichton</li>
+  <li>Alex Macleod</li>
+  <li>Alexander Kryvomaz</li>
+  <li>Alfie John</li>
+  <li>Anders Pitman</li>
+  <li>Andrew Champion</li>
+  <li>Andrew Chin</li>
+  <li>Andy Bell</li>
+  <li>Anna Bogus</li>
+  <li>Anton Danilkin</li>
+  <li>Ashley Williams</li>
+  <li>Ben Merritt</li>
+  <li>Benjamin Kampmann</li>
+  <li>Blixt</li>
+  <li>Bradlee Speice</li>
+  <li>Cameron Taggart</li>
+  <li>Camille TJHOA</li>
+  <li>Chinedu Francis Nwafili</li>
+  <li>Chris Goller</li>
+  <li>Chris Kolodin</li>
+  <li>Christian Bourjau</li>
+  <li>Christopher Lane Hinson</li>
+  <li>Cldfire</li>
+  <li>Corbin Uselton</li>
+  <li>Corey Farwell</li>
+  <li>Craig Disselkoen</li>
+  <li>Dan Fockler</li>
+  <li>Dan Reeves</li>
+  <li>Daniel Gollahon</li>
+  <li>Daniele Esposti</li>
+  <li>Danielle Pham</li>
+  <li>Darren Tsung</li>
+  <li>David Flemström</li>
+  <li>David McNeil</li>
+  <li>David O’Connor</li>
+  <li>DebugSteven</li>
+  <li>Dimitrii Nemkov</li>
+  <li>Dmitry Kashitsyn</li>
+  <li>Eduard Kyvenko</li>
+  <li>Erick Tryzelaar</li>
+  <li>Erika Kloss</li>
+  <li>Evan Shaw</li>
+  <li>Felix Schütt</li>
+  <li>Florian Gilcher</li>
+  <li>Frank Hassanabad</li>
+  <li>Frazer McLean</li>
+  <li>Gergely Nagy</li>
+  <li>Guy Waldman</li>
+  <li>Hendrik Sollich</li>
+  <li>Henrik Sjööh</li>
+  <li>Herman J. Radtke III</li>
+  <li>Hidehito Yabuuchi</li>
+  <li>Ian Duke</li>
+  <li>Ian McIntyre</li>
+  <li>Ingvar Stepanyan</li>
+  <li>Ioannis Valasakis</li>
+  <li>Ivan Enderlin</li>
+  <li>J. Ryan Stinnett</li>
+  <li>Jamen Marz</li>
+  <li>Jamie Kyle</li>
+  <li>Jan Willem Henckel</li>
+  <li>Jan-Erik Rediger</li>
+  <li>Jannik Keye</li>
+  <li>Jason Davies</li>
+  <li>Jason Wohlgemuth</li>
+  <li>Jesper Håkansson</li>
+  <li>Jim Blandy</li>
+  <li>Joel Gallant</li>
+  <li>Johann Hofmann</li>
+  <li>Johannes Henninger</li>
+  <li>John Lewis</li>
+  <li>Jonas Trollvik</li>
+  <li>Jonathan Kingston</li>
+  <li>Jonathan Sundqvist</li>
+  <li>Josh Triplett</li>
+  <li>Joshua Liebow-Feeser</li>
+  <li>Joshua Sheard</li>
+  <li>Josmar Dias</li>
+  <li>João Lucas Lucchetta</li>
+  <li>Julius Rakow</li>
+  <li>Junjie Huang</li>
+  <li>Katharina Fey</li>
+  <li>Kevin Hoffman</li>
+  <li>Kirill Bulatov</li>
+  <li>Kyle Lin</li>
+  <li>Lachezar Lechev</li>
+  <li>Laurentiu Nicola</li>
+  <li>Liigo Zhuang</li>
+  <li>LongYinan</li>
+  <li>Luke Wagner</li>
+  <li>Mackenzie Clark</li>
+  <li>Mackiovello</li>
+  <li>Manas Karekar</li>
+  <li>Marcin Baraniecki</li>
+  <li>Mario Reder</li>
+  <li>Mark Andrus Roberts</li>
+  <li>Mark Hintz</li>
+  <li>Markus Stange</li>
+  <li>Mason Stallmo</li>
+  <li>Matias Insaurralde</li>
+  <li>Matt Harrison</li>
+  <li>Matt Howell</li>
+  <li>Matt Kraai</li>
+  <li>Matt Long</li>
+  <li>MaxD / vj userZero</li>
+  <li>MaxXor</li>
+  <li>Michael Gattozzi</li>
+  <li>Michael Gerhaeuser</li>
+  <li>Michael Hoffmann</li>
+  <li>Mirclus</li>
+  <li>Nathan Froyd</li>
+  <li>Nick Fitzgerald</li>
+  <li>Nik Graf</li>
+  <li>Nikolay Volf</li>
+  <li>Noah Lemen</li>
+  <li>Noumir Poutipou</li>
+  <li>OJ Kwon</li>
+  <li>Pascal Brandt</li>
+  <li>Pascal Hertleif</li>
+  <li>Pat Hickey</li>
+  <li>Peter Trotman</li>
+  <li>R. Andrew Ohana</li>
+  <li>Rahul Sharma</li>
+  <li>Ralph Giles</li>
+  <li>Renée Kooi</li>
+  <li>Ricardo Ambrogi</li>
+  <li>Richard Dodd (dodj)</li>
+  <li>Robert Masen</li>
+  <li>Roberto Huertas</li>
+  <li>Rongjian Zhang</li>
+  <li>Ruben Schmidmeister</li>
+  <li>Ryan Levick</li>
+  <li>Sallar Kaboli</li>
+  <li>Santiago Pastorino</li>
+  <li>Satoshi Amemiya</li>
+  <li>Scott Johnson</li>
+  <li>Sebastian Köln</li>
+  <li>Sendil Kumar N</li>
+  <li>Sergey Pepyakin</li>
+  <li>Sharad Chand</li>
+  <li>Sonny Scroggin</li>
+  <li>Sophie Alpert</li>
+  <li>Spencer Wilson</li>
+  <li>Stefan Novak</li>
+  <li>Stefan Zimmermann</li>
+  <li>Stephan Renatus</li>
+  <li>Stephan Wolski</li>
+  <li>Steve Klabnik</li>
+  <li>Sven Sauleau</li>
+  <li>T. Nagasawa</li>
+  <li>Tao He</li>
+  <li>Ted Mielczarek</li>
+  <li>Theemathas Chirananthavat</li>
+  <li>Thiago Pontes</li>
+  <li>Thomas Eizinger</li>
+  <li>Tim Ryan</li>
+  <li>Tobias Bieniek</li>
+  <li>Tomohide Takao</li>
+  <li>Tomáš Hübelbauer</li>
+  <li>Tyler Laing</li>
+  <li>Tyler Wilcock</li>
+  <li>William Lundstedt</li>
+  <li>YUyz</li>
+  <li>Yoshua Wuyts</li>
+  <li>Yury Delendik</li>
+  <li>Yuval Kohavi</li>
+  <li>Zachary Pierce</li>
+  <li>Zack Pierce</li>
+  <li>afdw</li>
+  <li>alkahest</li>
+  <li>andy-bell</li>
+  <li>arjunyel</li>
+  <li>ashley williams</li>
+  <li>belfz</li>
+  <li>bokuweb</li>
+  <li>bspeice</li>
+  <li>csmoe</li>
+  <li>data-pup</li>
+  <li>dependabot[bot]</li>
+  <li>frankhassanbad</li>
+  <li>gaurikholkar</li>
+  <li>gnzlbg</li>
+  <li>huangjj27</li>
+  <li>janczer</li>
+  <li>johnthagen</li>
+  <li>kohensu</li>
+  <li>konstin</li>
+  <li>kryptan</li>
+  <li>kzvi</li>
+  <li>limira</li>
+  <li>na-g</li>
+  <li>pup</li>
+  <li>robert masen</li>
+  <li>robertdurst</li>
+  <li>sarahmeyer</li>
+  <li>sepiropht</li>
+  <li>sigmaSd</li>
+  <li>soryrawyer</li>
+  <li>teovoinea</li>
+  <li>toversus</li>
+  <li>twilco</li>
+  <li>xeqlol</li>
+</ul>
+
+
+  </div><a class="u-url" href="/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>
