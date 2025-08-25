@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Let’s Build Gloo Together | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Let’s Build Gloo Together" />
+<meta name="author" content="Nick Fitzgerald" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Rust and WebAssembly domain working group wants to cultivate a stable, batteries-available, and production-ready ecosystem for Rust and Wasm development in 2019." />
+<meta property="og:description" content="The Rust and WebAssembly domain working group wants to cultivate a stable, batteries-available, and production-ready ecosystem for Rust and Wasm development in 2019." />
+<link rel="canonical" href="https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-12T00:00:00+00:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Nick Fitzgerald"},"headline":"Let’s Build Gloo Together","dateModified":"2019-03-12T00:00:00+00:00","datePublished":"2019-03-12T00:00:00+00:00","description":"The Rust and WebAssembly domain working group wants to cultivate a stable, batteries-available, and production-ready ecosystem for Rust and Wasm development in 2019.","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html"},"url":"https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Let&#39;s Build Gloo Together</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-03-12T00:00:00+00:00" itemprop="datePublished">Mar 12, 2019
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Nick Fitzgerald</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>The Rust and WebAssembly domain working group wants to cultivate a stable,
+batteries-available, and production-ready ecosystem for <a href="https://github.com/rustwasm/rfcs/pull/7">Rust and Wasm
+development in 2019</a>.</p>
+
+<p>To further that goal, we are creating <a href="https://github.com/rustwasm/gloo">Gloo</a>, a modular toolkit for building
+both:</p>
+
+<ul>
+  <li>
+    <p>small, targeted Wasm modules that integrate into a larger JavaScript system,
+and</p>
+  </li>
+  <li>
+    <p>whole Web applications written in Rust.</p>
+  </li>
+</ul>
+
+<p>Gloo’s goals for Wasm are similar to what the Async Ecosystem working group’s
+<a href="https://rustasync.github.io/team/2018/09/11/tide.html">Tide</a> project intends to do for server-side Web development:</p>
+
+<blockquote>
+  <p>The name “Tide” refers to “a rising tide lifts all boats”; the intent is to
+improve sharing, compatibility, and improvements across all web development
+and frameworks in Rust.</p>
+</blockquote>
+
+<h2 id="the-utility-high-level-libraries-and-frameworks-provide">The Utility High-Level Libraries and Frameworks Provide</h2>
+
+<p>We use high-level libraries and frameworks instead of using Web APIs directly
+because we want abstractions with which we can naturally express ourselves. We
+outsource non-business logic concerns so that we can create more robust
+libraries and applications more quickly than we otherwise would. For example,
+the desires people might have include:</p>
+
+<ul>
+  <li>
+    <p>They prefer describing how they want the DOM to look like right now, rather
+than enumerating a list of modifications that will transform its current state
+into their desired state. Therefore, they use an immediate-mode virtual DOM
+library.</p>
+  </li>
+  <li>
+    <p>They prefer thinking in terms of Rust types, not about the raw, serialized
+bytes in a <code class="highlighter-rouge">fetch</code>ed HTTP response body or about object stores in Indexed DB.
+Therefore, they use <code class="highlighter-rouge">derive</code>-based serialization and deserialization with
+<code class="highlighter-rouge">serde</code>.</p>
+  </li>
+</ul>
+
+<p>There are many different ways to approach high-level APIs, and people have lots
+of differing opinions about which way is best! Designing these APIs well is
+difficult: we have correctness, ergonomic, and performance concerns.</p>
+
+<h2 id="how-gloo-fits-in">How Gloo Fits In</h2>
+
+<p>Gloo aims to be both a collection of small, focused utility crates and an
+umbrella crate that pulls all the utilities together into a single package.</p>
+
+<p>Our goals with Gloo are:</p>
+
+<ul>
+  <li>
+    <p><strong>To bolster the Rust and WebAssembly crates ecosystem.</strong> Pick and choose
+utility crates even if you aren’t using the whole umbrella Gloo crate, or if
+you are using some other Rust and Wasm framework. We have some crates like
+this today — for example <a href="https://crates.io/crates/console_log">the <code class="highlighter-rouge">console_log</code> crate</a> —
+but we would like to intentionally grow more shared utility crates across the
+ecosystem.</p>
+  </li>
+  <li>
+    <p><strong>To wrap these utilities up in an umbrella crate so that your new project can
+hit the ground running.</strong> This umbrella crate will be a thin wrapper around
+the utility crates, and provides defaults wherever multiple (perhaps
+opinionated) choices exist. To keep the umbrella crate small, we should be
+constantly pulling code out into new shared, utility crates. For the more
+opinionated bits, like virtual DOM rendering or web components, the umbrella
+crate should prefer interfaces over implementations, so that different
+implementations with different approaches are swap-able.</p>
+  </li>
+</ul>
+
+<p>Gloo is far from ready right now! The project has only just begun. But we want
+to build Gloo as a collective and in an open way, so we are announcing it early
+and inviting you to come help us design and build it.</p>
+
+<p>Want to get involved?</p>
+
+<ul>
+  <li><a href="https://discord.gg/rust-lang">Join the <code class="highlighter-rouge">#WG-wasm</code> channel on the Rust Discord server!</a></li>
+  <li><a href="https://github.com/rustwasm/gloo">Follow the <code class="highlighter-rouge">rustwasm/gloo</code> repository on GitHub</a></li>
+</ul>
+
+<h2 id="where-were-starting">Where We’re Starting</h2>
+
+<p><a href="https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html#wasm-at-the-2019-rust-all-hands">At the 2019 Rust All Hands meeting in Berlin</a>, we found that it was
+useful to categorize Web libraries by whether they were opinionated or not. We
+all want idiomatic-Rust wrapper crates around raw <code class="highlighter-rouge">web-sys</code> timers and
+<code class="highlighter-rouge">requestAnimationFrame</code> etc, and there isn’t a <em>whole lot</em> of design work that
+needs to happen for this. For many of these kinds of crates, we are ready to
+dive into implementation. On the other hand, for the more opinionated bits, like
+virtual DOMs and state management, we need to do exploratory design work before
+committing to a particular approach.</p>
+
+<p>We’ll start exploring the design space of the latter group in a series of follow
+up blog posts. In the meantime, if you want to get involved, start hacking on
+some of the utility crates, or brainstorm about designs, then <a href="https://github.com/rustwasm/gloo/issues">check out some of
+the issues</a> on Gloo’s GitHub repository.</p>
+
+
+  </div><a class="u-url" href="/2019/03/12/lets-build-gloo-together.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Our Vision for Rust and WebAssembly | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Our Vision for Rust and WebAssembly" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community." />
+<meta property="og:description" content="Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community." />
+<link rel="canonical" href="https://rustwasm.github.io/2018/06/25/vision-for-rust-and-wasm.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2018/06/25/vision-for-rust-and-wasm.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-25T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"Our Vision for Rust and WebAssembly","dateModified":"2018-06-25T00:00:00+00:00","datePublished":"2018-06-25T00:00:00+00:00","description":"Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2018/06/25/vision-for-rust-and-wasm.html"},"url":"https://rustwasm.github.io/2018/06/25/vision-for-rust-and-wasm.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Our Vision for Rust and WebAssembly</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-06-25T00:00:00+00:00" itemprop="datePublished">Jun 25, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <meta charset="utf-8" />
+
+<p>Rust and WebAssembly can combine in <em>many</em> delightful ways. To consolidate our
+efforts and have the largest, most-positive impact we can, the Rust and
+WebAssembly domain working group is focusing on one vision:</p>
+
+<p><strong>Surgically inserting Rust compiled to WebAssembly should be the best choice
+for speeding up the most performance-sensitive JavaScript code paths. Do <em>not</em>
+throw away your existing code base, because Rust <a href="https://hacks.mozilla.org/2018/03/making-webassembly-better-for-rust-for-all-languages/">plays well with
+others</a>. Regardless of whether you are a Rust or Web developer,
+your natural workflow shouldn’t change because Rust compiled to wasm integrates
+seamlessly into your preferred tools.</strong></p>
+
+<p>This blog post will expand on these aspirations and describe where we stand in
+relation to them right now. In a series of follow up posts, we will talk about
+the next steps for each major component of the Rust and WebAssembly ecosystem.</p>
+
+<p><strong><a href="https://github.com/rustwasm/team#get-involved">Are you interested in helping us make these ideals into reality? Join the
+Rust and WebAssembly domain working group!</a></strong></p>
+
+<h2 id="why-focus-on-performance-sensitive-code">Why Focus on Performance-Sensitive Code?</h2>
+
+<p>In the most performance-sensitive contexts, JavaScript hinders rather than
+helps. Its dynamic type system and non-deterministic garbage collection pauses
+get in the way. Seemingly small code changes can result in drastic performance
+regressions if you accidentally wander off the JIT’s happy path.</p>
+
+<p>On the other hand, Rust gives programmers low-level control and reliable
+performance. It is free from the non-deterministic garbage collection
+pauses. Programmers have control over indirection, monomorphization, and memory
+layout.</p>
+
+<p>With Rust, we don’t need to be performance gurus who are intimately familiar
+with the inner workings of each JavaScript implementation’s JIT. We can have
+<a href="http://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html">speed without wizardry</a>.</p>
+
+<h2 id="do-not-rewrite--integrate">Do <u>Not</u> Rewrite — Integrate</h2>
+
+<p>Rust compiled to WebAssembly doesn’t have a runtime. This results in small
+<code class="highlighter-rouge">.wasm</code> binary sizes that are proportional to the amount of Rust code that is
+being compiled to WebAssembly. Binary size is of huge importance since the
+<code class="highlighter-rouge">.wasm</code> must be downloaded over the network. The proportionality means you only
+pay (in code size) for what you use. In turn, that means it is feasible for
+existing JavaScript code bases to incrementally and partially adopt Rust.</p>
+
+<p>Keep the code that already works: we can port only our most
+performance-sensitive JavaScript functions to Rust and gain immediate benefits.</p>
+
+<h2 id="keep-your-workflow">Keep Your Workflow</h2>
+
+<p>If you are a JavaScript hacker and want to use a library that is written in Rust
+and WebAssembly, you shouldn’t have to change your workflow at all. We can
+publish <code class="highlighter-rouge">.wasm</code> packages to npm, and you can depend on them in <code class="highlighter-rouge">package.json</code>
+just like you normally would any other JavaScript library. They can be imported
+as ECMAScript modules, CommonJS-style <code class="highlighter-rouge">require</code>s, or added as a new object
+property to the JavaScript global. <a href="https://github.com/xtuc/rust-plugin">Bundlers will understand Rust and
+WebAssembly</a> just as well as they understand JavaScript.</p>
+
+<p>If you are a Rust hacker and want to compile your crate to <code class="highlighter-rouge">.wasm</code> and share it
+on npm, you shouldn’t have to change your workflow either. In fact, you
+shouldn’t even need to install npm, Node.js, and a whole JavaScript development
+environment. <code class="highlighter-rouge">wasm-pack</code> will compile, optimize, and generate JavaScript
+bindings for your crate. And then it will publish it to npm for you too!</p>
+
+<h2 id="current-status">Current Status</h2>
+
+<p>This section provides a snapshot of our current ecosystem, the tools that are
+available right now, and how this compares to the vision described above.</p>
+
+<h3 id="the-rust-and-webassembly-book">The Rust and WebAssembly Book</h3>
+
+<p>Everything we build is for naught if people can’t learn how to use it
+themselves. So we are writing <a href="https://rustwasm.github.io/book/">The Rust and WebAssembly Book</a>.</p>
+
+<p>Right now, it already has a lot of great content:</p>
+
+<ul>
+  <li>Getting up and running</li>
+  <li>Designing and implementing a non-trivial example (the Game of Life) that
+integrates Rust and JavaScript</li>
+  <li>Tips for debugging, time profiling, and code size profiling</li>
+  <li>How to publish to npm with <code class="highlighter-rouge">wasm-pack</code></li>
+</ul>
+
+<p>But it doesn’t have a lot of continuity. It feels like a collection of
+appendices and random tutorials. We will have a follow up blog post detailing
+its specific needs, and how to help if you’re interested.</p>
+
+<h3 id="wasm-bindgen">wasm-bindgen</h3>
+
+<p><a href="https://github.com/rustwasm/wasm-bindgen"><code class="highlighter-rouge">wasm-bindgen</code> facilitates communication between Rust and
+JavaScript.</a> You can import JavaScript things into Rust, and
+export Rust things to JavaScript. It allows you to send rich types like strings
+and structs between wasm and JavaScript, rather than only the simple integers
+and floats defined by the WebAssembly standard.</p>
+
+<p>Here is “Hello, World!” between Rust and JavaScript with <code class="highlighter-rouge">wasm-bindgen</code>. First,
+we import the <code class="highlighter-rouge">alert</code> function into Rust and export the <code class="highlighter-rouge">greet</code> function to
+JavaScript:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">extern</span> <span class="n">crate</span> <span class="n">wasm_bindgen</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">wasm_bindgen</span><span class="p">::</span><span class="nn">prelude</span><span class="p">::</span><span class="o">*</span><span class="p">;</span>
+
+<span class="nd">#[wasm_bindgen]</span>
+<span class="k">extern</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">alert</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nd">#[wasm_bindgen]</span>
+<span class="k">pub</span> <span class="k">fn</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="o">&amp;</span><span class="nb">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">alert</span><span class="p">(</span><span class="o">&amp;</span><span class="nd">format!</span><span class="p">(</span><span class="s">"Hello, {}!"</span><span class="p">,</span> <span class="n">name</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Then, we import the wasm as an ECMAScript module in JavaScript, and call the
+<code class="highlighter-rouge">greet</code> function:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">greet</span> <span class="p">}</span> <span class="k">from</span> <span class="s2">"./hello_world"</span><span class="p">;</span>
+
+<span class="nx">greet</span><span class="p">(</span><span class="s2">"World!"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><a href="/images/wasm-bindgen-architecture-current.png">
+  <img src="/images/wasm-bindgen-architecture-current.png" alt="wasm-bindgen architecture" style="float:right;width:50%;min-width:200px;max-width:400px;margin:1em" />
+</a></p>
+
+<p>How does <code class="highlighter-rouge">wasm-bindgen</code> work? Simplifying a bit, it is a procedural macro that
+takes in Rust source code annotated with <code class="highlighter-rouge">#[wasm_bindgen]</code> attributes,
+constructs an abstract syntax tree (AST), and then it emits two artifacts:</p>
+
+<ol>
+  <li>
+    <p>Rust bindings that import JavaScript things and export Rust things.</p>
+  </li>
+  <li>
+    <p>JavaScript bindings that expose a nice interface to Rust-exported things to
+other JavaScript code and provide the Rust’s desired imports.</p>
+  </li>
+</ol>
+
+<p><code class="highlighter-rouge">wasm-bindgen</code>’s approach to JavaScript binding allows you to pay only for the
+imports that you use. Just because you imported the <code class="highlighter-rouge">window.alert</code> function, you
+don’t end up with glue code for <code class="highlighter-rouge">window.document</code>.</p>
+
+<p>The big downside is that, right now, you always have to declare imports
+yourself. There are common imports for JavaScript functions and types and the
+Web platform APIs that will undoubtedly be repeated by many people many times
+over. Importing these by-hand is both boring and mechanical. We have a plan for
+fixing this, but you’ll have to wait for a follow up blog post to learn more.</p>
+
+<div style="clear: both" />
+
+<h3 id="wasm-pack">wasm-pack</h3>
+
+<p><a href="https://github.com/rustwasm/wasm-pack"><code class="highlighter-rouge">wasm-pack</code> seeks to be a one-stop shop for building, optimizing, and
+publishing Rust-generated WebAssembly that you would like to interoperate with
+JavaScript, in the browser, or with Node.js.</a> <code class="highlighter-rouge">wasm-pack</code> helps you
+build and publish Rust-generated WebAssembly to the npm registry to be used
+alongside any other JavaScript package in workflows that you already use, such
+as a bundler like <a href="https://webpack.js.org/">webpack</a> or a service like <a href="https://greenkeeper.io/">greenkeeper</a>.</p>
+
+<p><a href="/images/wasm-pack-cartoon.png"><img src="/images/wasm-pack-cartoon.png" alt="wasm-pack cartoon" /></a></p>
+
+<p><em>Drawing by Lin Clark in <a href="https://hacks.mozilla.org/2018/03/making-webassembly-better-for-rust-for-all-languages/">Making WebAssembly better for Rust &amp; for all
+languages</a></em></p>
+
+<p>The intention is that if you are a Rust developer and want to publish a crate
+compiled to wasm on npm, <code class="highlighter-rouge">wasm-pack</code> will</p>
+
+<ol>
+  <li>compile the crate to WebAssembly with the <code class="highlighter-rouge">wasm32-unknown-unknown</code> target,</li>
+  <li>run the <code class="highlighter-rouge">wasm-bindgen</code> CLI tool on the <code class="highlighter-rouge">.wasm</code> to generate its JavaScript
+interface,</li>
+  <li>run any other post-build tools such as <code class="highlighter-rouge">wasm-snip</code> and <code class="highlighter-rouge">wasm-opt</code>,</li>
+  <li>collate any and all npm dependencies your crate and/or its JavaScript
+bindings might have,</li>
+  <li>and publish the resulting package on npm.</li>
+</ol>
+
+<p>All without you, the Rust developer, needing to have a JavaScript toolchain up
+and running.</p>
+
+<p>Right now, steps 1, 2, and 5 are in place, but you still need to have <code class="highlighter-rouge">npm</code>
+installed locally. There are also some more things planned for <code class="highlighter-rouge">wasm-pack</code>, and
+our story for orchestrating builds, dependencies, and publishing coming down the
+pipe, but you’ll have to wait for the dedicated follow up blog post.</p>
+
+<h3 id="wait-theres-more">Wait, There’s More!</h3>
+
+<p><a href="/images/twiggy.png">
+  <img src="/images/twiggy.png" alt="Twiggy!" style="float:right;width:40%;min-width:100px;max-width:500px;margin:1em" />
+</a></p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/twiggy">Twiggy is a code size profiler for <code class="highlighter-rouge">.wasm</code> binaries.</a> It helps you
+answer questions like “why did this function even end up in here – who calls
+it?” and “how much space would be saved if I stopped using this function,
+removed it, and removed all the functions that become dead code after its
+removal?”</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/rustwasm/wee_alloc"><code class="highlighter-rouge">wee_alloc</code> is a tiny allocator designed for WebAssembly that has a (pre
+compression) code size footprint of only a single kilobyte.</a> It is
+geared towards code that makes a handful of initial dynamically sized
+allocations, and then performs its heavy lifting without any further
+allocations. This scenario requires <em>some</em> allocator to exist, but we are more
+than happy to trade allocation performance for small code size.</p>
+  </li>
+</ul>
+
+<div style="clear: both" />
+
+<p><a href="/images/console_error_panic_hook.png">
+  <img src="/images/console_error_panic_hook.png" alt="Twiggy!" style="float:left;width:60%;min-width:100px;max-width:800px;margin:1em" />
+</a></p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/console_error_panic_hook">The <code class="highlighter-rouge">console_error_panic_hook</code> crate provides a panic hook for wasm that logs
+panics to the developer console via the <code class="highlighter-rouge">console.error</code>
+function.</a> No more opaque “RuntimeError: unreachable
+executed” messages! Get the proper assertion failure message or index
+out-of-bounds information you expect. It makes debugging panics a whole lot
+easier.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/rustwasm/wasm-snip">The <code class="highlighter-rouge">wasm-snip</code> tool lets you forcibly replace a function’s body with a
+single <code class="highlighter-rouge">unreachable</code> instruction.</a> Maybe you know that some
+function will never be called at runtime, but the compiler can’t prove that at
+compile time? Snip it! Then run wasm-gc again and all the functions it
+transitively called (which could also never be called at runtime) will get
+removed too. This is particularly helpful for removing Rust’s panicking and
+formatting infrastructure when you intend to ship small <code class="highlighter-rouge">.wasm</code> binaries with
+<code class="highlighter-rouge">panic=abort</code>.</p>
+  </li>
+</ul>
+
+<div style="clear: both" />
+
+<h2 id="coming-soon-the-future">Coming Soon: The Future</h2>
+
+<p>As mentioned throughout this post, we’ll be following up with more blog posts
+detailing specific goals we have for the Rust 2018 edition and how you can
+help. In the meantime, don’t hesitate to <a href="https://github.com/rustwasm/team#get-involved">join the Rust and WebAssembly domain
+working group and help build the future of Rust and WebAssembly now!</a></p>
+
+
+  </div><a class="u-url" href="/2018/06/25/vision-for-rust-and-wasm.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

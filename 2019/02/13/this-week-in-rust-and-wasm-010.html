@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>This Week in Rust and WebAssembly 10 | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="This Week in Rust and WebAssembly 10" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hello and welcome to another issue of This Week in Rust and WebAssembly!" />
+<meta property="og:description" content="Hello and welcome to another issue of This Week in Rust and WebAssembly!" />
+<link rel="canonical" href="https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-02-13T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"This Week in Rust and WebAssembly 10","dateModified":"2019-02-13T00:00:00+00:00","datePublished":"2019-02-13T00:00:00+00:00","description":"Hello and welcome to another issue of This Week in Rust and WebAssembly!","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html"},"url":"https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">This Week in Rust and WebAssembly 10</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2019-02-13T00:00:00+00:00" itemprop="datePublished">Feb 13, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Hello and welcome to another issue of <em>This Week in Rust and WebAssembly</em>!</p>
+
+<p><a href="https://rust-lang.org">Rust</a> is a systems language pursuing the trifecta:
+safety, concurrency, and speed.</p>
+
+<p><a href="http://webassembly.org">WebAssembly</a> is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!</p>
+
+<p>This is a weekly summary of Rust and WebAssembly’s progress and community.</p>
+
+<p>Did we miss something? Tweet to us at <a href="https://twitter.com/rustwasm">@rustwasm</a>
+or <a href="https://github.com/rustwasm/rustwasm.github.io">send us a pull request</a>.</p>
+
+<h2 id="news-and-blog-posts-from-around-the-web">News and Blog Posts from Around the Web</h2>
+
+<p><em>Want to make sure something ends up on this list next time we publish an issue?
+<a href="https://github.com/rustwasm/team/issues/79">Leave a comment on this issue.</a></em></p>
+
+<ul>
+  <li>
+    <p><a href="https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html"><strong>Reflecting on Rust and WebAssembly in
+2018</strong></a></p>
+  </li>
+  <li>
+    <p><a href="http://fitzgeraldnick.com/2018/12/02/wasm-bindgen-how-does-it-work.html"><code class="highlighter-rouge">wasm-bindgen</code> — how does it
+work?!</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.fastly.com/blog/edge-programming-rust-web-assembly">Edge programming with Rust and WebAssembly with
+Terrarium</a></p>
+  </li>
+  <li>
+    <p><a href="https://medium.com/wasmer/executing-webassembly-in-your-rust-application-d5cd32e8ce46">Embedding WebAssembly in your Rust Application with
+wasmer.io</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/iamcodemaker/console_log">The <code class="highlighter-rouge">console_log</code> crate</a> is a
+backend for <a href="https://crates.io/crates/log">the <code class="highlighter-rouge">log</code> facade</a> that pipes logged
+messages to the browser’s console.</p>
+  </li>
+  <li>
+    <p><a href="https://ozkriff.itch.io/zemeroth">Zemeroth</a> is a turn-based hexagonal
+tactical game written in Rust and WebAssembly.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/richardanaya/virtual-dom-rs-counter">An example implementation of react/redux style UI development in Rust with
+<code class="highlighter-rouge">percy</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/David-OConnor/seed">Seed</a> is a new Wasm framework for Web
+apps.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/sendilkumarn/generator-wasm-app"><code class="highlighter-rouge">sendilkumarn/generator-wasm-app</code></a>
+is a a Wasm app generator for <a href="https://yeoman.io/">Yeoman</a>.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/edvorg/rustmith"><code class="highlighter-rouge">edvorg/rustsmith</code></a> is a Rocksmith clone
+for the Web platform built with Rust and WebAssembly.</p>
+  </li>
+</ul>
+
+<h3 id="rustwasm2019-posts"><code class="highlighter-rouge">#RustWasm2019</code> Posts</h3>
+
+<ul>
+  <li>
+    <p><a href="https://blog.ryanlevick.com/posts/rust-wasm-2019/">Rust WebAssembly 2019</a> by
+Ryan Levick</p>
+  </li>
+  <li>
+    <p><a href="https://www.reddit.com/r/rust/comments/aac8zk/my_rust_2019_dream_dominate_the_web/">My Rust 2019 Dream: Dominate the
+Web</a>
+by richardanaya</p>
+  </li>
+  <li>
+    <p><a href="https://blog.yoshuawuyts.com/wasm-2019/">Wasm 2019</a> by Yoshua Wuyts</p>
+  </li>
+  <li>
+    <p><a href="http://fitzgeraldnick.com/2018/12/14/rust-and-webassembly-in-2019.html">Rust and WebAssembly in
+2019</a>
+by Nick Fitzgerald</p>
+  </li>
+  <li>
+    <p><a href="https://medium.com/wasmer/non-web-embeddings-for-rust-wasm-2019-7b290e94f81d">Non-Web Embeddings for Rust Wasm
+2019</a>
+by Brandon Fish and wasmer.io</p>
+  </li>
+</ul>
+
+<h2 id="wasm-at-the-2019-rust-all-hands">Wasm at the 2019 Rust All Hands</h2>
+
+<p>The 2019 Rust All Hands meetup was in Berlin on February 4<sup>th</sup> through
+8<sup>th</sup>. @ag_dubs, @alexcrichton, @fitzgen, and @yoshuawuyts from the
+Rust and WebAssembly working group all made it out to discuss some Wasm-related
+topics and plan for 2019.</p>
+
+<p>We talked about:</p>
+
+<ul>
+  <li>
+    <p><a href="https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-road-to-wasm-pack-1-0-md">The road to <code class="highlighter-rouge">wasm-pack</code>
+1.0.</a>
+This meeting was about trying to pin down what we want to ship as part of a
+<code class="highlighter-rouge">wasm-pack</code> 1.0 release, as well as crystallize <code class="highlighter-rouge">wasm-pack</code>’s ideal UX.</p>
+  </li>
+  <li>
+    <p><a href="https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-modular-toolkit-md">A modular toolkit for
+Wasm.</a>
+There’s been a lot of talk in <code class="highlighter-rouge">#RustWasm2019</code> posts and the 2019 roadmap RFC
+about building a modular toolkit for Wasm apps and libraries. This meeting was
+trying to dig a bit more into the details of what that entails. And naming, of
+course.</p>
+  </li>
+  <li>
+    <p><a href="https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-cargo-build-hooks-for-wasm-md"><code class="highlighter-rouge">cargo</code> build tasks, hooks, and/or <code class="highlighter-rouge">post-build.rs</code> for
+Wasm.</a>
+Long-term (likely on the timeline of a couple years) we would like the
+experience of building Rust and Wasm projects to be <em>exactly</em> the same as
+building normal Rust projects: just <code class="highlighter-rouge">cargo build</code> and that’s it. But there is
+a bunch of stuff that needs to happen for Wasm after <code class="highlighter-rouge">rustc</code> emits a Wasm
+binary, such as generate JS bindings or run <code class="highlighter-rouge">wasm-opt</code>. This meeting was about
+how to add some sort of generic build hooks to <code class="highlighter-rouge">cargo</code> and turn <code class="highlighter-rouge">wasm-pack</code>
+into an implementation of those generic hooks specifically targeted for Wasm
+development.</p>
+  </li>
+  <li>
+    <p><a href="https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-wasm-multithreading-and-rayon-md">Multithreading Wasm and
+<code class="highlighter-rouge">rayon</code>.</a>
+This meeting was about how we take our experimental Wasm multithreading
+support and turn it into a reliable library that can serve as the foundation
+for multithreading on the Web. @CUViper from the <code class="highlighter-rouge">rayon</code> team also joined, and
+we made a plan for how to get <code class="highlighter-rouge">rayon</code> working in Wasm.</p>
+  </li>
+</ul>
+
+<h2 id="updates-from-rustwasm">Updates from <a href="https://github.com/rustwasm"><code class="highlighter-rouge">rustwasm/*</code></a></h2>
+
+<h3 id="rfcs">RFCs</h3>
+
+<h4 id="new-rfcs">New RFCs</h4>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/rfcs/pull/7"><strong>2019 Roadmap</strong></a> — this is
+your chance to help shape our goals for the year!</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/rustwasm/rfcs/pull/6">Add support for local JS snippets in <code class="highlighter-rouge">wasm-bindgen</code></a></p>
+  </li>
+</ul>
+
+<h4 id="merged-rfcs">Merged RFCs</h4>
+
+<p>None.</p>
+
+<h3 id="book">Book</h3>
+
+<ul>
+  <li>@DebugSteven <a href="https://github.com/rustwasm/book/pull/137">wrote a testing
+section</a> for the Game of Life
+tutorial!</li>
+</ul>
+
+<h3 id="twiggy">Twiggy🌱</h3>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/twiggy/blob/master/CHANGELOG.md#040"><strong>We released Twiggy🌱 0.4.0!
+🎉</strong></a></p>
+  </li>
+  <li>
+    <p>@brson fixed a bug where we would <a href="https://github.com/rustwasm/twiggy/pull/232">attempt to demangle things that were not
+C++</a> symbols as if they were C++
+symbols.</p>
+  </li>
+</ul>
+
+<h3 id="walrus"><code class="highlighter-rouge">walrus</code></h3>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/walrus"><code class="highlighter-rouge">walrus</code> is a new library crate for writing Wasm-to-Wasm
+transformations.</a> It will eventually (but
+doesn’t yet) preserve DWARF debug info for the Wasm across your
+transformations.</p>
+  </li>
+  <li>
+    <p>@alexcrichton got <code class="highlighter-rouge">walrus</code> <a href="https://github.com/rustwasm/walrus/pull/24">round-tripping all the Wasm spec
+tests</a> correctly.</p>
+  </li>
+  <li>
+    <p>@fitzgen <a href="https://github.com/rustwasm/walrus/pull/45">wrote a simple Wasm
+fuzzer</a>, immediately found a bug,
+and whipped up a fix.</p>
+  </li>
+  <li>
+    <p>@alexcrichton refactored instruction parsing to <a href="https://github.com/rustwasm/walrus/pull/48">avoid
+recursion</a>. This means that we
+don’t blow the stack in debug builds or when given malicious input.</p>
+  </li>
+  <li>
+    <p>We just released <code class="highlighter-rouge">walrus</code> 0.1.0 on crates.io — expect more exciting
+things from <code class="highlighter-rouge">walrus</code> in the future :)</p>
+  </li>
+</ul>
+
+<h3 id="wasm-bindgen"><code class="highlighter-rouge">wasm-bindgen</code></h3>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0236"><strong>We released <code class="highlighter-rouge">wasm-bindgen</code> 0.2.29 through 0.2.36!
+🎉</strong></a></p>
+  </li>
+  <li>
+    <p>@derekdreery <a href="https://github.com/rustwasm/wasm-bindgen/pull/1161">improved the <code class="highlighter-rouge">std::fmt::Debug</code> output for
+<code class="highlighter-rouge">JsValue</code></a> so that it
+includes object properties and their values, instead of just <code class="highlighter-rouge">[object
+Object]</code>.</p>
+  </li>
+  <li>
+    <p>@fitzgen made the <code class="highlighter-rouge">wasm-bindgen-test</code> testing infrastructure <a href="https://github.com/rustwasm/wasm-bindgen/pull/1184">capture more
+<code class="highlighter-rouge">console</code> logging methods’ (<code class="highlighter-rouge">warn</code>, <code class="highlighter-rouge">info</code>, etc)
+output</a> for displaying in
+<code class="highlighter-rouge">stdout</code>.</p>
+  </li>
+  <li>
+    <p>@T5uku5hi <a href="https://github.com/rustwasm/wasm-bindgen/pull/1207">added <code class="highlighter-rouge">#[allow(clippy::all)]</code> to <code class="highlighter-rouge">wasm-bindgen</code>’s macro-generated
+code,</a> so that running
+clippy on crates that use <code class="highlighter-rouge">wasm-bindgen</code> isn’t so noisy.</p>
+  </li>
+  <li>
+    <p>@alexcrichton added support for <a href="https://github.com/rustwasm/wasm-bindgen/pull/1214">passing <code class="highlighter-rouge">Option&lt;MyEnum&gt;</code> back and
+forth</a> between Wasm and JS
+if <code class="highlighter-rouge">MyEnum</code> has the <code class="highlighter-rouge">#[wasm_bindgen]</code> attribute.</p>
+  </li>
+  <li>
+    <p>@fitzgen <a href="https://github.com/rustwasm/wasm-bindgen/pull/1219">added the <code class="highlighter-rouge">UnwrapThrowExt</code>
+trait</a> to <code class="highlighter-rouge">wasm-bindgen</code>’s
+prelude. This extension trait adds <code class="highlighter-rouge">unwrap_throw</code> and <code class="highlighter-rouge">expect_throw</code> methods
+to <code class="highlighter-rouge">Option&lt;T&gt;</code> and <code class="highlighter-rouge">Result&lt;T, E&gt;</code> that have the same behavior as regular
+<code class="highlighter-rouge">unwrap</code> and <code class="highlighter-rouge">expect</code> except they throw a JS error on failure instead of
+panicking. This is morally the same, but ends up avoiding the <code class="highlighter-rouge">std::panicking</code>
+and <code class="highlighter-rouge">std::fmt</code> infrastructure, resulting in smaller code sizes.</p>
+  </li>
+  <li>
+    <p>@alexcrichton <a href="https://github.com/rustwasm/wasm-bindgen/pull/1237">migrated <code class="highlighter-rouge">wasm-bindgen</code>’s post-<code class="highlighter-rouge">rustc</code> Wasm
+transformations</a> to the
+new <code class="highlighter-rouge">walrus</code> crate! This paves the way for maintaining DWARF debug info
+through <code class="highlighter-rouge">wasm-bindgen</code>.</p>
+  </li>
+  <li>
+    <p>@fitzgen made the <code class="highlighter-rouge">wasm-bindgen-test</code> runtime capture logged messages in tests
+<a href="https://github.com/rustwasm/wasm-bindgen/pull/1233">via <code class="highlighter-rouge">textContent</code> instead of
+<code class="highlighter-rouge">innerHTML</code></a>, avoiding
+issues when logging HTML strings ;)</p>
+  </li>
+</ul>
+
+<h3 id="wasm-pack"><code class="highlighter-rouge">wasm-pack</code></h3>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#-060"><strong>We released <code class="highlighter-rouge">wasm-pack</code>
+0.6.0! 🎉</strong></a></p>
+  </li>
+  <li>
+    <p>@drager implemented <a href="https://github.com/rustwasm/wasm-pack/pull/446">support for typo
+detection</a> in <code class="highlighter-rouge">wasm-pack</code>’s
+<code class="highlighter-rouge">Cargo.toml</code> section.</p>
+  </li>
+  <li>
+    <p>@torkve added support for <a href="https://github.com/rustwasm/wasm-pack/pull/461">passing arbitrary extra CLI arguments through
+<code class="highlighter-rouge">wasm-pack build</code></a> and into
+<code class="highlighter-rouge">cargo build</code>. For example, to build with all cargo features enabled:
+<code class="highlighter-rouge">wasm-pack build -- --all-features</code>.</p>
+  </li>
+  <li>
+    <p>This inspired @chinedufn to add support for <a href="https://github.com/rustwasm/wasm-pack/pull/530">passing arbitrary extra CLI arguments
+through <code class="highlighter-rouge">wasm-pack test</code></a> and
+into <code class="highlighter-rouge">cargo test</code>!</p>
+  </li>
+  <li>
+    <p>@fitzgen fixed a bug where <a href="https://github.com/rustwasm/wasm-pack/pull/521">the output of <code class="highlighter-rouge">wasm-pack test</code> was printed
+twice</a>.</p>
+  </li>
+  <li>
+    <p>@rhysd added support for <a href="https://github.com/rustwasm/wasm-pack/pull/531">emitting the “homepage”
+field</a> in our generated
+<code class="highlighter-rouge">package.json</code> if it is present in the crate’s <code class="highlighter-rouge">Cargo.toml</code>.</p>
+  </li>
+  <li>
+    <p>@jscheffner <a href="https://github.com/rustwasm/wasm-pack/pull/537">fixed <code class="highlighter-rouge">wasm-pack</code>’s fetching of <code class="highlighter-rouge">chromedriver</code>
+binaries</a> for headless browser
+testing on Windows.</p>
+  </li>
+</ul>
+
+<h2 id="requests-for-contribution">Requests for Contribution</h2>
+
+<p><em>Want to get involved in Rust and WebAssembly? <a href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">Join the Rust and WebAssembly
+working group!</a></em></p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22">All issues labeled “good first issue” in the <code class="highlighter-rouge">rustwasm/*</code> repositories</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22">All issues labeled “help wanted” in the <code class="highlighter-rouge">rustwasm/*</code> repositories</a></p>
+  </li>
+</ul>
+
+<h3 id="new-help-wanted-issues">New “Help Wanted” Issues</h3>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rustwasm/wasm-pack/issues/533"><code class="highlighter-rouge">wasm-pack</code> — docs: add documentation for working with wasm-pack
+outside of template</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/rustwasm/wasm-pack/issues/470"><code class="highlighter-rouge">wasm-pack</code> — installer: do not attempt to install to
+/usr/bin</a></p>
+  </li>
+</ul>
+
+
+  </div><a class="u-url" href="/2019/02/13/this-week-in-rust-and-wasm-010.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

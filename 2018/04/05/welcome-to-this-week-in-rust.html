@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Welcome to this week in Rust and WebAssembly! | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Welcome to this week in Rust and WebAssembly!" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hello and welcome to the first issue of This Week in Rust and WebAssembly!" />
+<meta property="og:description" content="Hello and welcome to the first issue of This Week in Rust and WebAssembly!" />
+<link rel="canonical" href="https://rustwasm.github.io/2018/04/05/welcome-to-this-week-in-rust.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2018/04/05/welcome-to-this-week-in-rust.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-05T00:00:00+00:00" />
+<script type="application/ld+json">
+{"headline":"Welcome to this week in Rust and WebAssembly!","dateModified":"2018-04-05T00:00:00+00:00","datePublished":"2018-04-05T00:00:00+00:00","description":"Hello and welcome to the first issue of This Week in Rust and WebAssembly!","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2018/04/05/welcome-to-this-week-in-rust.html"},"url":"https://rustwasm.github.io/2018/04/05/welcome-to-this-week-in-rust.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Welcome to this week in Rust and WebAssembly!</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-04-05T00:00:00+00:00" itemprop="datePublished">Apr 5, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Hello and welcome to the first issue of <em>This Week in Rust and WebAssembly</em>!</p>
+
+<p><a href="https://rust-lang.org">Rust</a> is a systems language pursuing the trifecta: safety, concurrency, and speed.</p>
+
+<p><a href="http://webassembly.org">WebAssembly</a> is designed as a portable target for compilation of high-level languages like C, C++, and Rust, enabling deployment on the web for client and server applications.</p>
+
+<p>This is a weekly summary of its progress and community.</p>
+
+<p>Tweet us at <a href="https://twitter.com/rustwasm">@rustwasm</a> or send us a pull request. Want to get involved? <a href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">We love contributions!</a></p>
+
+<h2 id="news-and-releases">News and Releases</h2>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/rust-lang/rust/pull/48125">The <code class="highlighter-rouge">lld</code> linker landed in nightly Rust!</a> Expect faster <code class="highlighter-rouge">.wasm</code> compilation, smaller <code class="highlighter-rouge">.wasm</code> binaries when using <code class="highlighter-rouge">lto = true</code>, support for custom <code class="highlighter-rouge">.wasm</code> sections, and more.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/ashleygwilliams/wasm-pack"><code class="highlighter-rouge">wasm-pack</code></a> packs up the <code class="highlighter-rouge">.wasm</code> and publishes it to npm</p>
+
+    <blockquote>
+      <p>The goal of this project is to create a portable command line tool for publishing compiled wasm projects to the npm registry for the consumption of js devs using the npm CLI, yarn, or any other CLI tool that interfaces with the npm registry.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p><a href="https://crates.io/crates/dominator"><code class="highlighter-rouge">rust-dominator</code></a> is a zero-cost virtual DOM library. It even already has a spec-compliant <a href="https://github.com/Pauan/rust-dominator/blob/master/examples/todomvc/src/main.rs">TODO-MVC implementation</a>!</p>
+  </li>
+  <li><a href="https://wiki.parity.io/WebAssembly-Home">Kovan</a> is an Ethereum-like testnet.
+    <ul>
+      <li><a href="https://github.com/paritytech/pwasm-tutorial">Tutorial</a></li>
+      <li><a href="https://www.youtube.com/watch?v=Adcn-L59LRs">Talks</a></li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="https://github.com/frehberg/wasm-sign"><code class="highlighter-rouge">wasm-sign</code></a> is a WebAssembly signing and verification tool.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/tcr/edit-text"><code class="highlighter-rouge">edit-text</code></a> is a collaborative text editor built with Rust and WebAssembly.</p>
+  </li>
+  <li><a href="https://crates.io/crates/wasm-bindgen"><code class="highlighter-rouge">wasm_bindgen</code> 0.2.0 released</a>
+    <ul>
+      <li>Uses the new <code class="highlighter-rouge">#[wasm_custom_section]</code> attribute to produce by-default smaller binaries</li>
+      <li>JS output is by default compatible with either Node.js or the browser</li>
+      <li>The <code class="highlighter-rouge">--nodejs</code> flag’s output is now natively usable by Node.js, aka uses <code class="highlighter-rouge">require</code> and loads the WebAssembly module synchronously</li>
+      <li>Lots of internal refactorings in preparation for new features like closures and futures</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/fitzgen/wee_alloc/blob/master/CHANGELOG.md#020"><code class="highlighter-rouge">wee_alloc</code> 0.2.0 released</a></li>
+</ul>
+
+<h2 id="articles-blog-posts-and-talks">Articles, Blog Posts, and Talks</h2>
+
+<ul>
+  <li>
+    <p><a href="http://fitzgeraldnick.com/2018/02/27/wasm-domain-working-group.html">Come Join the Rust and WebAssembly Working Group!</a></p>
+  </li>
+  <li>
+    <p><a href="https://hacks.mozilla.org/2018/03/making-webassembly-better-for-rust-for-all-languages/">Making WebAssembly better for Rust &amp; for all languages</a>- <a href="https://twitter.com/linclark">Lin Clark</a></p>
+  </li>
+  <li>
+    <p><a href="https://hacks.mozilla.org/2018/04/javascript-to-rust-and-back-again-a-wasm-bindgen-tale/">JavaScript to Rust and Back Again: A <code class="highlighter-rouge">wasm-bindgen</code> Tale</a></p>
+  </li>
+  <li>
+    <p><a href="http://fitzgeraldnick.com/2018/02/26/speed-without-wizardry.html">Speed Without Wizardry</a></p>
+  </li>
+  <li>
+    <p><a href="https://speakerdeck.com/sendilkumarn/do-things-faster-and-better-with-webassembly">Do things faster and better with WebAssembly</a>- <a href="https://twitter.com/sendilkumarn">Sendilkumarn</a></p>
+    <ul>
+      <li><a href="https://goo.gl/aUhPFW">video</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="upcoming-events--talks">Upcoming Events / Talks</h2>
+
+<ul>
+  <li>
+    <p><a href="https://rome2018.codemotionworld.com/talk-detail/?detail=8054">Do things faster with WebAssembly @Codemotion 2018 Rome</a> by <a href="https://twitter.com/sendilkumarn">Sendilkumarn</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.meetup.com/PDXRust/events/249474845/">PDXRust: Rust and WebAssembly workshop</a></p>
+  </li>
+</ul>
+
+  </div><a class="u-url" href="/2018/04/05/welcome-to-this-week-in-rust.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

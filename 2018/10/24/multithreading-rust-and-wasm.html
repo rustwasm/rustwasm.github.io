@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Multithreading Rust and Wasm | Rust and WebAssembly</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Multithreading Rust and Wasm" />
+<meta name="author" content="Alex Crichton" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="When WebAssembly was first shipped it was an MVP which, while minimal, has spawned a huge number of exciting projects which work today across all major browsers. Rust has capitalized on the wasm MVP’s success as well with tools like wasm-bindgen and wasm-pack by making the MVP feel less minimal. WebAssembly is yet more ambitious, though! Since inception it’s always been intended to extend the WebAssembly specification with new features and functionality." />
+<meta property="og:description" content="When WebAssembly was first shipped it was an MVP which, while minimal, has spawned a huge number of exciting projects which work today across all major browsers. Rust has capitalized on the wasm MVP’s success as well with tools like wasm-bindgen and wasm-pack by making the MVP feel less minimal. WebAssembly is yet more ambitious, though! Since inception it’s always been intended to extend the WebAssembly specification with new features and functionality." />
+<link rel="canonical" href="https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html" />
+<meta property="og:url" content="https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html" />
+<meta property="og:site_name" content="Rust and WebAssembly" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-24T00:00:00+00:00" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Alex Crichton"},"headline":"Multithreading Rust and Wasm","dateModified":"2018-10-24T00:00:00+00:00","datePublished":"2018-10-24T00:00:00+00:00","description":"When WebAssembly was first shipped it was an MVP which, while minimal, has spawned a huge number of exciting projects which work today across all major browsers. Rust has capitalized on the wasm MVP’s success as well with tools like wasm-bindgen and wasm-pack by making the MVP feel less minimal. WebAssembly is yet more ambitious, though! Since inception it’s always been intended to extend the WebAssembly specification with new features and functionality.","mainEntityOfPage":{"@type":"WebPage","@id":"https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html"},"url":"https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+        <link rel="stylesheet" href="/assets/extra.css"><link type="application/atom+xml" rel="alternate" href="https://rustwasm.github.io/feed.xml" title="Rust and WebAssembly" /></head>
+<body><header class="site-header" role="banner">
+
+        <div class="wrapper"><a class="site-title" rel="author" href="/">
+            <img src="/assets/rustwasm.png" style="max-height: 2em"/>
+            Rust and WebAssembly
+          </a><nav class="site-nav">
+              <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+              <label for="nav-trigger">
+                <span class="menu-icon">
+                  <svg viewBox="0 0 18 15" width="18px" height="15px">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                  </svg>
+                </span>
+              </label>
+
+              <div class="trigger">
+                  <a class="page-link" href="/docs.html">📚 Learn</a>
+                  <a class="page-link" href="/">📖 Blog</a>
+                  <a class="page-link" href="https://github.com/rustwasm/team/blob/master/README.md#get-involved">👯 Get Involved</a>
+              </div>
+            </nav></div>
+      </header>
+<div class="wrapper" style="background:rgb(245, 170, 170);border: 5px solid red;">
+  This project and website is <a href="https://blog.rust-lang.org/inside-rust/2025/07/21/sunsetting-the-rustwasm-github-org/">no longer maintained</a>
+</div>
+<main class="page-content" aria-label="Content"><div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Multithreading Rust and Wasm</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-10-24T00:00:00+00:00" itemprop="datePublished">Oct 24, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Alex Crichton</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>When WebAssembly was first shipped it was an <a href="https://en.wikipedia.org/wiki/Minimum_viable_product">MVP</a> which, while minimal, has
+spawned a huge number of exciting projects which work today across all major
+browsers. Rust has capitalized on the wasm MVP’s success as well with tools
+like <a href="https://github.com/rustwasm/wasm-bindgen"><code class="highlighter-rouge">wasm-bindgen</code></a> and <a href="https://github.com/rustwasm/wasm-pack"><code class="highlighter-rouge">wasm-pack</code></a> by making the MVP feel less minimal.
+WebAssembly is <a href="https://hacks.mozilla.org/2018/10/webassemblys-post-mvp-future/">yet more ambitious</a>, though! Since inception it’s
+always been intended to extend the <a href="https://webassembly.github.io/spec/">WebAssembly specification</a> with new
+features and functionality.</p>
+
+<p>One of the features I’m particularly excited about coming down the pike for
+WebAssembly is the <a href="https://github.com/WebAssembly/threads">threads</a> proposal. The threading proposal was unfortunately
+halted in its tracks when the <a href="https://meltdownattack.com/">Spectre and Meltdown</a> vulnerabilities were
+first announced, but it’s starting to pick up steam again! Browsers will start
+shipping <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code class="highlighter-rouge">SharedArrayBuffer</code></a> in the near future, and threads for wasm won’t be
+far behind.</p>
+
+<p>Features like threads for wasm can have a huge impact on Rust and how it’s used
+on the web, and we want to be sure that Rust is ready and well suited for wasm
+threads as soon as they’re available! I’ve recently started to try to get more
+involved in the <a href="https://www.w3.org/community/webassembly/">WebAssembly Community Group</a> and this seemed like the
+perfect opportunity to test out support for Rust while also hopefully providing
+feedback for the proposal itself if necessary!</p>
+
+<p>If you’re itching for a happy ending you can <a href="#demo-raytracing">jump ahead to the end</a> where
+(spoilers) there’s a demo showing off Rust, WebAssembly, and threads all in the
+browser.</p>
+
+<blockquote>
+  <p><strong>Note</strong>: As a note to future readers, this post describes and works with many
+features which, at the time of its writing, were unstable. Not everything here
+may be accurate in the distant future and examples may no longer work. We’ll
+try to keep things updated but if you’re reading this far from when it was
+written take it with a grain of salt!</p>
+</blockquote>
+
+<h3 id="the-webassembly-threads-proposal">The WebAssembly threads proposal</h3>
+
+<p>While one might naively expect that the idea of “WebAssembly threads” is
+something like “add pthreads” or “add <code class="highlighter-rouge">std::thread</code>” to wasm, the current
+proposal for threads in WebAssembly is actually quite different! Instead of
+providing a full library experience the threads proposal is instead specifying
+the fundamental building blocks upon which you can build a threading library.</p>
+
+<h4 id="atomic-instructions">Atomic Instructions</h4>
+
+<p>The first aspect of the threads proposal that you might notice is the addition
+of <a href="https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#atomic-memory-accesses">atomic instructions</a>. In Rust parlance this means that
+<a href="https://doc.rust-lang.org/std/sync/atomic/struct.AtomicUsize.html"><code class="highlighter-rouge">AtomicUsize</code></a> and friends will actually compile to atomic operations, whereas
+today they’re <a href="https://github.com/rust-lang/rust/blob/f51752774bbbe48d2aabe53c86e9e91ed3a73a5d/src/librustc_target/spec/wasm32_unknown_unknown.rs#L46-L48">simply lowered to single-threaded equivalents</a>
+(as there’s no threads!). While essential, these aren’t too too thrilling just
+yet until you hit <a href="https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#wait-and-notify-operators"><code class="highlighter-rouge">wait</code> and <code class="highlighter-rouge">notify</code></a>.</p>
+
+<p>Atomic modifications allow us to perform some level of synchronization, but
+full synchronization often requires actual blocking of a thread until another is
+finished. This is where the <code class="highlighter-rouge">i32.atomic.wait</code> and <code class="highlighter-rouge">atomic.notify</code> instructions
+come into play. First we can block a thread (atomically) using
+<a href="https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#wait"><code class="highlighter-rouge">i32.atomic.wait</code></a>, and then another thread can execute <a href="https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#notify"><code class="highlighter-rouge">atomic.notify</code></a> to wake
+up a thread blocked on the same address. I believe this is similar to <a href="https://en.wikipedia.org/wiki/Futex">futexes</a>
+on Linux, although I’ve never used them myself!</p>
+
+<p>With just this one addition we can now start to see how primitives can be
+formed, and sure enough the proposal has an <a href="https://github.com/WebAssembly/threads/blob/master/proposals/threads/Overview.md#example">example mutex
+implementation</a> which is also how <a href="https://github.com/rust-lang/rust/blob/f51752774bbbe48d2aabe53c86e9e91ed3a73a5d/src/libstd/sys/wasm/mutex_atomics.rs#L27-L71">the Rust <code class="highlighter-rouge">Mutex</code> type is
+implemented</a> as well.</p>
+
+<p>Ok that’s great and all, but how do we spawn more than one thread?</p>
+
+<h4 id="parallelism-through-web-workers">Parallelism through Web Workers</h4>
+
+<p>One of WebAssembly’s greatest strengths is that it <em>extends</em> the web platform
+instead of trying to replace it. Although wasm modules themselves can largely
+only manipulate numbers directly, they can import any arbitrary function which
+gives wasm full access to the web platform, DOM and all. From day one
+WebAssembly is all about reusing and enhancing the web platform experience,
+avoiding the need to reinvent the wheel for new functionality.</p>
+
+<p>The threads proposal for wasm is no exception to this pattern! The web already
+has support for multithreaded web applications through <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API">Web Workers</a>, and this
+is exactly what’s used to introduce multithreaded execution to WebAssembly.</p>
+
+<p>Web Workers, however, provide very limited ability to share resources between
+threads. Communication and synchronization is done through message passing
+(<a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage"><code class="highlighter-rouge">postMessage</code></a>), but you can only send values that support <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm">structured
+cloning</a>. In Rust-ic terms, very few types in JS are <code class="highlighter-rouge">Send</code> and you always
+<code class="highlighter-rouge">Clone</code> when sending an object to another thread.</p>
+
+<p>Our goal is to share resources though! It turns out that one of the types
+which supports structured cloning is <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a>. Execution of wasm
+on the web today requires usage of the wasm JS API, where you create a
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> that is akin to the text and data sections of an
+executable (compiled code) and then you create a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Instance"><code class="highlighter-rouge">WebAssembly.Instance</code></a> from
+that module, which is where you actually get things like a heap and a stack.
+Already today we can pass a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> between threads, and despite
+having to <code class="highlighter-rouge">Clone</code> it between threads it looks roughly like this in most engines:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">pub</span> <span class="k">struct</span> <span class="n">Module</span> <span class="p">{</span>
+    <span class="n">contents</span><span class="p">:</span> <span class="nb">Arc</span><span class="o">&lt;</span><span class="n">ModuleContents</span><span class="o">&gt;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c">// ...</span>
+</code></pre></div></div>
+
+<p>which means that the clone operation is quite cheap!</p>
+
+<p>Sharing our code is only half the story, though. Many languages (including Rust)
+also rely on <em>shared memory</em> as a primitive to build all sorts of concurrency
+paradigms like message passing or mutexes.</p>
+
+<h4 id="shared-memory">Shared Memory</h4>
+
+<p>Continuing the theme of “no fundamental new features just for wasm”, shared
+memory is fundamentally built on an already stable (or rather, becoming stable)
+JS API: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code class="highlighter-rouge">SharedArrayBuffer</code></a>. A <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code class="highlighter-rouge">SharedArrayBuffer</code></a> is like an
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><code class="highlighter-rouge">ArrayBuffer</code></a> except it’s, well, shared! This manifests itself through the
+structured cloning algorithm where you can think of it as similar to a
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a>, internally containing an <a href="https://doc.rust-lang.org/std/sync/struct.Arc.html"><code class="highlighter-rouge">Arc</code></a> that’s cheap to clone.</p>
+
+<p>Using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code class="highlighter-rouge">SharedArrayBuffer</code></a> JS can already share memory between workers and the
+main thread, making it cheap to compute a large chunk of data and send it to
+another thread. (Or at least removes the need to copy data between threads).</p>
+
+<p>WebAssembly modules today are optionally associated with at most one instance of
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory">“linear memory”</a>. In non-wasm parlance, you can put a
+stick of RAM into a wasm module. This <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory"><code class="highlighter-rouge">WebAssembly.Memory</code></a> is today always
+backed by an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><code class="highlighter-rouge">ArrayBuffer</code></a>, but you’ll soon be able to flag a memory as
+“shared” which means it’s backed by <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code class="highlighter-rouge">SharedArrayBuffer</code></a> instead. This
+subsequently means that the structured clone of a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory"><code class="highlighter-rouge">WebAssembly.Memory</code></a> backed
+by a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer"><code class="highlighter-rouge">SharedArrayBuffer</code></a> will refer to the same memory!</p>
+
+<p>At this point the pieces are definitely starting to come together. We can
+already share modules (code) between threads, and soon we’ll be able to share
+memory between threads as well! With these new abilities we can instantiate a
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> on multiple web workers quickly and efficiently which all
+have access to the same memory.</p>
+
+<h4 id="initializing-memory-once">Initializing Memory Once</h4>
+
+<p>One fun aspect of WebAssembly modules is that memory is automatically
+initialized for you. Let’s say, for example, you’ve got a Rust program that
+looks like:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">no_mangle</span><span class="p">]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">get_data</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="o">*</span><span class="k">const</span> <span class="nb">u8</span> <span class="p">{</span>
+    <span class="s">"the data"</span><span class="nf">.as_ptr</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>If we call that from JS, and if we read the pointer returned, we’ll actually see
+<code class="highlighter-rouge">the data</code>! Who actually wrote those bytes to linear memory, though? Each wasm
+module can have <a href="http://webassembly.github.io/spec/core/syntax/modules.html#data-segments">data segments</a> which specify a blob of bytes that is located at
+an offset in memory. Upon instantiation of a module, the wasm runtime will copy
+each of these data segments to the offset specified into linear memory.</p>
+
+<p>But wait, that’s not a good idea if we instantiate our module on multiple
+threads! Let’s say we have code that looks like:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="n">no_mangle</span><span class="p">]</span>
+<span class="k">pub</span> <span class="k">extern</span> <span class="k">fn</span> <span class="nf">get_ticket</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">usize</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="n">TICKET</span><span class="p">:</span> <span class="n">AtomicUsize</span> <span class="o">=</span> <span class="nn">AtomicUsize</span><span class="p">::</span><span class="nf">new</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">TICKET</span><span class="nf">.fetch_add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">SeqCst</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Here we’ll have a data segment consisting of <code class="highlighter-rouge">1usize</code>, which is three zero bytes
+and then a one byte. Each time we instantiate our module we’re resetting this
+counter back to 1 by overwriting the previous value! What we instead want to
+happen is the <em>first</em> thread initializes memory and all other threads should
+just use what’s already there.</p>
+
+<p>To handle this problem, we turn to the <a href="https://github.com/WebAssembly/bulk-memory-operations">bulk memory operations proposal</a>.
+While the bulk memory operations proposal largely started as a native method of
+doing <code class="highlighter-rouge">memcpy</code> and <code class="highlighter-rouge">memset</code>, it’s now also picked up the ability for “passive
+memory segments” which solves the exact problem we’re having here.</p>
+
+<p>Each data segment can be flagged as “passive” which means it’s not automatically
+copied into memory on instantiation. Instead a module must manually initialize
+memory via the <code class="highlighter-rouge">memory.init</code> instruction. Using <code class="highlighter-rouge">memory.init</code> we can copy memory
+from any data segment into any location in memory.</p>
+
+<p>With <code class="highlighter-rouge">memory.init</code> we at least have the ability to solve the
+multi-initialization problem, but it’s not entirely clear how we’ll leverage
+this yet in the toolchain. More on this later!</p>
+
+<h4 id="existing-webassembly-features-and-threads">Existing WebAssembly Features and Threads</h4>
+
+<p>That about wraps up the new features proposed in the WebAssembly threads (and
+bulk memory) proposal. Before we go into how this is all actually going to be
+used, though, it’s worth taking a quick look at some of the existing features of
+WebAssembly and what they mean in a world with threads.</p>
+
+<p>The first interesting aspect (which we’ll leverage later on) is the <a href="http://webassembly.github.io/spec/core/syntax/modules.html#start-function"><code class="highlighter-rouge">start</code></a>
+function. WebAssembly modules can flag a function as automatically executed
+whenever the module is instantiated. This <code class="highlighter-rouge">start</code> function can do things like
+static initialization or maybe even the <code class="highlighter-rouge">main</code> function of a
+wasm-pretending-to-be-an-executable, but it’s not currently exposed or used in
+Rust. The semantics of the <code class="highlighter-rouge">start</code> function don’t change at all in the threads
+proposal, but it means that it’s no longer one time initialization! Instead the
+<code class="highlighter-rouge">start</code> function is still run per-instance, and since we’re creating multiple
+instances on multiple web workers, the <code class="highlighter-rouge">start</code> function becomes more like a
+“thread init” than a “global init”. More on this later!</p>
+
+<p>Next let’s take a look at <a href="http://webassembly.github.io/spec/core/syntax/modules.html#globals"><code class="highlighter-rouge">global</code></a> variables. Note that these are not Rust
+<code class="highlighter-rouge">static</code> variables (like <code class="highlighter-rouge">TICKET</code> above) which are compiled as being located in
+linear memory. Rust actually provides no ability to create, get, or set custom
+<code class="highlighter-rouge">global</code> variables today, so this is largely an unexposed feature of WebAssembly
+in Rust. In WebAssembly, however, a <code class="highlighter-rouge">global</code> is what its name implies, a global
+variable for the instance which can be get, set, and even exported to JS! A
+global is more like a virtual register than linear memory because it can only
+contain a fixed set of types.</p>
+
+<p>Interestingly, though, globals are per instance. This means that in a world of
+multiple instances, they’re not actually globals but rather thread locals! Each
+of our wasm instances will have its own set of globals that can’t be accessed by
+other instances, giving us the foundation for thread-local data. More on this
+later as well!</p>
+
+<p>Tables in WebAssembly likely also have fun use cases in a threaded wasm world,
+but I’m not so sure what those are myself and so for now we’ll largely ignore
+them. Other than that, that should cover most wasm features and how they relate
+to threads!</p>
+
+<h3 id="using-threads-in-rust">Using Threads in Rust</h3>
+
+<p>Now that we’ve gone over the highlights of WebAssembly threads proposal, you
+might feel how I felt when I first read it. Sure all those
+features sound great, but how is this going to be safely and ergonomically
+exposed at the language level? Some problems are nicely self-contained like the
+<a href="https://github.com/rust-lang/rust/blob/f51752774bbbe48d2aabe53c86e9e91ed3a73a5d/src/libstd/sys/wasm/mutex_atomics.rs#L27-L71">implementation of <code class="highlighter-rouge">Mutex</code> in Rust</a>, but there’s a host of other
+problems which aren’t quite as self contained like:</p>
+
+<ul>
+  <li>
+    <p>First up, stacks! LLVM, Rust’s code generator, assumes that it not only gets
+to use the native wasm stack (which is per instance and hence “thread local”)
+but also a linear memory stack as well. This means we need a stack pointer
+into linear memory (which LLVM already conveniently places in a <code class="highlighter-rouge">global</code>)
+which is unique per thread, and someone’s gonna have to allocate those stacks
+for each thread.</p>
+  </li>
+  <li>
+    <p>Next up, thread local data. We’ve got the foundations of thread locals with
+<code class="highlighter-rouge">global</code> variables, but as mentioned before Rust (and LLVM or LLD) doesn’t
+actually provide the ability to manipulate or work with custom <code class="highlighter-rouge">global</code>
+variables. How are we going to implement the standard library’s
+<a href="https://doc.rust-lang.org/std/macro.thread_local.html"><code class="highlighter-rouge">thread_local!</code></a> macro in Rust?</p>
+  </li>
+  <li>
+    <p>We talked a bit about memory initialization earlier and how we don’t want to
+reinitialize and wipe out memory, but who’s actually doing that? Presumably
+all our data segments need to be <code class="highlighter-rouge">passive</code> but who’s executing <code class="highlighter-rouge">memory.init</code>
+safely?</p>
+  </li>
+  <li>
+    <p>How are we actually going to spawn threads? Whose responsibility is it to
+actually create a web worker? Similarly, by what mechanism is the
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory"><code class="highlighter-rouge">WebAssembly.Memory</code></a> getting transferred between
+workers and instantiated in the right place?</p>
+  </li>
+  <li>
+    <p>When using tools like <code class="highlighter-rouge">wasm-bindgen</code>, how does the shim JS make its way to all
+the workers which have an instance of wasm? This wrapper JS is needed to make
+calling Rust ergonomic, and we don’t want to bless the main thread too much!</p>
+  </li>
+</ul>
+
+<p>Unfortunately we don’t have answers to all these questions today. These
+questions are also somewhat intertwined together when we don’t want them to be!</p>
+
+<p>Rust’s vision for WebAssembly on the web is one of interoperability. You should
+be able to use Rust and WebAssembly without the rest of your application even
+needing to know. Furthermore, a crate deep in your dependency graph may depend
+on JS functionality (like an NPM package or <a href="https://rustwasm.github.io/wasm-bindgen/api/web_sys/"><code class="highlighter-rouge">web-sys</code></a>) and you also shouldn’t
+need to know about that!</p>
+
+<p>It’s not clear if we can maintain this vision for threads on the web platform
+right now. This is where I’d love to brainstorm with others and/or get help and
+thoughts about this. The threads proposal isn’t stable after all, and there’s in
+theory lots of runway for us to figure out something to help us out!</p>
+
+<p>I’d hate to leave you with a cliffhanger like this, though! While not all of the
+above questions have great answers today, I’ve been working on at least a
+<em>functioning</em> solution to many of the issues in <code class="highlighter-rouge">wasm-bindgen</code> specifically. Let’s take
+a look at that and see if we can actually demo threads and WebAssembly today!</p>
+
+<h3 id="threads-and-wasm-bindgen">Threads and <code class="highlighter-rouge">wasm-bindgen</code></h3>
+
+<p>The <a href="https://github.com/rustwasm/wasm-bindgen"><code class="highlighter-rouge">wasm-bindgen</code></a> tool is composed of two halves. One half is a <a href="https://doc.rust-lang.org/nightly/reference/procedural-macros.html">procedural
+macro</a>, the <code class="highlighter-rouge">#[wasm_bindgen]</code> attribute, which is expanded and runs at compile
+time. This generates shims in your Rust code and otherwise preps the final
+binary for the second half, the <code class="highlighter-rouge">wasm-bindgen</code> CLI.  The CLI tool <code class="highlighter-rouge">wasm-bindgen</code>
+is uniquely positioned to do all sorts of crazy transformations on the
+WebAssembly module (and it <a href="https://github.com/rustwasm/wasm-bindgen/pull/124">already
+does</a>!).</p>
+
+<p>The WebAssembly binary format is <a href="http://webassembly.github.io/spec/core/binary/index.html">well specified</a> and
+surprisingly easy to manipulate. The <code class="highlighter-rouge">wasm-bindgen</code> CLI tool is currently using
+the excellent <a href="https://github.com/paritytech/parity-wasm"><code class="highlighter-rouge">parity-wasm</code></a> crate for parsing WebAssembly, which makes it a
+breeze for <code class="highlighter-rouge">wasm-bindgen</code> to do fancy transformations. (and more news on this
+soon, an <em>even breezier</em> solution is in the works too!)</p>
+
+<p>With the CLI tool and <a href="https://github.com/paritytech/parity-wasm"><code class="highlighter-rouge">parity-wasm</code></a> we’re freed from the “shackles” of LLVM
+(aka it’s easier to experiment in tooling than in LLVM itself) and have access
+to the full feature set of WebAssembly. Let’s knock out some of those above
+questions with this newfound power.</p>
+
+<h4 id="injecting-thread-local-globals">Injecting thread-local <code class="highlighter-rouge">global</code>s</h4>
+
+<p>Although LLVM/LLD don’t currently have the ability to emit custom <code class="highlighter-rouge">global</code>
+variables, we do in <code class="highlighter-rouge">wasm-bindgen</code>! This is an easy method to implement
+thread-local storage, so let’s have <code class="highlighter-rouge">wasm-bindgen</code> inject two globals:</p>
+
+<ol>
+  <li>
+    <p>First, a thread ID. Thread IDs can be useful for a number of applications,
+but we’re specifically interested in the <a href="https://github.com/rust-lang/rust/blob/f51752774bbbe48d2aabe53c86e9e91ed3a73a5d/src/libstd/sys/wasm/mutex_atomics.rs#L81-L160"><code class="highlighter-rouge">ReentrantMutex</code></a> of the standard
+library right now, which needs to know which thread is which to know when
+reentrant locks are used.</p>
+  </li>
+  <li>
+    <p>Next, a TCB slot. A TCB is a “thread control block” and is typically used to
+store an allocated structure in threading runtimes. This allocated structure
+is an entry point for lots of other runtime-related functionality, but for
+now we’ll primarily use this as storage for user-defined thread-local
+values. Or, in other words, this is how we’ll implement <a href="https://doc.rust-lang.org/std/macro.thread_local.html"><code class="highlighter-rouge">thread_local!</code></a>.</p>
+  </li>
+</ol>
+
+<p>It’s easy enough to add two <code class="highlighter-rouge">global</code> variables of type <code class="highlighter-rouge">i32</code> to the wasm module,
+but we need to manage them too! Someone still has to actually allocate the thread
+ID, and we also need to be able to access it.</p>
+
+<p>For this let’s take another trick of out <code class="highlighter-rouge">wasm-bindgen</code>’s playbook, rewriting
+function calls. We define that a function imported like this:</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">#</span><span class="p">[</span><span class="nf">link</span><span class="p">(</span><span class="n">wasm_import_module</span> <span class="o">=</span> <span class="s">"__wbindgen_thread_xform__"</span><span class="p">)]</span>
+<span class="k">extern</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">__wbindgen_thread_id</span><span class="p">()</span> <span class="k">-&gt;</span> <span class="nb">u32</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>is actually magically turned into <code class="highlighter-rouge">get_global $thread_id</code>. The <code class="highlighter-rouge">call</code>
+instruction actually has a 1:1 replacement with <code class="highlighter-rouge">get_global</code>, so the rewriting
+here is super simple! We can use similar “intrinsics” like <code class="highlighter-rouge">__wbindgen_tcb_get</code>
+and <code class="highlighter-rouge">__wbindgen_tcb_set</code> for getting/setting the TCB as well.</p>
+
+<p>Next up, let’s figure out how to initialize this thread ID global.</p>
+
+<h4 id="where-to-start">Where to <code class="highlighter-rouge">start</code>?</h4>
+
+<p>We saw earlier that WebAssembly provides a <code class="highlighter-rouge">start</code> function which is
+automatically invoked whenever a module is instantiated, and in a multithreaded
+world this is per-thread initialization. That’s actually exactly what we want
+for thread ID initialization as well as other aspects!</p>
+
+<p>Using <code class="highlighter-rouge">wasm-bindgen</code> we can solve a good number of the above problems with an
+injected <code class="highlighter-rouge">start</code> function. We can even call the previous <code class="highlighter-rouge">start</code> function when
+we’re done to preserve semantic equivalence! Our injected function will perform
+these steps:</p>
+
+<ol>
+  <li>
+    <p>Atomically increment an injected global thread ID counter. We reserve 4 bytes
+of space in linear memory for this in <code class="highlighter-rouge">wasm-bindgen</code>, and this address will
+keep track of all threads that have ever been. The result of this atomic
+addition can then be stored in our thread ID global, meaning we’ve just
+allocated and initialized our thread ID!</p>
+  </li>
+  <li>
+    <p>We know we’re the first thread (the main thread) if our thread ID is zero.
+This is a great time to initialize memory, so <code class="highlighter-rouge">wasm-bindgen</code> can flag all our
+data segments as <code class="highlighter-rouge">passive</code>, and if our ID is 0 we can call <code class="highlighter-rouge">memory.init</code>.</p>
+  </li>
+  <li>
+    <p>If our thread ID isn’t 0, then we know that we’re a spawned thread. LLVM
+already arranged for there to be a <code class="highlighter-rouge">global</code> for our stack pointer, but its
+initial value is only valid for the main thread. To keep going we need to set
+this up. To allocate a stack we can leverage the convenient <code class="highlighter-rouge">memory.grow</code>
+instruction, a quick-and-dirty way to allocate memory without using the
+standard library’s actual memory allocator (which to invoke would in turn
+need a stack). Once we’ve got a stack we can update our stack pointer global,
+and we should be good to go!</p>
+  </li>
+  <li>
+    <p>Finally, if a previous <code class="highlighter-rouge">start</code> function was available, we can delegate to it
+at this point and call it.</p>
+  </li>
+</ol>
+
+<p>Ok we’re making some good progress! By assuming that exactly the same
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> is used on all threads, an injected <code class="highlighter-rouge">start</code> function can
+cover a lot of ground to making threads and was easy to use.</p>
+
+<h4 id="managing-webassemblymemory">Managing <code class="highlighter-rouge">WebAssembly.Memory</code></h4>
+
+<p>By default all Rust-compiled wasm binaries will <em>export</em> the <code class="highlighter-rouge">memory</code> that they
+define. This means that the instantiation of a wasm module will automatically
+create an instance of <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory"><code class="highlighter-rouge">WebAssembly.Memory</code></a> and make it available for use. This
+is incompatible with threads, however, where we want all modules to use the same
+instance of memory!</p>
+
+<p>Instead we’ll need to arrange for memory to be imported not exported. That can
+be a bit of a pain to set up and work with, though, so <code class="highlighter-rouge">wasm-bindgen</code> can
+continue to take care of instantiation in the JS bindings so users don’t have to
+worry about it.</p>
+
+<p>Note that for now LLVM/LLD also don’t currently implement a memory object that’s
+flagged as <code class="highlighter-rouge">shared</code>, so as a minor detail <code class="highlighter-rouge">wasm-bindgen</code> can take care of this
+too.</p>
+
+<h4 id="sharing-js-shims-spawning-workers">Sharing JS shims, spawning Workers</h4>
+
+<p>This is where the story with <code class="highlighter-rouge">wasm-bindgen</code> takes a bit of a nose-dive into
+“this particular strategy no longer seems long-term viable” territory. The last
+few things we need to take care of is actually spawning the web workers and
+somehow getting the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory"><code class="highlighter-rouge">WebAssembly.Memory</code></a> onto each
+worker.</p>
+
+<p>I initially attempted to see if we could do this with <a href="https://webpack.js.org/">Webpack</a> as it’d be
+awesome to have a story for bundlers for large-scale integration. Unfortunately
+I ran into a few snags like <a href="https://github.com/webpack/webpack/issues/8157">you can’t access the
+<code class="highlighter-rouge">WebAssembly.Module</code></a> and it also wasn’t clear to me how
+workers would use a different instantiation path that would <code class="highlighter-rouge">onmessage</code> to wait
+for the module/memory and then instantiate after receiving. Fear not, though, I’m
+sure we’ll figure out a bundler story for this one way or another!</p>
+
+<p>Next I turned to <code class="highlighter-rouge">wasm-bindgen</code>’s <a href="https://rustwasm.github.io/wasm-bindgen/reference/no-esm.html"><code class="highlighter-rouge">--no-modules</code></a> option to see if something
+could work. Currently it exports a global (named <code class="highlighter-rouge">wasm_bindgen</code>) which is a
+function that takes the path to the wasm file to instantiate. I extended it to
+take either this or a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> instance (along with
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory"><code class="highlighter-rouge">WebAssembly.Memory</code></a>). That way when given a path it can create memory and do
+fetch/instantiate, but with a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module"><code class="highlighter-rouge">WebAssembly.Module</code></a> it can avoid the fetch and
+use the provided memory to instantiate.</p>
+
+<p>Since <code class="highlighter-rouge">--no-modules</code> makes it setting up everything pretty manual anyway it was
+easy enough to have the main thread work as usual, provide accessors for the
+module/memory, spin up web workers, and post the module/memory to each worker.
+Inside the workers we can import the <code class="highlighter-rouge">--no-modules</code> generated JS, wait for the
+message, wait for instantiation, and then start doing some work.</p>
+
+<p>All-in-all this setup made it so <em>something</em> could work. This definitely isn’t a
+long-term solution as there’s no path to use bundlers or runtimes like node.js
+yet. We’ll surely flesh out all these details before wasm threads are stable
+though!</p>
+
+<h3 id="demo-raytracing">Demo: Raytracing</h3>
+
+<p>Phew! That was quite a lot of information and background, but hopefully you’ve
+got a better idea about what the threads proposal is and some ideas of how we
+can leverage it in Rust and <code class="highlighter-rouge">wasm-bindgen</code>. Let’s get to the good stuff now.</p>
+
+<p>We initially strived to have a cool <a href="https://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot Set</a> rendering using
+<a href="https://github.com/rayon-rs/rayon">Rayon</a>, but unfortunately the limitations with spawning Web Workers meant we
+<a href="https://github.com/rayon-rs/rayon/issues/93">couldn’t use Rayon</a>. Coupled with my own short attention span and
+lack of understanding about Mandelbrot, I switched to raytracing!</p>
+
+<p>Having not worked with raytracing in years I googled around to see if there were
+any existing Rust raytracers I could try out. <a href="https://github.com/Twinklebear/tray_rust">My favorite one I found</a>
+unfortunately requires nightly and last compiled mid-2017, but <a href="https://github.com/bheisler">@bheisler</a> had
+an <a href="https://bheisler.github.io/post/writing-raytracer-in-rust-part-1/">awesome tutorial</a> around early-2017, and the <a href="https://github.com/bheisler/raytracer">associated
+code</a> still compiles and works today (yay!). After <a href="https://github.com/alexcrichton/raytracer/compare/master...update-deps">a few
+inconsequential modifications</a> I was able to use the project <em>as
+is</em> on the web.</p>
+
+<blockquote>
+  <p>As a side note, this is one of the awesome aspects of Rust and Cargo. It took
+no time at all to find a raytracer, integrate it, compile it to wasm, and
+run in a browser.</p>
+</blockquote>
+
+<p>With raytracing (or at least how this raytracer worked) it’s an embarrassingly
+parallel task as all pixels of an image are rendered entirely independently of
+all others. This meant we could rig up a way to <a href="https://github.com/rustwasm/wasm-bindgen/blob/cb170ef94f6013af247e13b50d24a97c473b1a99/examples/raytrace-parallel/src/lib.rs#L286-L320">fan out work for pixels amongst
+worker threads</a> pretty easily.</p>
+
+<p>The last piece I thought would be pretty cool for this demo is to see a
+progressive rendering to see what an image looks like as it’s being rendered.
+Every so often the main thread will request an update of the worker threads, and
+<a href="https://github.com/rustwasm/wasm-bindgen/blob/cb170ef94f6013af247e13b50d24a97c473b1a99/examples/raytrace-parallel/src/lib.rs#L333-L363">they’ll send an <code class="highlighter-rouge">ImageData</code> to the main thread</a> which can be
+rendered to a canvas:</p>
+
+<p><a href="https://rustwasm.github.io/wasm-bindgen/exbuild/raytrace-parallel/"><img src="../../../assets/2018-10-24-rust-wasm-threads.gif" alt="Demo preview" /></a></p>
+
+<p><a href="https://rustwasm.github.io/wasm-bindgen/exbuild/raytrace-parallel/">Check out the raytracing demo for yourself!</a> or <a href="https://github.com/rustwasm/wasm-bindgen/tree/master/examples/raytrace-parallel">browse the code
+online</a></p>
+
+<p>For this demo remember that this is a lot of unstable and nightly technology.
+It only works in Firefox (as of this writing) as other browsers don’t implement
+<code class="highlighter-rouge">memory.init</code> instructions yet.</p>
+
+<p>You’ll find a giant JSON blob on the left which is a description of the scene to
+render. Right now it’s a pretty simplistic raytracer so it only supports planes
+and spheres, but you can move things around, add spheres, etc. If you’re willing
+I’d love to get some help to <a href="https://github.com/Twinklebear/tray_rust#sample-renders">implement more complicated renders as
+well</a>.</p>
+
+<h3 id="future-work">Future Work</h3>
+
+<p>While we’ve gotten to the point of making a demo, we’ve still got a good deal of
+work to do! These are some of the highlights of the remaining tasks.</p>
+
+<h4 id="main-thread-disallows-atomicwait">Main Thread Disallows <code class="highlighter-rouge">atomic.wait</code></h4>
+
+<p>The main thread of the browser cannot execute the <code class="highlighter-rouge">atomic.wait</code> instruction, it
+will unconditionally throw an exception if this is executed. This means that,
+by default, mutexes will not work when contended on the main thread!
+Additionally, it means that <strong>the only way currently to synchronize with the
+main thread is <code class="highlighter-rouge">postMessage</code> in a worker</strong>.</p>
+
+<p>This situation is especially exacerbated by the fact that Rust’s global
+allocator, <a href="https://github.com/alexcrichton/dlmalloc-rs">dlmalloc</a>, is globally synchronized. This means that if your main
+thread allocates memory, it may occasionally throw an exception if contended!
+This is actually a bug in the demo above today too!</p>
+
+<p>I’ve <a href="https://github.com/WebAssembly/threads/issues/106">opened an issue</a> on the
+threads proposal repo to discuss this, and hopefully we can figure out a
+reasonable workaround for the main thread to at least still allocate memory!
+So far I’ve learned about a proposal for <a href="https://github.com/tc39/proposal-atomics-wait-async"><code class="highlighter-rouge">Atomics.waitAsync</code></a> which is a second
+mechanism to wake up the main thread. There’s also thoughts about a custom
+allocator which is largely lock-free but falls back to <code class="highlighter-rouge">memory.grow</code> on the main
+thread during contention. In the meantime though this makes it very difficult
+for a main thread to use arbitrary libraries on crates.io, as they’d have to be
+audited for <em>any</em> synchronization.</p>
+
+<p>A “workaround” we may implement for Rust would be to simply spin instead of
+<code class="highlighter-rouge">atomic.wait</code> in the mutex implementation if the thread id is 0. Apart from
+being a bad way to synchronize, it also bakes in that the first instantiation
+was always on the main thread, which may not always be true!</p>
+
+<h4 id="threads-exit-isnt-implemented">Threads Exit isn’t implemented</h4>
+
+<p>Right now in the model here for Rust there’s not really a concept of a thread
+exiting. This means that if a thread does actually exit (aka the worker is gc’d)
+then it leaks memory allocations like:</p>
+
+<ul>
+  <li>The thread’s stack (it’s never reclaimed or reused)</li>
+  <li>All data in thread local storage (Rust doesn’t register destructors)</li>
+</ul>
+
+<p>Eventually we’ll need to add the concept of thread exit so we can correctly
+handle this situation and reclaim resources for reuse later. This may be a case
+where the <a href="https://github.com/tc39/proposal-weakrefs"><code class="highlighter-rouge">WeakRef</code> proposal</a> could
+help out though by automatically running a thread exit when js objects are gc’d.</p>
+
+<h4 id="stack-overflow-is-bad-again">Stack overflow is bad again</h4>
+
+<p>When laying out linear memory, LLD will by default place static data first and
+then the main thread’s stack. This has a problem, though, that if the main
+thread has a stack overflow it’ll silently corrupt all static data! To fix this
+problem we pass <code class="highlighter-rouge">--stack-first</code> to LLD which places, well, the stack first in
+memory, causing a stack overflow to trap because of an out of bounds memory
+access.</p>
+
+<p>We unfortunately don’t have this luxury for all worker threads, though. Worker
+threads suffer the same problem as before where if a stack overflow happens
+it’ll silently corrupt heap or static data.</p>
+
+<p>One option available to us is to insert a prologue (by LLVM or <code class="highlighter-rouge">wasm-bindgen</code>)
+to check whether we have enough linear stack space before decrementing the stack
+pointer (trapping if we don’t), but it’s not clear what sort of performance
+impact this change might have as it affects all functions! Alternative solutions
+are likely to require new wasm features like unmapping memory to force
+operations to trap.</p>
+
+<h3 id="you-can-make-sausage-too">You can make sausage too!</h3>
+
+<p>If you’re curious about how the sausage is made and/or how you can help out,
+here’s a list of changes made to build this demo and some helpful repositories!</p>
+
+<ul>
+  <li><a href="https://github.com/WebAssembly/bulk-memory-operations/pull/32/files">The bulk memory operations overview was clarified wrt semantics and
+encoding</a></li>
+  <li><a href="https://github.com/WebAssembly/wabt/pull/927">The <code class="highlighter-rouge">wabt</code> suite now has support for bulk memory operation
+instructions</a></li>
+  <li><a href="https://github.com/paritytech/parity-wasm/pull/227"><code class="highlighter-rouge">parity-wasm</code> now has support for bulk memory
+operations</a></li>
+  <li><a href="https://github.com/rust-lang/rust/pull/54950">Synchronize the global allocator in Rust’s standard
+library</a></li>
+  <li><a href="https://github.com/rust-lang/rust/pull/54951">Implement thread local storage for Rust’s standard
+library</a></li>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/pull/959">Fix generated <code class="highlighter-rouge">wasm-bindgen</code> JS is APIs don’t exist (necessary for
+instantiation in Web
+Workers)</a></li>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/pull/958">Switch to using a thread local for <code class="highlighter-rouge">global()</code>’s cache in
+<code class="highlighter-rouge">js-sys</code></a></li>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/pull/957">Add <code class="highlighter-rouge">#[derive(Debug, Clone)]</code> to
+<code class="highlighter-rouge">js_sys::Promise</code></a></li>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/pull/956">Add <code class="highlighter-rouge">TypedArray.slice</code> bindings to
+<code class="highlighter-rouge">js-sys</code></a></li>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/pull/955">Ensure <code class="highlighter-rouge">JsValue</code> isn’t
+<code class="highlighter-rouge">Send</code></a></li>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/pull/954">Fix and edge case where futures on the main thread didn’t
+complete</a></li>
+  <li><a href="https://github.com/rust-lang/rust/pull/54017">Initial implementation of wasm32 atomics in Rust’s standard
+library</a></li>
+  <li><a href="https://github.com/japaric/libm/pull/152">Optimize intrinsics on wasm32 in
+<code class="highlighter-rouge">libm</code></a></li>
+  <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1496582">Firefox’s decoding of <code class="highlighter-rouge">memory.init</code> needed an update</a></li>
+  <li><a href="https://github.com/rustwasm/wasm-bindgen/pull/972">Implement support for WebAssembly threads in
+<code class="highlighter-rouge">wasm-bindgen</code></a></li>
+</ul>
+
+<p>If you’ve gotten this far then you can probably tell that the threads story in
+Rust still needs some work! We’d love to have your help and feel free to drop by
+at <code class="highlighter-rouge">#rust-wasm</code> on Mozilla’s IRC, <a href="https://discord.gg/6SHrCn"><code class="highlighter-rouge">#wg-wasm</code> on
+Discord</a>, or follow along on GitHub with either
+<a href="https://github.com/rustwasm/wasm-bindgen"><code class="highlighter-rouge">wasm-bindgen</code></a> or <a href="https://github.com/rustwasm/wasm-pack"><code class="highlighter-rouge">wasm-pack</code></a>.</p>
+
+
+  </div><a class="u-url" href="/2018/10/24/multithreading-rust-and-wasm.html" hidden></a>
+</article>
+
+      </div></main><footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">Rust and WebAssembly</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name">Rust and WebAssembly</li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">rustwasm</span></a></li><li><a href="https://www.twitter.com/rustwasm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">rustwasm</span></a></li></ul>
+</div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer><!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-85933208-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-85933208-2');
+</script>
+</body>
+
+</html>

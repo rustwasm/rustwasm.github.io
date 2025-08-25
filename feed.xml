@@ -1,0 +1,2002 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="https://rustwasm.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://rustwasm.github.io/" rel="alternate" type="text/html" /><updated>2025-08-25T09:21:30+00:00</updated><id>https://rustwasm.github.io/feed.xml</id><title type="html">Rust and WebAssembly</title><subtitle>Stay up to date with events, learning resources, and recent developments in Rust and WebAssembly community.</subtitle><entry><title type="html">This Week in Rust and WebAssembly 15</title><link href="https://rustwasm.github.io/2019/03/28/this-week-in-rust-and-wasm-015.html" rel="alternate" type="text/html" title="This Week in Rust and WebAssembly 15" /><published>2019-03-28T00:00:00+00:00</published><updated>2019-03-28T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/03/28/this-week-in-rust-and-wasm-015</id><content type="html" xml:base="https://rustwasm.github.io/2019/03/28/this-week-in-rust-and-wasm-015.html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust and WebAssembly&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rust-lang.org&quot;&gt;Rust&lt;/a&gt; is a systems language pursuing the trifecta:
+safety, concurrency, and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://webassembly.org&quot;&gt;WebAssembly&lt;/a&gt; is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!&lt;/p&gt;
+
+&lt;p&gt;This is a weekly summary of Rust and WebAssembly’s progress and community.&lt;/p&gt;
+
+&lt;p&gt;Did we miss something? Tweet to us at &lt;a href=&quot;https://twitter.com/rustwasm&quot;&gt;@rustwasm&lt;/a&gt;
+or &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io&quot;&gt;send us a pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;news-and-blog-posts-from-around-the-web&quot;&gt;News and Blog Posts from Around the Web&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to make sure something ends up on this list next time we publish an issue?
+&lt;a href=&quot;https://github.com/rustwasm/team/issues/79&quot;&gt;Leave a comment on this issue.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/&quot;&gt;&lt;strong&gt;Standardizing WASI: A system interface to run WebAssembly outside the
+web&lt;/strong&gt;&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;@alexcrichton already has a pull request to &lt;a href=&quot;https://github.com/rust-lang/rust/pull/59464&quot;&gt;add a &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm32-unknown-wasi&lt;/code&gt;
+target&lt;/a&gt; for Rust!&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;RustVolley&lt;/code&gt; is a reimplementation of the Blobby Volley 2 game in Rust and Wasm
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/RustyVolley/RustyVolleySrc&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://rustyvolley.github.io/WebDemo/&quot;&gt;Live Demo&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.cloudflare.com/introducing-wrangler-cli/&quot;&gt;CloudFlare’s new &lt;code class=&quot;highlighter-rouge&quot;&gt;wrangler&lt;/code&gt; CLI tool lets you deploy Rust-generated Wasm on
+CloudFlare workers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fastly.com/blog/announcing-lucet-fastly-native-webassembly-compiler-runtime&quot;&gt;Fastly open sources Lucet: a native WebAssembly compiler and
+runtime.&lt;/a&gt;
+Its built with Rust on top of Cranelift and supports WASI.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;updates-from-rustwasm&quot;&gt;Updates from &lt;a href=&quot;https://github.com/rustwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://internals.rust-lang.org/t/welcome-pauan-to-the-rust-and-webassembly-domain-working-group-core-team/9707&quot;&gt;&lt;strong&gt;🎉 Welcome @Pauan to the Rust and WebAssembly working group core
+team! 🎉&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;rfcs&quot;&gt;RFCs&lt;/h3&gt;
+
+&lt;h4 id=&quot;new-rfcs&quot;&gt;New RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h4 id=&quot;final-comment-period-rfcs&quot;&gt;Final Comment Period RFCs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/9&quot;&gt;Add an amendment to the RFC process&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;merged-rfcs&quot;&gt;Merged RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h3 id=&quot;working-group-meetings&quot;&gt;Working Group Meetings&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=gaTwOc0eGb4&quot;&gt;Watch the recording of this week’s working group meeting on
+YouTube&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/team/issues/264&quot;&gt;Come join us at next week’s working group
+meeting!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gloo&quot;&gt;Gloo&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rustwasm.github.io/2019/03/26/gloo-onion-layers.html&quot;&gt;&lt;strong&gt;Gloo Update: Onion Layers, Timers, and
+Events&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;@Aehmlo &lt;a href=&quot;https://github.com/rustwasm/gloo/pull/38&quot;&gt;split up the &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo_timers&lt;/code&gt; crate’s public
+API&lt;/a&gt; to use &lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt; and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;futures&lt;/code&gt; submodules, as we collectively agreed upon in other issues.&lt;/li&gt;
+  &lt;li&gt;@cbrevik &lt;a href=&quot;https://github.com/rustwasm/gloo/pull/32&quot;&gt;implemented the &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo_console_timer&lt;/code&gt;
+crate,&lt;/a&gt; which provides scoped
+closures and RAII-style helpers for working with &lt;code class=&quot;highlighter-rouge&quot;&gt;console.time&lt;/code&gt; and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;console.timeEnd&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@OddCoincidence &lt;a href=&quot;https://github.com/rustwasm/gloo/pull/48&quot;&gt;updated the &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo_timers&lt;/code&gt;
+internals&lt;/a&gt; to use
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm_bindgen::closures::Closure::once&lt;/code&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@RyLev added some initial &lt;a href=&quot;https://github.com/rustwasm/gloo/pull/46&quot;&gt;Azure Pipelines continuous integration
+tests&lt;/a&gt; for Gloo.&lt;/li&gt;
+  &lt;li&gt;@David-OConnor added the &lt;a href=&quot;https://github.com/rustwasm/gloo/pull/45&quot;&gt;skeleton of an &lt;code class=&quot;highlighter-rouge&quot;&gt;mdbook&lt;/code&gt;
+guide&lt;/a&gt; for Gloo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-bindgen&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1384&quot;&gt;tweaked the &lt;code class=&quot;highlighter-rouge&quot;&gt;no-modules&lt;/code&gt; target’s generated JavaScript glue for
+instantiating Wasm
+modules&lt;/a&gt; to support
+CloudFlare workers (and other environments where &lt;code class=&quot;highlighter-rouge&quot;&gt;x instanceof
+WebAssembly.Module&lt;/code&gt; might fail, like across &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;iframe&amp;gt;&lt;/code&gt;s)&lt;/li&gt;
+  &lt;li&gt;@alexcrichton made it so that our emitted JS glue for reflecting Rust closures
+as JS functions will properly &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1385&quot;&gt;detect and protect against use-after-free from
+the JS side.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;@alexcrichton fixed a bug where Rust structs exported as JS &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1383&quot;&gt;didn’t always
+emit the JS classes glue in a deterministic
+order.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;@fitzgen &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1382&quot;&gt;made the “without a JS bundler” example use &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack build
+--target web&lt;/code&gt;,&lt;/a&gt; now that
+its supported in the latest &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; release.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1369&quot;&gt;cleaned up the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; CLI’s
+options&lt;/a&gt; to take &lt;code class=&quot;highlighter-rouge&quot;&gt;--target
+blah&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;--blah&lt;/code&gt; (which still exist but are deprecated).&lt;/li&gt;
+  &lt;li&gt;@stevebob &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1358&quot;&gt;enabled &lt;code class=&quot;highlighter-rouge&quot;&gt;mdbook&lt;/code&gt;’s link checking tests for the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;
+guide&lt;/a&gt; to our continuous
+integration tests.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1305&quot;&gt;implemented
+&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/rfcs#8&lt;/code&gt;&lt;/a&gt; to
+enable transitive crates dependencies on npm packages.&lt;/li&gt;
+  &lt;li&gt;@RReverser &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1403&quot;&gt;added the &lt;code class=&quot;highlighter-rouge&quot;&gt;constructor&lt;/code&gt;
+property&lt;/a&gt; to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;js_sys::Object&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1401&quot;&gt;fixed sending large
+&lt;code class=&quot;highlighter-rouge&quot;&gt;u32&lt;/code&gt;s&lt;/a&gt; from Wasm to JS.&lt;/li&gt;
+  &lt;li&gt;@RReverser &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1398&quot;&gt;consistently exposed
+&lt;code class=&quot;highlighter-rouge&quot;&gt;is_like_none&lt;/code&gt;&lt;/a&gt; for our
+generated JS glue, fixing a bug along the way.&lt;/li&gt;
+  &lt;li&gt;@RReverser &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1397&quot;&gt;simplified the ABI
+representation&lt;/a&gt; of
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Option&amp;lt;char&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1395&quot;&gt;migrated all the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen-*&lt;/code&gt;
+crates&lt;/a&gt; to Rust 2018
+edition.&lt;/li&gt;
+  &lt;li&gt;@RReverser &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1393&quot;&gt;made iterating over JS objects via the JS iteration protocol
+faster&lt;/a&gt; by removing
+redundant property string decoding.&lt;/li&gt;
+  &lt;li&gt;@RReverser &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1391&quot;&gt;made a special version of passing strings from JS to
+Wasm&lt;/a&gt; when we are
+targeting Node.js that is faster than using Node.js’s &lt;code class=&quot;highlighter-rouge&quot;&gt;TextEncoder&lt;/code&gt;
+implementation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-pack&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/598&quot;&gt;fixed a panic&lt;/a&gt;
+that could happen when installing the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; CLI tool.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requests-for-contribution&quot;&gt;Requests for Contribution&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly
+working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;new-good-first-issues&quot;&gt;New Good First Issues&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/issues/1390&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;.d.ts&lt;/code&gt; file for &lt;code class=&quot;highlighter-rouge&quot;&gt;--web&lt;/code&gt; target does not define the &lt;code class=&quot;highlighter-rouge&quot;&gt;init()&lt;/code&gt; function&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/issues/1387&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;: Closures should implement &lt;code class=&quot;highlighter-rouge&quot;&gt;std::fmt::Debug&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/gloo/issues/41&quot;&gt;Gloo: Help ensure we have tracking issues on file for making utility crates for all Web platform features&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;new-help-wanted-issues&quot;&gt;New “Help Wanted” Issues&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/issues/1399&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;: Closures should accept references as arguments&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Hello and welcome to another issue of This Week in Rust and WebAssembly!</summary></entry><entry><title type="html">Gloo Update: Onion Layers, Timers, and Events</title><link href="https://rustwasm.github.io/2019/03/26/gloo-onion-layers.html" rel="alternate" type="text/html" title="Gloo Update: Onion Layers, Timers, and Events" /><published>2019-03-26T00:00:00+00:00</published><updated>2019-03-26T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/03/26/gloo-onion-layers</id><content type="html" xml:base="https://rustwasm.github.io/2019/03/26/gloo-onion-layers.html">&lt;p&gt;About two weeks ago, we &lt;a href=&quot;https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html&quot;&gt;kicked off&lt;/a&gt; our effort to collectively
+build &lt;a href=&quot;https://github.com/rustwasm/gloo&quot;&gt;Gloo&lt;/a&gt;, a modular toolkit for building fast and reliable Web apps and
+libraries with Rust and Wasm. We knew we wanted to explicitly cultivate the Rust
+and Wasm library ecosystem by spinning out reusable, standalone libraries:
+things that would help you out whether you were writing a green-field Web app in
+pure-Rust, building your own framework, or surgically inserting some
+Rust-generated Wasm into an existing JavaScript project. What was still fuzzy,
+and which we didn’t know yet, was &lt;em&gt;how&lt;/em&gt; we were going design and expose these
+reusable bits.&lt;/p&gt;
+
+&lt;h2 id=&quot;onion-layered-apis&quot;&gt;Onion-Layered APIs&lt;/h2&gt;
+
+&lt;p&gt;I’m pleased to tell you that that after some collaborative discussion in issue
+threads, we’ve come up with a promising approach to designing Gloo APIs, and
+we’ve since formalized it a bit in &lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;. I’ve nicknamed this
+approach “onion-layered” API design.&lt;/p&gt;
+
+&lt;p&gt;Briefly, we want to build mid-level abstraction libraries on top of raw &lt;code class=&quot;highlighter-rouge&quot;&gt;-sys&lt;/code&gt;
+bindings, build futures and streams integration on top of the mid-level APIs,
+and build high-level APIs on top of all that. But — crucially —
+every layer should be publicly exposed and reusable.&lt;/p&gt;
+
+&lt;p&gt;While this approach to API design is certainly not novel, we want to very
+deliberately follow it so that we&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;maximize reusability for the larger ecosystem, and&lt;/li&gt;
+  &lt;li&gt;exercise our mid-level APIs when building higher-level APIs, to ensure their
+generality and suitability for acting as a solid foundation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As we go through and examine each layer, I’ll use &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt; and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt; Web APIs&lt;/a&gt; as a running example.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-core-wasm-bindgen-js-sys-and-web-sys&quot;&gt;The Core: &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;js-sys&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;The innermost layer are raw bindings built on top of &lt;a href=&quot;https://rustwasm.github.io/2018/09/26/announcing-web-sys.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;js-sys&lt;/code&gt;
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt;&lt;/a&gt;. These bindings are fast, have a light code
+size foot print, and are future-compatible with &lt;a href=&quot;https://github.com/WebAssembly/webidl-bindings/blob/9ada880991a26081279ee6b74e26502f5046a010/proposals/host-bindings/Overview.md&quot;&gt;the host bindings
+proposal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;What they are &lt;em&gt;not&lt;/em&gt; is super ergonomic to use all of the time. Using raw
+&lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt; bindings directly can sometimes feel like making raw &lt;code class=&quot;highlighter-rouge&quot;&gt;libc&lt;/code&gt; calls
+instead of leveraging Rust’s nice &lt;code class=&quot;highlighter-rouge&quot;&gt;std&lt;/code&gt; abstractions.&lt;/p&gt;
+
+&lt;p&gt;Here is doing some operation after a 500 millisecond timeout using raw &lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt;
+bindings:&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;wasm_bindgen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::{&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;closure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Closure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;JsCast&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Create a Rust `FnOnce` closure that is exposed to JavaScript.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;closure&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Closure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;move&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;do_some_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Get the JavaScript function that reflects our Rust closure.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;js_val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;closure&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.as_ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;js_func&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;js_val&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.unchecked_ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;js_sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Finally, call the `window.setTimeout` API.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timeout_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;web_sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;should have a `window`&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.set_timeout_with_callback_and_timeout_and_arguments_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;js_func&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;should set a timeout OK&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Then, if we ever decide we want to cancel the timeout, we do this:&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;web_sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;should have a `window`&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.clear_timeout_with_handle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timeout_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;the-callbacks-layer&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt; Layer&lt;/h2&gt;
+
+&lt;p&gt;When we look at the raw &lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt; usage, there is a bit of type conversion
+noise, some unfortunate method names, and a handful of &lt;code class=&quot;highlighter-rouge&quot;&gt;unwrap&lt;/code&gt;s for ignoring
+edge-case scenarios where we prefer to fail loudly rather than limp along. We
+can clean all these things up with the first of our “mid-level” API layers,
+which in the case of timers is the &lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt; module in the &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo_timers&lt;/code&gt; crate
+(which is also re-exported from the &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo&lt;/code&gt; umbrella crate as &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo::timers&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;The first “mid-level” API built on top of the &lt;code class=&quot;highlighter-rouge&quot;&gt;-sys&lt;/code&gt; bindings exposes all the
+same functionality and the same design that the Web does, but uses proper Rust
+types. For example, at this layer, instead of taking untyped JavaScript
+functions with &lt;code class=&quot;highlighter-rouge&quot;&gt;js_sys::Function&lt;/code&gt;, we take any &lt;code class=&quot;highlighter-rouge&quot;&gt;F: FnOnce()&lt;/code&gt;. This layer is
+essentially the least opinionated direct API translation to Rust.&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gloo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;timers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Timeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// Alternatively, we could use the `gloo_timers` crate without the rest of Gloo:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// use gloo_timers::callbacks::Timeout;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Already, much nicer!&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;timeout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Timeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;move&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;do_some_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// If we ever decide we want to cancel our delayed operation, all we do is drop&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// the `timeout` now:&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Or if we never want to cancel, we can use `forget`:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;timeout&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.forget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;layering-on-futures-and-streams&quot;&gt;Layering on Futures and Streams&lt;/h2&gt;
+
+&lt;p&gt;The next layer to add is integrating with popular traits and libraries in the
+Rust ecosystem, like &lt;code class=&quot;highlighter-rouge&quot;&gt;Future&lt;/code&gt;s or &lt;code class=&quot;highlighter-rouge&quot;&gt;serde&lt;/code&gt;. For our running &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo::timers&lt;/code&gt;
+example, this means we implement a &lt;code class=&quot;highlighter-rouge&quot;&gt;Future&lt;/code&gt; backed by &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;, and a
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Stream&lt;/code&gt; implementation backed by &lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;futures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;prelude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gloo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;timers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;futures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TimeoutFuture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// By using futures, we can use all the future combinator methods to build up a&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// description of some asynchronous task.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my_future&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;TimeoutFuture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.and_then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;// Do some operation after 500 milliseconds...&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;do_some_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;c&quot;&gt;// and then wait another 500 milliseconds...&lt;/span&gt;
+        &lt;span class=&quot;nn&quot;&gt;TimeoutFuture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;// after which we do another operation!&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;do_another_operation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;nf&quot;&gt;.map_err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nf&quot;&gt;handle_error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Spawn our future to run it!&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;wasm_bindgen_futures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;spawn_local&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;my_future&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that we use &lt;code class=&quot;highlighter-rouge&quot;&gt;futures&lt;/code&gt; 0.1 for now, because we’ve fought tooth and nail to
+get the Wasm ecosystem on stable Rust, but as soon as the new
+&lt;code class=&quot;highlighter-rouge&quot;&gt;std::future::Future&lt;/code&gt; design is stable, we plan to switch over. We are very
+excited for &lt;code class=&quot;highlighter-rouge&quot;&gt;async&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;await&lt;/code&gt; as well!&lt;/p&gt;
+
+&lt;h2 id=&quot;more-layers&quot;&gt;More Layers?&lt;/h2&gt;
+
+&lt;p&gt;That’s all the layers we have for the &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;
+APIs. Different Web APIs will have different sets of layers, and this is
+fine. Not every Web API uses callbacks, so it doesn’t make sense to always have
+a &lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt; module in every Gloo crate. The important part is that we are
+actively identifying layers, making them public and reusable, and building
+higher-level layers on top of lower-level layers.&lt;/p&gt;
+
+&lt;p&gt;We will likely add even higher-level layers to other Web APIs where it makes
+sense. For example, the &lt;a href=&quot;https://github.com/rustwasm/gloo/issues/47&quot;&gt;File API&lt;/a&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;FileReader&lt;/code&gt; interface exposes methods
+that you shouldn’t call until after certain events have fired, and any attempt
+to call them earlier will throw. We can codify this as &lt;a href=&quot;https://github.com/fitzgen/state_machine_future&quot;&gt;a state machine-based
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Future&lt;/code&gt;&lt;/a&gt;, that doesn’t even give you the ability to call
+those methods until after the relevant events have fired and the state machine
+reaches a certain state. Leveraging types at compile time for ergonomics and
+correctness!&lt;/p&gt;
+
+&lt;p&gt;Another future direction is adding more integration layers with more parts of
+the larger Rust crates ecosystem. For example, adding functional reactive
+programming-style layers via &lt;a href=&quot;https://github.com/rustwasm/gloo/issues/33&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;futures-signals&lt;/code&gt;
+crate&lt;/a&gt; which is also used by the
+&lt;a href=&quot;https://github.com/Pauan/rust-dominator&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dominator&lt;/code&gt;&lt;/a&gt; framework.&lt;/p&gt;
+
+&lt;h2 id=&quot;events&quot;&gt;Events&lt;/h2&gt;
+
+&lt;p&gt;One of the active bits of design work going on in Gloo right now is how to craft
+our event targets and listeners layer. Events are used across most of the Web
+APIs, so it is very important we get this design right, as it will sit
+underneath many of our other crates. While we haven’t 100% nailed down the
+design yet, I really like where we are headed.&lt;/p&gt;
+
+&lt;p&gt;On top of &lt;a href=&quot;https://docs.rs/web-sys/0.3.17/web_sys/struct.Event.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;web_sys::Event&lt;/code&gt;&lt;/a&gt; and
+&lt;a href=&quot;https://docs.rs/web-sys/0.3.17/web_sys/struct.EventTarget.html#method.add_event_listener_with_callback&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;web_sys::EventTarget::add_event_listener_with_callback&lt;/code&gt;&lt;/a&gt;,
+we are building a layer for &lt;a href=&quot;https://github.com/rustwasm/gloo/issues/30&quot;&gt;adding and removing event
+listeners&lt;/a&gt; and managing their lifetimes from Rust via RAII-style
+automatic cleanup upon drop.&lt;/p&gt;
+
+&lt;p&gt;We can use this API to make idiomatic Rust types that attach event listeners
+that automatically get removed from the DOM when the type is dropped:&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;futures&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;sync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;oneshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gloo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// A prompt for the user.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Prompt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;receiver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;oneshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Receiver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;// Automatically removed from the DOM on drop!&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;listener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Prompt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Prompt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;// Create an `&amp;lt;input&amp;gt;` to prompt the user for something and attach it to the DOM.&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;web_sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HtmlInputElement&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;unimplemented!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;c&quot;&gt;// Create a oneshot channel for sending/receiving the user's input.&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receiver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;oneshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;c&quot;&gt;// Attach an event listener to the input element.&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listener&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;EventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;input&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;move&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;web_sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;// Get the input element's value.&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;c&quot;&gt;// Send the input value over the oneshot channel.&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;sender&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.send&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;.expect_throw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                    &lt;span class=&quot;s&quot;&gt;&quot;receiver should not be dropped without first removing DOM listener&quot;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;Prompt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;receiver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;listener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// A `Prompt` is also a future, that resolves after the user input!&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Future&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Prompt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Item&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;poll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;mut&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Poll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;Self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;.receiver&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;.poll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;nf&quot;&gt;.map_err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nd&quot;&gt;unreachable!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                    &lt;span class=&quot;s&quot;&gt;&quot;we don't drop the sender without either sending a value or dropping the whole Prompt&quot;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;On top of that layer, we are using Rust’s trait system to design &lt;a href=&quot;https://github.com/rustwasm/gloo/issues/43&quot;&gt;a
+higher-level, static events API&lt;/a&gt; that will make the events
+casting safe and statically-checked, and make sure you don’t have typos in the
+event types that you listen to:&lt;/p&gt;
+
+&lt;div class=&quot;language-rust highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;gloo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;nn&quot;&gt;events&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClickEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Get an event target from somewhere.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;web_sys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EventTarget&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;unimplemented!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;// Listen to the &quot;click&quot; event, know that you didn't misspell the event as&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;// &quot;clik&quot;, and also get a nicer event type!&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;click_listener&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;move&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClickEvent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;// The `ClickEvent` type has nice getters for the `MouseEvent` that&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;// `&quot;click&quot;` events are guaranteed to yield. No need to dynamically cast&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;// an `Event` to a `MouseEvent`.&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.mouse_position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;These event APIs are still works in progress and have some kinks to work out,
+but I’m very excited for them, and we hope to get a lot of mileage out of them
+as we build other Gloo crates that internally use them.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-involved&quot;&gt;Get Involved!&lt;/h2&gt;
+
+&lt;p&gt;Let’s build Gloo together! Want to get involved?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://discord.gg/rust-lang&quot;&gt;Join the &lt;code class=&quot;highlighter-rouge&quot;&gt;#WG-wasm&lt;/code&gt; channel on the Rust Discord server!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/gloo&quot;&gt;Follow the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/gloo&lt;/code&gt; repository on GitHub and check out its
+&lt;code class=&quot;highlighter-rouge&quot;&gt;CONTRIBUTING.md&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Nick Fitzgerald</name></author><summary type="html">About two weeks ago, we kicked off our effort to collectively build Gloo, a modular toolkit for building fast and reliable Web apps and libraries with Rust and Wasm. We knew we wanted to explicitly cultivate the Rust and Wasm library ecosystem by spinning out reusable, standalone libraries: things that would help you out whether you were writing a green-field Web app in pure-Rust, building your own framework, or surgically inserting some Rust-generated Wasm into an existing JavaScript project. What was still fuzzy, and which we didn’t know yet, was how we were going design and expose these reusable bits.</summary></entry><entry><title type="html">This Week in Rust and WebAssembly 14</title><link href="https://rustwasm.github.io/2019/03/21/this-week-in-rust-and-wasm-014.html" rel="alternate" type="text/html" title="This Week in Rust and WebAssembly 14" /><published>2019-03-21T00:00:00+00:00</published><updated>2019-03-21T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/03/21/this-week-in-rust-and-wasm-014</id><content type="html" xml:base="https://rustwasm.github.io/2019/03/21/this-week-in-rust-and-wasm-014.html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust and WebAssembly&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rust-lang.org&quot;&gt;Rust&lt;/a&gt; is a systems language pursuing the trifecta:
+safety, concurrency, and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://webassembly.org&quot;&gt;WebAssembly&lt;/a&gt; is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!&lt;/p&gt;
+
+&lt;p&gt;This is a weekly summary of Rust and WebAssembly’s progress and community.&lt;/p&gt;
+
+&lt;p&gt;Did we miss something? Tweet to us at &lt;a href=&quot;https://twitter.com/rustwasm&quot;&gt;@rustwasm&lt;/a&gt;
+or &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io&quot;&gt;send us a pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;news-and-blog-posts-from-around-the-web&quot;&gt;News and Blog Posts from Around the Web&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to make sure something ends up on this list next time we publish an issue?
+&lt;a href=&quot;https://github.com/rustwasm/team/issues/79&quot;&gt;Leave a comment on this issue.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://hacks.mozilla.org/2019/03/fast-bump-allocated-virtual-doms-with-rust-and-wasm/&quot;&gt;&lt;strong&gt;Fast, Bump-Allocated Virtual DOMs with Rust and
+Wasm&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/David-OConnor/seed/blob/master/CHANGELOG.md#v030&quot;&gt;Version 0.3 of the &lt;code class=&quot;highlighter-rouge&quot;&gt;seed&lt;/code&gt; framework was
+released&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/web-dom/web-dom&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;web-dom&lt;/code&gt; is an alternative way to access the DOM from
+Rust&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/ensembl/status/1106140169575514113&quot;&gt;Ensembl 2020 (a genome browser) will use Rust and
+Wasm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://users.rust-lang.org/t/another-small-step-to-wasm-compatibility-actix-actors-in-the-browser/26318&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;actix&lt;/code&gt; project is working on getting their actors running as Wasm on the
+Web&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/alesgeno/status/1107662063168614400&quot;&gt;Demo: a real-time pitch detector Web application (and reusable library
+crate!) made with Rust and
+Wasm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rust.godbolt.org/z/PZqG56&quot;&gt;The Godbolt Compiler Explorer can show Wasm disassembly, with color-coded
+highlighting showing which Rust source text compiled into which Wasm
+instructions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;updates-from-rustwasm&quot;&gt;Updates from &lt;a href=&quot;https://github.com/rustwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;rfcs&quot;&gt;RFCs&lt;/h3&gt;
+
+&lt;h4 id=&quot;new-rfcs&quot;&gt;New RFCs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/10&quot;&gt;Add &lt;code class=&quot;highlighter-rouge&quot;&gt;watch&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;serve&lt;/code&gt; subcommands to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;final-comment-period-rfcs&quot;&gt;Final Comment Period RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h4 id=&quot;merged-rfcs&quot;&gt;Merged RFCs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/7&quot;&gt;&lt;strong&gt;2019 Roadmap 🎉&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/8&quot;&gt;Enable depending on NPM packages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;working-group-meetings&quot;&gt;Working Group Meetings&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/uYySHPCuLz0&quot;&gt;Watch the recording of this week’s working group meeting on
+YouTube&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/team/issues/262&quot;&gt;Come join us at next week’s working group
+meeting!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gloo&quot;&gt;Gloo&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html&quot;&gt;Gloo is the modular toolkit we decided to collectively build in our 2019
+roadmap.&lt;/a&gt;
+We’ve been having lots of good discussion about scope and API design in issue
+threads! (Not doing lots of PRs quite yet.)&lt;/li&gt;
+  &lt;li&gt;@OddCoincidence &lt;a href=&quot;https://github.com/rustwasm/gloo/pull/24&quot;&gt;added support for
+&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;&lt;/a&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;gloo-timers&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rustwasmgithubio&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm.github.io&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@DebugSteven &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io/pull/43&quot;&gt;removed some unused CSS
+rules&lt;/a&gt; from our
+Website’s stylesheets.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rust-webpack-template&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rust-webpack-template&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/rust-webpack-template/pull/120&quot;&gt;upgraded the
+template&lt;/a&gt; to the
+Rust 2018 edition.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;twiggy&quot;&gt;Twiggy&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@data-pup &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/265&quot;&gt;upgraded Twiggy&lt;/a&gt; to
+the Rust 2018 edition.&lt;/li&gt;
+  &lt;li&gt;@data-pup &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/268&quot;&gt;added more tests&lt;/a&gt; for
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;twiggy diff&lt;/code&gt; subcommand.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-bindgen&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0239&quot;&gt;&lt;strong&gt;We released &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; version 0.2.39!
+🎉&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;@c410-f3r made &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;’s generated TypeScript interfaces’ functions’
+argument names be &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1344&quot;&gt;preserved from the Rust
+source&lt;/a&gt; instead of being
+generated symbols.&lt;/li&gt;
+  &lt;li&gt;@ibaryshnikov &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1336&quot;&gt;cleaned up&lt;/a&gt;
+our Web GL example.&lt;/li&gt;
+  &lt;li&gt;@nstoddard &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1333&quot;&gt;added immutability
+whitelisting&lt;/a&gt; for
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Uint8Array&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ArrayBufferView&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;BufferSource&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@RReverser &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1372&quot;&gt;fixed some copy-paste
+errors&lt;/a&gt; in documentation
+for &lt;code class=&quot;highlighter-rouge&quot;&gt;Int32Array&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Uint32Array&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;@RReverser &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1371&quot;&gt;cleaned up and de-duplicated our binding
+definitions&lt;/a&gt; to the
+different kinds of typed arrays!&lt;/li&gt;
+  &lt;li&gt;@c410-f3r &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1356&quot;&gt;expanded the
+testing&lt;/a&gt; of our emitted
+TypeScript interface definitions.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1353&quot;&gt;added the &lt;code class=&quot;highlighter-rouge&quot;&gt;#[wasm_bindgen(raw_module = &quot;...&quot;)]&lt;/code&gt;
+attribute&lt;/a&gt; to the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; proc-macro.&lt;/li&gt;
+  &lt;li&gt;@konradsz &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1351&quot;&gt;fixed the number-slices example’s JS
+imports.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;@alexlapa &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1350&quot;&gt;enabled passing optional imported
+&lt;code class=&quot;highlighter-rouge&quot;&gt;enum&lt;/code&gt;s&lt;/a&gt; over the FFI
+boundary.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-pack&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#%EF%B8%8F-070&quot;&gt;&lt;strong&gt;We released &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; version 0.7.0!
+🎉&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/567&quot;&gt;added support for the &lt;code class=&quot;highlighter-rouge&quot;&gt;web&lt;/code&gt;
+target&lt;/a&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;. This
+target uses browsers’ native support for ES modules, and doesn’t require the
+use of a JS bundler.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/547&quot;&gt;started migrating &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;’s CLI
+output&lt;/a&gt; towards our 1.0 vision
+for &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; output. Notably, &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo build&lt;/code&gt;’s colors and progress bar
+should work now.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/590&quot;&gt;added a
+smorgasbord&lt;/a&gt; of docs
+improvements.&lt;/li&gt;
+  &lt;li&gt;@drager &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/552&quot;&gt;added support for non-&lt;code class=&quot;highlighter-rouge&quot;&gt;rustup&lt;/code&gt;-based Rust development
+environments&lt;/a&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@ashleygwilliams &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/576&quot;&gt;added a quickstart doc
+page&lt;/a&gt; for using &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;
+with Webpack.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-pack-template&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack-template&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-pack-template/pull/37&quot;&gt;upgraded the
+template&lt;/a&gt; to the Rust
+2018 edition.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requests-for-contribution&quot;&gt;Requests for Contribution&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly
+working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html&quot;&gt;&lt;strong&gt;Let’s Build Gloo
+Together&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22&quot;&gt;All issues labeled “good first issue” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;
+repositories&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22&quot;&gt;All issues labeled “help wanted” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;
+repositories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;new-good-first-issues&quot;&gt;New Good First Issues&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/gloo/issues/36&quot;&gt;Gloo: Make the timers crate follow submodule
+design&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Hello and welcome to another issue of This Week in Rust and WebAssembly!</summary></entry><entry><title type="html">Let’s Build Gloo Together</title><link href="https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html" rel="alternate" type="text/html" title="Let's Build Gloo Together" /><published>2019-03-12T00:00:00+00:00</published><updated>2019-03-12T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/03/12/lets-build-gloo-together</id><content type="html" xml:base="https://rustwasm.github.io/2019/03/12/lets-build-gloo-together.html">&lt;p&gt;The Rust and WebAssembly domain working group wants to cultivate a stable,
+batteries-available, and production-ready ecosystem for &lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/7&quot;&gt;Rust and Wasm
+development in 2019&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To further that goal, we are creating &lt;a href=&quot;https://github.com/rustwasm/gloo&quot;&gt;Gloo&lt;/a&gt;, a modular toolkit for building
+both:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;small, targeted Wasm modules that integrate into a larger JavaScript system,
+and&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;whole Web applications written in Rust.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Gloo’s goals for Wasm are similar to what the Async Ecosystem working group’s
+&lt;a href=&quot;https://rustasync.github.io/team/2018/09/11/tide.html&quot;&gt;Tide&lt;/a&gt; project intends to do for server-side Web development:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The name “Tide” refers to “a rising tide lifts all boats”; the intent is to
+improve sharing, compatibility, and improvements across all web development
+and frameworks in Rust.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;the-utility-high-level-libraries-and-frameworks-provide&quot;&gt;The Utility High-Level Libraries and Frameworks Provide&lt;/h2&gt;
+
+&lt;p&gt;We use high-level libraries and frameworks instead of using Web APIs directly
+because we want abstractions with which we can naturally express ourselves. We
+outsource non-business logic concerns so that we can create more robust
+libraries and applications more quickly than we otherwise would. For example,
+the desires people might have include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;They prefer describing how they want the DOM to look like right now, rather
+than enumerating a list of modifications that will transform its current state
+into their desired state. Therefore, they use an immediate-mode virtual DOM
+library.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;They prefer thinking in terms of Rust types, not about the raw, serialized
+bytes in a &lt;code class=&quot;highlighter-rouge&quot;&gt;fetch&lt;/code&gt;ed HTTP response body or about object stores in Indexed DB.
+Therefore, they use &lt;code class=&quot;highlighter-rouge&quot;&gt;derive&lt;/code&gt;-based serialization and deserialization with
+&lt;code class=&quot;highlighter-rouge&quot;&gt;serde&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are many different ways to approach high-level APIs, and people have lots
+of differing opinions about which way is best! Designing these APIs well is
+difficult: we have correctness, ergonomic, and performance concerns.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-gloo-fits-in&quot;&gt;How Gloo Fits In&lt;/h2&gt;
+
+&lt;p&gt;Gloo aims to be both a collection of small, focused utility crates and an
+umbrella crate that pulls all the utilities together into a single package.&lt;/p&gt;
+
+&lt;p&gt;Our goals with Gloo are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;To bolster the Rust and WebAssembly crates ecosystem.&lt;/strong&gt; Pick and choose
+utility crates even if you aren’t using the whole umbrella Gloo crate, or if
+you are using some other Rust and Wasm framework. We have some crates like
+this today — for example &lt;a href=&quot;https://crates.io/crates/console_log&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;console_log&lt;/code&gt; crate&lt;/a&gt; —
+but we would like to intentionally grow more shared utility crates across the
+ecosystem.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;To wrap these utilities up in an umbrella crate so that your new project can
+hit the ground running.&lt;/strong&gt; This umbrella crate will be a thin wrapper around
+the utility crates, and provides defaults wherever multiple (perhaps
+opinionated) choices exist. To keep the umbrella crate small, we should be
+constantly pulling code out into new shared, utility crates. For the more
+opinionated bits, like virtual DOM rendering or web components, the umbrella
+crate should prefer interfaces over implementations, so that different
+implementations with different approaches are swap-able.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Gloo is far from ready right now! The project has only just begun. But we want
+to build Gloo as a collective and in an open way, so we are announcing it early
+and inviting you to come help us design and build it.&lt;/p&gt;
+
+&lt;p&gt;Want to get involved?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://discord.gg/rust-lang&quot;&gt;Join the &lt;code class=&quot;highlighter-rouge&quot;&gt;#WG-wasm&lt;/code&gt; channel on the Rust Discord server!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/gloo&quot;&gt;Follow the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/gloo&lt;/code&gt; repository on GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;where-were-starting&quot;&gt;Where We’re Starting&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html#wasm-at-the-2019-rust-all-hands&quot;&gt;At the 2019 Rust All Hands meeting in Berlin&lt;/a&gt;, we found that it was
+useful to categorize Web libraries by whether they were opinionated or not. We
+all want idiomatic-Rust wrapper crates around raw &lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt; timers and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;requestAnimationFrame&lt;/code&gt; etc, and there isn’t a &lt;em&gt;whole lot&lt;/em&gt; of design work that
+needs to happen for this. For many of these kinds of crates, we are ready to
+dive into implementation. On the other hand, for the more opinionated bits, like
+virtual DOMs and state management, we need to do exploratory design work before
+committing to a particular approach.&lt;/p&gt;
+
+&lt;p&gt;We’ll start exploring the design space of the latter group in a series of follow
+up blog posts. In the meantime, if you want to get involved, start hacking on
+some of the utility crates, or brainstorm about designs, then &lt;a href=&quot;https://github.com/rustwasm/gloo/issues&quot;&gt;check out some of
+the issues&lt;/a&gt; on Gloo’s GitHub repository.&lt;/p&gt;</content><author><name>Nick Fitzgerald</name></author><summary type="html">The Rust and WebAssembly domain working group wants to cultivate a stable, batteries-available, and production-ready ecosystem for Rust and Wasm development in 2019.</summary></entry><entry><title type="html">This Week in Rust and WebAssembly 13</title><link href="https://rustwasm.github.io/2019/03/07/this-week-in-rust-and-wasm-013.html" rel="alternate" type="text/html" title="This Week in Rust and WebAssembly 13" /><published>2019-03-07T00:00:00+00:00</published><updated>2019-03-07T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/03/07/this-week-in-rust-and-wasm-013</id><content type="html" xml:base="https://rustwasm.github.io/2019/03/07/this-week-in-rust-and-wasm-013.html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust and WebAssembly&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rust-lang.org&quot;&gt;Rust&lt;/a&gt; is a systems language pursuing the trifecta:
+safety, concurrency, and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://webassembly.org&quot;&gt;WebAssembly&lt;/a&gt; is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!&lt;/p&gt;
+
+&lt;p&gt;This is a weekly summary of Rust and WebAssembly’s progress and community.&lt;/p&gt;
+
+&lt;p&gt;Did we miss something? Tweet to us at &lt;a href=&quot;https://twitter.com/rustwasm&quot;&gt;@rustwasm&lt;/a&gt;
+or &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io&quot;&gt;send us a pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;!-- TODO: check recent r/rust and users.rust-lang.org posts for &quot;wasm&quot; and &quot;webassembly&quot;: --&gt;
+&lt;!-- https://twitter.com/rustwasm --&gt;
+
+&lt;h2 id=&quot;news-and-blog-posts-from-around-the-web&quot;&gt;News and Blog Posts from Around the Web&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to make sure something ends up on this list next time we publish an issue?
+&lt;a href=&quot;https://github.com/rustwasm/team/issues/79&quot;&gt;Leave a comment on this issue.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://prestonrichey.com/blog/react-rust-wasm/&quot;&gt;Up and Running with React, Rust, and
+Wasm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The Tao of Rust is a book about Rust that was originally published in
+China. It has a WebAssembly section, and is &lt;a href=&quot;https://www.reddit.com/r/rust/comments/ax86y1/introducing_the_book_the_tao_of_rust/&quot;&gt;getting translated into
+English&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/wasm-network/tweek-rust&quot;&gt;Tweek is a new tween animation kit for Rust that supports
+Wasm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;updates-from-rustwasm&quot;&gt;Updates from &lt;a href=&quot;https://github.com/rustwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;rfcs&quot;&gt;RFCs&lt;/h3&gt;
+
+&lt;h4 id=&quot;new-rfcs&quot;&gt;New RFCs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/9&quot;&gt;Amend the RFC process&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;final-comment-period-rfcs&quot;&gt;Final Comment Period RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h4 id=&quot;merged-rfcs&quot;&gt;Merged RFCs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/6&quot;&gt;Add support for local JavaScript snippets to &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;working-group-meetings&quot;&gt;Working Group Meetings&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://youtu.be/sQE6IjnzwS8&quot;&gt;Watch the recording of this week’s working group meeting on
+YouTube&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/team/issues/260&quot;&gt;Come join us at next week’s working group
+meeting!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rustwasmgithubio&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm.github.io&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@DebugSteven and @alexcrichton &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io/pull/41&quot;&gt;aggregated the Rust and WebAssembly book, the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; guide, and the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; guide into a single
+bookshelf&lt;/a&gt;, where all
+of our docs can be found in one place!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;twiggy&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;twiggy&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@data-pup &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/253&quot;&gt;added &lt;code class=&quot;highlighter-rouge&quot;&gt;rustfmt&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;clippy&lt;/code&gt;
+integration&lt;/a&gt; into Twiggy’s CI
+setup.&lt;/li&gt;
+  &lt;li&gt;@sepiropht &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/260&quot;&gt;improved Twiggy’s
+detection&lt;/a&gt; of what kind of binary
+it is looking at when there is no file extension.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;walrus&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@data-pup &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/64&quot;&gt;fixed the wasm round-tripping
+tests&lt;/a&gt; for the latest release of
+the &lt;code class=&quot;highlighter-rouge&quot;&gt;webassembly/wabt&lt;/code&gt; tools.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/66&quot;&gt;added support&lt;/a&gt; for
+the WebAssembly SIMD proposal to &lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-bindgen&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@fitzgen &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1281&quot;&gt;added support for &lt;code class=&quot;highlighter-rouge&quot;&gt;FnOnce&lt;/code&gt;
+functions&lt;/a&gt; to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm_bindgen::Closure&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@c410-f3r &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1331&quot;&gt;fixed &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;
+compilation&lt;/a&gt; when the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;extra-traits&quot;&lt;/code&gt; feature was enabled.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1295&quot;&gt;implemented the local JavaScript snippets
+RFC&lt;/a&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@Vlad-Scherbina &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1330&quot;&gt;fixed a
+bug&lt;/a&gt; where if the
+directory specified by &lt;code class=&quot;highlighter-rouge&quot;&gt;--out-dir&lt;/code&gt; does not exist, then running the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; CLI would fail.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1314&quot;&gt;added
+testing&lt;/a&gt; of
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;’s generated TypeScript interface definition files in CI.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-pack&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@drager &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/517&quot;&gt;wrote a test suite&lt;/a&gt;
+for &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;’s binary installation utility crate.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requests-for-contribution&quot;&gt;Requests for Contribution&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly
+working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22&quot;&gt;All issues labeled “good first issue” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22&quot;&gt;All issues labeled “help wanted” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Hello and welcome to another issue of This Week in Rust and WebAssembly!</summary></entry><entry><title type="html">This Week in Rust and WebAssembly 12</title><link href="https://rustwasm.github.io/2019/02/28/this-week-in-rust-and-wasm-012.html" rel="alternate" type="text/html" title="This Week in Rust and WebAssembly 12" /><published>2019-02-28T00:00:00+00:00</published><updated>2019-02-28T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/02/28/this-week-in-rust-and-wasm-012</id><content type="html" xml:base="https://rustwasm.github.io/2019/02/28/this-week-in-rust-and-wasm-012.html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust and WebAssembly&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rust-lang.org&quot;&gt;Rust&lt;/a&gt; is a systems language pursuing the trifecta:
+safety, concurrency, and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://webassembly.org&quot;&gt;WebAssembly&lt;/a&gt; is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!&lt;/p&gt;
+
+&lt;p&gt;This is a weekly summary of Rust and WebAssembly’s progress and community.&lt;/p&gt;
+
+&lt;p&gt;Did we miss something? Tweet to us at &lt;a href=&quot;https://twitter.com/rustwasm&quot;&gt;@rustwasm&lt;/a&gt;
+or &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io&quot;&gt;send us a pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;!-- TODO: check recent r/rust and users.rust-lang.org posts for &quot;wasm&quot; and &quot;webassembly&quot;: --&gt;
+&lt;!-- https://twitter.com/rustwasm --&gt;
+
+&lt;h2 id=&quot;news-and-blog-posts-from-around-the-web&quot;&gt;News and Blog Posts from Around the Web&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to make sure something ends up on this list next time we publish an issue?
+&lt;a href=&quot;https://github.com/rustwasm/team/issues/79&quot;&gt;Leave a comment on this issue.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/web/updates/2019/02/hotpath-with-wasm&quot;&gt;Replacing a hot path in your app’s JavaScript with
+WebAssembly.&lt;/a&gt;
+The article compares versions written in Rust, C/C++, and AssemblyScript.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jedisct1/was-not-wasm&quot;&gt;Was (not Wasm)&lt;/a&gt; is a hostile
+allocator for AssemblyScript that is written in Rust.&lt;/li&gt;
+  &lt;li&gt;Wasmer has &lt;a href=&quot;https://medium.com/wasmer/running-webassembly-100x-faster-%EF%B8%8F-a8237e9a372d&quot;&gt;improved their startup time by
+100x&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://troubles.md/posts/microwasm/&quot;&gt;WebAssembly Troubles part 4: Microwasm.&lt;/a&gt;
+The culmination of a series of posts about issues the author has with
+WebAssembly, along with proposals for how to fix them.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/HelloRenj/status/1100499645401366535&quot;&gt;Generating snow with Rust and
+Wasm&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://zen-liskov-772f98.netlify.com/&quot;&gt;Live demo&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/renjithgr/wasm-make-some-snow&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;updates-from-rustwasm&quot;&gt;Updates from &lt;a href=&quot;https://github.com/rustwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;rfcs&quot;&gt;RFCs&lt;/h3&gt;
+
+&lt;h4 id=&quot;new-rfcs&quot;&gt;New RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h4 id=&quot;final-comment-period-rfcs&quot;&gt;Final Comment Period RFCs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/6&quot;&gt;Add support for local JavaScript snippets in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;merged-rfcs&quot;&gt;Merged RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h3 id=&quot;working-group-meetings&quot;&gt;Working Group Meetings&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=3YjN69U6ySE&quot;&gt;Watch the recording of this week’s working group meeting on
+YouTube&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/team/issues/258&quot;&gt;Come join us at next week’s working group
+meeting!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rustwasmrust-parcel-template&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/rust-parcel-template&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@tock203 &lt;a href=&quot;https://github.com/rustwasm/rust-parcel-template/pull/22&quot;&gt;fixed a
+&lt;code class=&quot;highlighter-rouge&quot;&gt;ReferenceError&lt;/code&gt;&lt;/a&gt; in
+the template’s initialization code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rustwasmtwiggy&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/twiggy&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@data-pup &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/253&quot;&gt;set up
+&lt;code class=&quot;highlighter-rouge&quot;&gt;rustfmt&lt;/code&gt;-checking&lt;/a&gt; for our
+continuous integration.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/250&quot;&gt;made Twiggy account for header and section size
+bytes&lt;/a&gt; of a Wasm binary, so
+Twiggy’s output should sum to 100% now instead of just short of that.&lt;/li&gt;
+  &lt;li&gt;@philipc &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/247&quot;&gt;updated Twiggy to version 0.17.0 of
+&lt;code class=&quot;highlighter-rouge&quot;&gt;gimli&lt;/code&gt;&lt;/a&gt;, the crate it uses to
+parse DWARF debugging information.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/245&quot;&gt;switched Twiggy over to using the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasmparser&lt;/code&gt;
+crate&lt;/a&gt; to parse Wasm binaries,
+which gives more precise byte offset and size information, and is faster than
+the old Wasm parser.&lt;/li&gt;
+  &lt;li&gt;@data-pup &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/244&quot;&gt;added an unreachable items
+summary&lt;/a&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;twiggy
+dominators&lt;/code&gt; output, so that all top-level rows’ sizes will sum to 100%.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rustwasmwasm-bindgen&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/wasm-bindgen&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@tyleranton added support for &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1302&quot;&gt;emitting doc
+comments&lt;/a&gt; in the
+TypeScript interface definition files that &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; creates.&lt;/li&gt;
+  &lt;li&gt;@LegNeato &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1298&quot;&gt;fixed the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen-test&lt;/code&gt; headless browser test
+runner&lt;/a&gt; on macOS High
+Sierra.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1285&quot;&gt;updated the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;
+guide&lt;/a&gt; and added a
+“Deployment” section.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1279&quot;&gt;added support for the new &lt;code class=&quot;highlighter-rouge&quot;&gt;TextEncoder.prototype.encodeInto&lt;/code&gt;
+method&lt;/a&gt; to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;’s generated JS glue when passing strings between wasm and JS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rustwasmwasm-pack&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/wasm-pack&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@ashleygwilliams &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/556&quot;&gt;removed unnecessary
+entries&lt;/a&gt; from the &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;files&quot;&lt;/code&gt;
+key in &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;’s generated &lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@ashleygwilliams &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/550&quot;&gt;fixed the [wasm-pack] installer on
+windows&lt;/a&gt; when it is downloaded
+multiple times and ends up with a &lt;code class=&quot;highlighter-rouge&quot;&gt;(1)&lt;/code&gt; suffix in its filename.&lt;/li&gt;
+  &lt;li&gt;@surma &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/542&quot;&gt;wrote some docs on the &lt;code class=&quot;highlighter-rouge&quot;&gt;wee_alloc&lt;/code&gt;
+integration&lt;/a&gt; for the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; template.&lt;/li&gt;
+  &lt;li&gt;@DebugSteven &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/536&quot;&gt;wrote a series of get-started-in-X-environment
+tutorials&lt;/a&gt; for &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requests-for-contribution&quot;&gt;Requests for Contribution&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly
+working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22&quot;&gt;All issues labeled “good first issue” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22&quot;&gt;All issues labeled “help wanted” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;new-good-first-issues&quot;&gt;New Good First Issues&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/issues/1284&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;: Add &lt;code class=&quot;highlighter-rouge&quot;&gt;#[wasm_bindgen(ignore)]&lt;/code&gt; to ignore a &lt;code class=&quot;highlighter-rouge&quot;&gt;pub&lt;/code&gt; field and not
+generate getters/setters for
+it&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Hello and welcome to another issue of This Week in Rust and WebAssembly!</summary></entry><entry><title type="html">This Week in Rust and WebAssembly 11</title><link href="https://rustwasm.github.io/2019/02/21/this-week-in-rust-and-wasm-011.html" rel="alternate" type="text/html" title="This Week in Rust and WebAssembly 11" /><published>2019-02-21T00:00:00+00:00</published><updated>2019-02-21T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/02/21/this-week-in-rust-and-wasm-011</id><content type="html" xml:base="https://rustwasm.github.io/2019/02/21/this-week-in-rust-and-wasm-011.html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust and WebAssembly&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rust-lang.org&quot;&gt;Rust&lt;/a&gt; is a systems language pursuing the trifecta:
+safety, concurrency, and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://webassembly.org&quot;&gt;WebAssembly&lt;/a&gt; is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!&lt;/p&gt;
+
+&lt;p&gt;This is a weekly summary of Rust and WebAssembly’s progress and community.&lt;/p&gt;
+
+&lt;p&gt;Did we miss something? Tweet to us at &lt;a href=&quot;https://twitter.com/rustwasm&quot;&gt;@rustwasm&lt;/a&gt;
+or &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io&quot;&gt;send us a pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;!-- TODO: check recent r/rust and users.rust-lang.org posts for &quot;wasm&quot; and &quot;webassembly&quot;: --&gt;
+
+&lt;h2 id=&quot;news-and-blog-posts-from-around-the-web&quot;&gt;News and Blog Posts from Around the Web&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to make sure something ends up on this list next time we publish an issue?
+&lt;a href=&quot;https://github.com/rustwasm/team/issues/79&quot;&gt;Leave a comment on this issue.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/chinedufn/status/1098418821591957504&quot;&gt;Parsing and rendering PSD files in the browser with Rust and
+WebAssembly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/fitzgen/status/1097941877884473344&quot;&gt;Programmatically generating Islamic
+stars&lt;/a&gt; using the
+“Polygons in Contact” method with Rust-generated Wasm and Web GL
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://johanneshoff.com/geotoy/&quot;&gt;Live demo&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/fitzgen/geotoy&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://twitter.com/AsgerNyman/status/1096389338211016705&quot;&gt;Dust is a renderer written in Rust that has a backend for Wasm and Web
+GL&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://asny.github.io/spider-web/index.html&quot;&gt;Live demo&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/asny/Dust&quot;&gt;Source&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;updates-from-rustwasm&quot;&gt;Updates from &lt;a href=&quot;https://github.com/rustwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;rfcs&quot;&gt;RFCs&lt;/h3&gt;
+
+&lt;h4 id=&quot;new-rfcs&quot;&gt;New RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h4 id=&quot;merged-rfcs&quot;&gt;Merged RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h3 id=&quot;console_error_panic_hook&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;console_error_panic_hook&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@fitzgen &lt;a href=&quot;https://github.com/rustwasm/console_error_panic_hook/pull/10&quot;&gt;added error
+stacks&lt;/a&gt; to the
+message we log when a panic occurs. This works around bugs in both Safari’s
+and Firefox’s developer tools consoles.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;js-sys&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;js-sys&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@Pauan &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1225&quot;&gt;added convenience getters to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;js_sys::Reflect&lt;/code&gt;&lt;/a&gt; for
+getting properties keyed by &lt;code class=&quot;highlighter-rouge&quot;&gt;u32&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;f64&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;twiggy&quot;&gt;Twiggy🌱&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@data-pup &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/243&quot;&gt;fixed some unused-result
+warnings&lt;/a&gt; in Twiggy’s parser.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;walrus&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@alexcrichton made &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/60&quot;&gt;GC’ing unused functions, globals, etc an explicit
+pass&lt;/a&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt;. It was
+previously performed implicitly as part of serializing a wasm module.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/50&quot;&gt;implemented support for the reference types
+proposal&lt;/a&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;anyref&lt;/code&gt; in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@fitzgen &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/58&quot;&gt;added the ability to explicitly
+delete&lt;/a&gt; various wasm constructs
+(functions, tables, etc) from a wasm module, rather than just implicitly
+delete them by making them unused and then running a GC.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-bindgen&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@alexcrichton added support for &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1275&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Option&amp;lt;MyRustStruct&amp;gt;&lt;/code&gt; in parameters and
+return positions&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1002&quot;&gt;added experimental support for using
+&lt;code class=&quot;highlighter-rouge&quot;&gt;anyref&lt;/code&gt;&lt;/a&gt; in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;@fitzgen &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1255&quot;&gt;fixed a
+regression&lt;/a&gt; where DWARF
+debug info custom sections were always being included in the generated Wasm,
+even when debug info was not enabled.&lt;/li&gt;
+  &lt;li&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1256&quot;&gt;added a
+flag&lt;/a&gt; to control whether
+the producers custom section is included in the generated wasm binary or not.&lt;/li&gt;
+  &lt;li&gt;@ctjhoa &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1259&quot;&gt;fixed some deprecation
+warnings&lt;/a&gt; around the use
+of &lt;code class=&quot;highlighter-rouge&quot;&gt;ATOMICS_*_INIT&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;Atomic*::new&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-snip&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-snip&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@fitzgen ported &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-snip&lt;/code&gt; over to &lt;a href=&quot;https://github.com/rustwasm/wasm-snip/pull/21&quot;&gt;using the &lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt;
+crate&lt;/a&gt;. This also removes the
+need to &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-gc&lt;/code&gt; again after running &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-snip&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;web-sys&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@selaux &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1248&quot;&gt;added a missing Web IDL
+attribute&lt;/a&gt; to
+&lt;code class=&quot;highlighter-rouge&quot;&gt;HTMLMediaElement&lt;/code&gt; so that &lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt; correctly generates bindings to the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;srcObject&lt;/code&gt; property.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wee_alloc&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wee_alloc&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wee_alloc/blob/master/CHANGELOG.md#043&quot;&gt;&lt;strong&gt;We released &lt;code class=&quot;highlighter-rouge&quot;&gt;wee_alloc&lt;/code&gt; version 0.4.3!
+🎉&lt;/strong&gt;&lt;/a&gt;
+Among other things, this version will work on stable Rust as soon as 1.33 is
+released, which is scheduled for one week from today: 2019-02-28.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requests-for-contribution&quot;&gt;Requests for Contribution&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly
+working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22&quot;&gt;All issues labeled “good first issue” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22&quot;&gt;All issues labeled “help wanted” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;new-good-first-issues&quot;&gt;New Good First Issues&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/issues/1270&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;: Handling &lt;code class=&quot;highlighter-rouge&quot;&gt;undefined&lt;/code&gt; arguments&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/issues/1276&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;: Add doc comments from Rust to generated TypeScript
+definitions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Hello and welcome to another issue of This Week in Rust and WebAssembly!</summary></entry><entry><title type="html">This Week in Rust and WebAssembly 10</title><link href="https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html" rel="alternate" type="text/html" title="This Week in Rust and WebAssembly 10" /><published>2019-02-13T00:00:00+00:00</published><updated>2019-02-13T00:00:00+00:00</updated><id>https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010</id><content type="html" xml:base="https://rustwasm.github.io/2019/02/13/this-week-in-rust-and-wasm-010.html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust and WebAssembly&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rust-lang.org&quot;&gt;Rust&lt;/a&gt; is a systems language pursuing the trifecta:
+safety, concurrency, and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://webassembly.org&quot;&gt;WebAssembly&lt;/a&gt; is a stack-based virtual machine and
+instruction set. It is fast, safe, portable, and part of the open Web
+platform. By compiling to WebAssembly, we can run Rust code on the Web!&lt;/p&gt;
+
+&lt;p&gt;This is a weekly summary of Rust and WebAssembly’s progress and community.&lt;/p&gt;
+
+&lt;p&gt;Did we miss something? Tweet to us at &lt;a href=&quot;https://twitter.com/rustwasm&quot;&gt;@rustwasm&lt;/a&gt;
+or &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io&quot;&gt;send us a pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;news-and-blog-posts-from-around-the-web&quot;&gt;News and Blog Posts from Around the Web&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to make sure something ends up on this list next time we publish an issue?
+&lt;a href=&quot;https://github.com/rustwasm/team/issues/79&quot;&gt;Leave a comment on this issue.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html&quot;&gt;&lt;strong&gt;Reflecting on Rust and WebAssembly in
+2018&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://fitzgeraldnick.com/2018/12/02/wasm-bindgen-how-does-it-work.html&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; — how does it
+work?!&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.fastly.com/blog/edge-programming-rust-web-assembly&quot;&gt;Edge programming with Rust and WebAssembly with
+Terrarium&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://medium.com/wasmer/executing-webassembly-in-your-rust-application-d5cd32e8ce46&quot;&gt;Embedding WebAssembly in your Rust Application with
+wasmer.io&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/iamcodemaker/console_log&quot;&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;console_log&lt;/code&gt; crate&lt;/a&gt; is a
+backend for &lt;a href=&quot;https://crates.io/crates/log&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;log&lt;/code&gt; facade&lt;/a&gt; that pipes logged
+messages to the browser’s console.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://ozkriff.itch.io/zemeroth&quot;&gt;Zemeroth&lt;/a&gt; is a turn-based hexagonal
+tactical game written in Rust and WebAssembly.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/richardanaya/virtual-dom-rs-counter&quot;&gt;An example implementation of react/redux style UI development in Rust with
+&lt;code class=&quot;highlighter-rouge&quot;&gt;percy&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/David-OConnor/seed&quot;&gt;Seed&lt;/a&gt; is a new Wasm framework for Web
+apps.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/sendilkumarn/generator-wasm-app&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sendilkumarn/generator-wasm-app&lt;/code&gt;&lt;/a&gt;
+is a a Wasm app generator for &lt;a href=&quot;https://yeoman.io/&quot;&gt;Yeoman&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/edvorg/rustmith&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;edvorg/rustsmith&lt;/code&gt;&lt;/a&gt; is a Rocksmith clone
+for the Web platform built with Rust and WebAssembly.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rustwasm2019-posts&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;#RustWasm2019&lt;/code&gt; Posts&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://blog.ryanlevick.com/posts/rust-wasm-2019/&quot;&gt;Rust WebAssembly 2019&lt;/a&gt; by
+Ryan Levick&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.reddit.com/r/rust/comments/aac8zk/my_rust_2019_dream_dominate_the_web/&quot;&gt;My Rust 2019 Dream: Dominate the
+Web&lt;/a&gt;
+by richardanaya&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://blog.yoshuawuyts.com/wasm-2019/&quot;&gt;Wasm 2019&lt;/a&gt; by Yoshua Wuyts&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://fitzgeraldnick.com/2018/12/14/rust-and-webassembly-in-2019.html&quot;&gt;Rust and WebAssembly in
+2019&lt;/a&gt;
+by Nick Fitzgerald&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://medium.com/wasmer/non-web-embeddings-for-rust-wasm-2019-7b290e94f81d&quot;&gt;Non-Web Embeddings for Rust Wasm
+2019&lt;/a&gt;
+by Brandon Fish and wasmer.io&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;wasm-at-the-2019-rust-all-hands&quot;&gt;Wasm at the 2019 Rust All Hands&lt;/h2&gt;
+
+&lt;p&gt;The 2019 Rust All Hands meetup was in Berlin on February 4&lt;sup&gt;th&lt;/sup&gt; through
+8&lt;sup&gt;th&lt;/sup&gt;. @ag_dubs, @alexcrichton, @fitzgen, and @yoshuawuyts from the
+Rust and WebAssembly working group all made it out to discuss some Wasm-related
+topics and plan for 2019.&lt;/p&gt;
+
+&lt;p&gt;We talked about:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-road-to-wasm-pack-1-0-md&quot;&gt;The road to &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;
+1.0.&lt;/a&gt;
+This meeting was about trying to pin down what we want to ship as part of a
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; 1.0 release, as well as crystallize &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;’s ideal UX.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-modular-toolkit-md&quot;&gt;A modular toolkit for
+Wasm.&lt;/a&gt;
+There’s been a lot of talk in &lt;code class=&quot;highlighter-rouge&quot;&gt;#RustWasm2019&lt;/code&gt; posts and the 2019 roadmap RFC
+about building a modular toolkit for Wasm apps and libraries. This meeting was
+trying to dig a bit more into the details of what that entails. And naming, of
+course.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-cargo-build-hooks-for-wasm-md&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; build tasks, hooks, and/or &lt;code class=&quot;highlighter-rouge&quot;&gt;post-build.rs&lt;/code&gt; for
+Wasm.&lt;/a&gt;
+Long-term (likely on the timeline of a couple years) we would like the
+experience of building Rust and Wasm projects to be &lt;em&gt;exactly&lt;/em&gt; the same as
+building normal Rust projects: just &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo build&lt;/code&gt; and that’s it. But there is
+a bunch of stuff that needs to happen for Wasm after &lt;code class=&quot;highlighter-rouge&quot;&gt;rustc&lt;/code&gt; emits a Wasm
+binary, such as generate JS bindings or run &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-opt&lt;/code&gt;. This meeting was about
+how to add some sort of generic build hooks to &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; and turn &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;
+into an implementation of those generic hooks specifically targeted for Wasm
+development.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://gist.github.com/fitzgen/23a62ebbd67574b9f6f72e5ac8eaeb67#file-wasm-multithreading-and-rayon-md&quot;&gt;Multithreading Wasm and
+&lt;code class=&quot;highlighter-rouge&quot;&gt;rayon&lt;/code&gt;.&lt;/a&gt;
+This meeting was about how we take our experimental Wasm multithreading
+support and turn it into a reliable library that can serve as the foundation
+for multithreading on the Web. @CUViper from the &lt;code class=&quot;highlighter-rouge&quot;&gt;rayon&lt;/code&gt; team also joined, and
+we made a plan for how to get &lt;code class=&quot;highlighter-rouge&quot;&gt;rayon&lt;/code&gt; working in Wasm.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;updates-from-rustwasm&quot;&gt;Updates from &lt;a href=&quot;https://github.com/rustwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;rfcs&quot;&gt;RFCs&lt;/h3&gt;
+
+&lt;h4 id=&quot;new-rfcs&quot;&gt;New RFCs&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/7&quot;&gt;&lt;strong&gt;2019 Roadmap&lt;/strong&gt;&lt;/a&gt; — this is
+your chance to help shape our goals for the year!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/rfcs/pull/6&quot;&gt;Add support for local JS snippets in &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;merged-rfcs&quot;&gt;Merged RFCs&lt;/h4&gt;
+
+&lt;p&gt;None.&lt;/p&gt;
+
+&lt;h3 id=&quot;book&quot;&gt;Book&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;@DebugSteven &lt;a href=&quot;https://github.com/rustwasm/book/pull/137&quot;&gt;wrote a testing
+section&lt;/a&gt; for the Game of Life
+tutorial!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;twiggy&quot;&gt;Twiggy🌱&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/twiggy/blob/master/CHANGELOG.md#040&quot;&gt;&lt;strong&gt;We released Twiggy🌱 0.4.0!
+🎉&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@brson fixed a bug where we would &lt;a href=&quot;https://github.com/rustwasm/twiggy/pull/232&quot;&gt;attempt to demangle things that were not
+C++&lt;/a&gt; symbols as if they were C++
+symbols.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;walrus&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/walrus&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt; is a new library crate for writing Wasm-to-Wasm
+transformations.&lt;/a&gt; It will eventually (but
+doesn’t yet) preserve DWARF debug info for the Wasm across your
+transformations.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@alexcrichton got &lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt; &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/24&quot;&gt;round-tripping all the Wasm spec
+tests&lt;/a&gt; correctly.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@fitzgen &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/45&quot;&gt;wrote a simple Wasm
+fuzzer&lt;/a&gt;, immediately found a bug,
+and whipped up a fix.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@alexcrichton refactored instruction parsing to &lt;a href=&quot;https://github.com/rustwasm/walrus/pull/48&quot;&gt;avoid
+recursion&lt;/a&gt;. This means that we
+don’t blow the stack in debug builds or when given malicious input.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;We just released &lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt; 0.1.0 on crates.io — expect more exciting
+things from &lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt; in the future :)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-bindgen&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0236&quot;&gt;&lt;strong&gt;We released &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; 0.2.29 through 0.2.36!
+🎉&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@derekdreery &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1161&quot;&gt;improved the &lt;code class=&quot;highlighter-rouge&quot;&gt;std::fmt::Debug&lt;/code&gt; output for
+&lt;code class=&quot;highlighter-rouge&quot;&gt;JsValue&lt;/code&gt;&lt;/a&gt; so that it
+includes object properties and their values, instead of just &lt;code class=&quot;highlighter-rouge&quot;&gt;[object
+Object]&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@fitzgen made the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen-test&lt;/code&gt; testing infrastructure &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1184&quot;&gt;capture more
+&lt;code class=&quot;highlighter-rouge&quot;&gt;console&lt;/code&gt; logging methods’ (&lt;code class=&quot;highlighter-rouge&quot;&gt;warn&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;info&lt;/code&gt;, etc)
+output&lt;/a&gt; for displaying in
+&lt;code class=&quot;highlighter-rouge&quot;&gt;stdout&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@T5uku5hi &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1207&quot;&gt;added &lt;code class=&quot;highlighter-rouge&quot;&gt;#[allow(clippy::all)]&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;’s macro-generated
+code,&lt;/a&gt; so that running
+clippy on crates that use &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; isn’t so noisy.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@alexcrichton added support for &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1214&quot;&gt;passing &lt;code class=&quot;highlighter-rouge&quot;&gt;Option&amp;lt;MyEnum&amp;gt;&lt;/code&gt; back and
+forth&lt;/a&gt; between Wasm and JS
+if &lt;code class=&quot;highlighter-rouge&quot;&gt;MyEnum&lt;/code&gt; has the &lt;code class=&quot;highlighter-rouge&quot;&gt;#[wasm_bindgen]&lt;/code&gt; attribute.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@fitzgen &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1219&quot;&gt;added the &lt;code class=&quot;highlighter-rouge&quot;&gt;UnwrapThrowExt&lt;/code&gt;
+trait&lt;/a&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;’s
+prelude. This extension trait adds &lt;code class=&quot;highlighter-rouge&quot;&gt;unwrap_throw&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;expect_throw&lt;/code&gt; methods
+to &lt;code class=&quot;highlighter-rouge&quot;&gt;Option&amp;lt;T&amp;gt;&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;Result&amp;lt;T, E&amp;gt;&lt;/code&gt; that have the same behavior as regular
+&lt;code class=&quot;highlighter-rouge&quot;&gt;unwrap&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;expect&lt;/code&gt; except they throw a JS error on failure instead of
+panicking. This is morally the same, but ends up avoiding the &lt;code class=&quot;highlighter-rouge&quot;&gt;std::panicking&lt;/code&gt;
+and &lt;code class=&quot;highlighter-rouge&quot;&gt;std::fmt&lt;/code&gt; infrastructure, resulting in smaller code sizes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@alexcrichton &lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1237&quot;&gt;migrated &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;’s post-&lt;code class=&quot;highlighter-rouge&quot;&gt;rustc&lt;/code&gt; Wasm
+transformations&lt;/a&gt; to the
+new &lt;code class=&quot;highlighter-rouge&quot;&gt;walrus&lt;/code&gt; crate! This paves the way for maintaining DWARF debug info
+through &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@fitzgen made the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen-test&lt;/code&gt; runtime capture logged messages in tests
+&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/pull/1233&quot;&gt;via &lt;code class=&quot;highlighter-rouge&quot;&gt;textContent&lt;/code&gt; instead of
+&lt;code class=&quot;highlighter-rouge&quot;&gt;innerHTML&lt;/code&gt;&lt;/a&gt;, avoiding
+issues when logging HTML strings ;)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;wasm-pack&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#-060&quot;&gt;&lt;strong&gt;We released &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;
+0.6.0! 🎉&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@drager implemented &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/446&quot;&gt;support for typo
+detection&lt;/a&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;’s
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo.toml&lt;/code&gt; section.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@torkve added support for &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/461&quot;&gt;passing arbitrary extra CLI arguments through
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack build&lt;/code&gt;&lt;/a&gt; and into
+&lt;code class=&quot;highlighter-rouge&quot;&gt;cargo build&lt;/code&gt;. For example, to build with all cargo features enabled:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack build -- --all-features&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This inspired @chinedufn to add support for &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/530&quot;&gt;passing arbitrary extra CLI arguments
+through &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack test&lt;/code&gt;&lt;/a&gt; and
+into &lt;code class=&quot;highlighter-rouge&quot;&gt;cargo test&lt;/code&gt;!&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@fitzgen fixed a bug where &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/521&quot;&gt;the output of &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack test&lt;/code&gt; was printed
+twice&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@rhysd added support for &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/531&quot;&gt;emitting the “homepage”
+field&lt;/a&gt; in our generated
+&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt; if it is present in the crate’s &lt;code class=&quot;highlighter-rouge&quot;&gt;Cargo.toml&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;@jscheffner &lt;a href=&quot;https://github.com/rustwasm/wasm-pack/pull/537&quot;&gt;fixed &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;’s fetching of &lt;code class=&quot;highlighter-rouge&quot;&gt;chromedriver&lt;/code&gt;
+binaries&lt;/a&gt; for headless browser
+testing on Windows.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requests-for-contribution&quot;&gt;Requests for Contribution&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly
+working group!&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22&quot;&gt;All issues labeled “good first issue” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22&quot;&gt;All issues labeled “help wanted” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;new-help-wanted-issues&quot;&gt;New “Help Wanted” Issues&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-pack/issues/533&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; — docs: add documentation for working with wasm-pack
+outside of template&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-pack/issues/470&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; — installer: do not attempt to install to
+/usr/bin&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Hello and welcome to another issue of This Week in Rust and WebAssembly!</summary></entry><entry><title type="html">Reflecting on Rust and WebAssembly in 2018</title><link href="https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html" rel="alternate" type="text/html" title="Reflecting on Rust and WebAssembly in 2018" /><published>2018-12-06T00:00:00+00:00</published><updated>2018-12-06T00:00:00+00:00</updated><id>https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018</id><content type="html" xml:base="https://rustwasm.github.io/2018/12/06/reflecting-on-rust-and-wasm-in-2018.html">&lt;p&gt;&lt;a href=&quot;https://blog.rust-lang.org/2018/12/06/Rust-1.31-and-rust-2018.html&quot;&gt;&lt;strong&gt;🎉 The 2018 edition of Rust has officially shipped, and the initial Rust and
+WebAssembly development story along with it! 🎉&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;To see how far we’ve come, let’s reflect on the Rust and WebAssembly story a
+year ago: &lt;code class=&quot;highlighter-rouge&quot;&gt;rustc&lt;/code&gt; could emit WebAssembly binaries for you, but that was about
+it. As far as communication with JavaScript went, you had to work with raw wasm
+imports and exports yourself. That meant you could only pass 32- and 64-bit
+integers and floats back and forth. No Rust structs, JavaScript objects,
+strings, or slices could be passed back forth. And distributing your library’s
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.wasm&lt;/code&gt; so that other downstream projects could depend on it? Good luck.&lt;/p&gt;
+
+&lt;p&gt;While it was &lt;a href=&quot;https://mgattozzi.com/rust-wasm/&quot;&gt;clear there was huge potential for Rust and
+WebAssembly&lt;/a&gt;, no one was sure what exactly that
+meant. So when the Rust and WebAssembly domain working group formed, we rallied
+around making this shared vision into a reality:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;compiling-rust-to-webassembly-should-be-the-best-choice-for-fast-reliable-code-for-the-web&quot;&gt;Compiling Rust to WebAssembly should be the best choice for fast, reliable code for the Web.&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As our ideas evolved, we distilled another core value:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;h4 id=&quot;rust-and-webassembly-is-here-to-augment-your-javascript-not-replace-it&quot;&gt;Rust and WebAssembly is here to &lt;em&gt;augment&lt;/em&gt; your JavaScript, not replace it.&lt;/h4&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The same way that Rust integrates with C libraries and calling conventions on
+native targets, it should play nice with JavaScript and HTML5 APIs on the
+Web. You should &lt;em&gt;not&lt;/em&gt; have to rewrite your whole Web application or JavaScript
+library. We cannot realize our vision for Rust and wasm if it means you have to
+start over from scratch; it wouldn’t be practical.&lt;/p&gt;
+
+&lt;p&gt;Given these shared values and vision, we set out goals for what we wanted the
+Rust and WebAssembly ecosystem, toolchain, and workflow to look like by the time
+Rust 2018 shipped.&lt;/p&gt;
+
+&lt;h3 id=&quot;goal--zero-cost-javascript-interoperation&quot;&gt;Goal: ☑ Zero-Cost JavaScript Interoperation&lt;/h3&gt;
+
+&lt;p&gt;Rust enables fast &lt;em&gt;and&lt;/em&gt; expressive code by leveraging zero-cost abstractions. We
+wanted to apply this principle to our whole JS interop infrastructure. Yes, you
+can write your own boilerplate to pass DOM nodes to Rust-generated wasm, but you
+shouldn’t have to, and the provided infrastructure should be as fast as if you
+&lt;em&gt;did&lt;/em&gt; hand-code it. If you call IndexedDB APIs, that shouldn’t bloat your
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.wasm&lt;/code&gt; binary with unused bindings to Web GL functions.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen&quot;&gt;We created &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; as the foundation for zero-cost JavaScript
+interoperation.&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; facillitates communication between
+JavaScript and WebAssembly, and generates glue code that you would otherwise
+have to write yourself. On top of &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;, &lt;a href=&quot;https://rustwasm.github.io/2018/09/26/announcing-web-sys.html&quot;&gt;we built &lt;code class=&quot;highlighter-rouge&quot;&gt;js-sys&lt;/code&gt; (raw
+bindings to ECMAScript APIs) and &lt;code class=&quot;highlighter-rouge&quot;&gt;web-sys&lt;/code&gt; (raw bindings to Web
+APIs)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; ecosystem, we can easily and performantly&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;export rich APIs from our Rust-generated wasm libraries, so they are callable
+from JavaScript, and&lt;/li&gt;
+  &lt;li&gt;import JavaScript and Web APIs into our Rust-generated wasm.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;All in a zero-cost manner.&lt;/p&gt;
+
+&lt;p&gt;Additionally, &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; is forward-compatible with the &lt;a href=&quot;https://github.com/WebAssembly/webidl-bindings/blob/master/proposals/webidl-bindings/Explainer.md&quot;&gt;WebAssembly host
+bindings proposal&lt;/a&gt;. Host bindings will remove the tiny, generated
+JavaScript shim functions that sit between our wasm functions and DOM
+methods. Eventually, host bindings promises to unlock
+even-faster-than-JavaScript DOM access since calls can be statically validated
+once rather than dynamically checked every time.&lt;/p&gt;
+
+&lt;h3 id=&quot;goal--distributing-rust-generated-wasm-as-an-npm-library&quot;&gt;Goal: ☑ Distributing Rust-Generated Wasm as an NPM Library&lt;/h3&gt;
+
+&lt;p&gt;Superb integration isn’t only about exporting and importing functionality
+between Rust-generated WebAssembly and JavaScript. It is also fitting into the
+JavaScript’s distribution mechanisms, and a big chunk of that story is
+&lt;a href=&quot;https://www.npmjs.com/&quot;&gt;NPM&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We &lt;a href=&quot;https://github.com/rustwasm/wasm-pack&quot;&gt;built &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;&lt;/a&gt; to make it easy to create and publish NPM
+packages from your Rust and WebAssembly code. There didn’t used to be any story
+whatsoever for sharing Rust-generated wasm modules. Now, all it takes is:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wasm-pack publish
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;goal--get-developers-productive-fast&quot;&gt;Goal: ☑ Get Developers Productive Fast&lt;/h3&gt;
+
+&lt;p&gt;We wrote &lt;a href=&quot;https://rustwasm.github.io/book/&quot;&gt;a Rust and WebAssembly book&lt;/a&gt; that teaches you all the ins and
+outs of WebAssembly development with Rust. It features &lt;a href=&quot;https://rustwasm.github.io/book/game-of-life/introduction.html&quot;&gt;a tutorial where you
+build an implementation of Conway’s Game of Life&lt;/a&gt;, and then you learn
+to write tests for headless browsers, debug wasm code when things go wrong, and
+how to diagnose slow code paths and then speed them up.&lt;/p&gt;
+
+&lt;p&gt;We realized that there are a bunch of “post-build” tools you want to run after
+&lt;code class=&quot;highlighter-rouge&quot;&gt;cargo&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;rustc&lt;/code&gt; emit the initial &lt;code class=&quot;highlighter-rouge&quot;&gt;.wasm&lt;/code&gt; binary. For usability and developer
+productivity, we expanded &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt;’s role from creating and publishing NPM
+packages to orchestrating all of these tasks. &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; will manage your
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; CLI binaries and install browsers’ WebDriver clients for you
+automatically.&lt;/p&gt;
+
+&lt;p&gt;For example, want to run tests in a headless Firefox browser? Just run&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wasm-pack test --headless --firefox
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No need to pull your hair out trying to install and configure anything!&lt;/p&gt;
+
+&lt;p&gt;Finally, we recognized that getting your Rust and WebAssembly project set up
+initially involves a bit of boilerplate and configuration that new users aren’t
+prepared for and experienced users don’t want to waste time on. So we created a
+variety of project templates for different use cases, so you can hit the ground
+running:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-pack-template&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack-template&lt;/code&gt;&lt;/a&gt; for creating NPM libraries with
+Rust and Wasm.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/create-wasm-app&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;create-wasm-app&lt;/code&gt;&lt;/a&gt; for creating Web applications built on
+top of Rust-generated wasm NPM libraries.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rust-webpack-template&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rust-webpack-template&lt;/code&gt;&lt;/a&gt; for creating whole Web
+applications with Rust, WebAssembly, and the Webpack bundler.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/rust-parcel-template&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rust-parcel-template&lt;/code&gt;&lt;/a&gt; for creating whole Web
+applications with Rust, WebAssembly, and the Parcel bundler.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;goal--rust-generated-wasm-should-be-testable-and-debuggable&quot;&gt;Goal: ☑ Rust-Generated Wasm Should be Testable and Debuggable&lt;/h3&gt;
+
+&lt;p&gt;We recognized that testing and debugging infrastructure are table stakes for
+creating reliable code and developer productivity.&lt;/p&gt;
+
+&lt;p&gt;By default, wasm can’t log any panics or errors because it doesn’t have any
+“syscall” or I/O functionality. You have to add imports for that sort of thing
+yourself, and then instantiate the module with the appropriate functions. To
+remedy this problem, and to ensure that panics are always debuggable, we created
+&lt;a href=&quot;https://github.com/rustwasm/console_error_panic_hook&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;console_error_panic_hook&lt;/code&gt; crate&lt;/a&gt;, which
+redirects panic messages into the browser’s devtools console.&lt;/p&gt;
+
+&lt;p&gt;While you can always run normal &lt;code class=&quot;highlighter-rouge&quot;&gt;#[test]&lt;/code&gt;s on the native target for portable,
+platform-agnostic code, that isn’t sufficient for testing your library’s
+interaction with the DOM, asynchronous JavaScript promises, or event
+handlers. So we created &lt;a href=&quot;https://rustwasm.github.io/wasm-bindgen/wasm-bindgen-test/index.html&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen-test&lt;/code&gt;
+infrastructure&lt;/a&gt;, and made installing and configuring the
+necessary binaries for headless browser and Node.js testing a breeze with
+&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack test&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We also had experienced that diagnosing where code size was coming from could be
+hard with WebAssembly. We wanted to know things like which function was calling
+another function, and causing it to be included in the &lt;code class=&quot;highlighter-rouge&quot;&gt;.wasm&lt;/code&gt; binary, so we
+created &lt;a href=&quot;https://github.com/rustwasm/twiggy&quot;&gt;the Twiggy🌱 code size profiler for WebAssembly&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; Shallow Bytes │ Shallow % │ Retaining Paths
+───────────────┼───────────┼───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+           152 ┊     5.40% ┊ wee_alloc::alloc_with_refill::hb32c1bbce9ebda8e
+               ┊           ┊   ⬑ func[2]
+               ┊           ┊       ⬑ &amp;lt;wee_alloc::size_classes::SizeClassAllocPolicy&amp;lt;'a&amp;gt; as wee_alloc::AllocPolicy&amp;gt;::new_cell_for_free_list::h3987e3054b8224e6
+               ┊           ┊           ⬑ func[5]
+               ┊           ┊               ⬑ elem[0]
+               ┊           ┊       ⬑ hello
+               ┊           ┊           ⬑ func[8]
+               ┊           ┊               ⬑ export &quot;hello&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;rustwasm2019&quot;&gt;#RustWasm2019&lt;/h2&gt;
+
+&lt;p&gt;All of our goals have been focused on things we could deliver in tandem with the
+2018 edition. But now that the 2018 edition has shipped, it is time to think
+about what we want to achieve in 2019 and beyond.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;This is where you come in!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Following in the larger Rust project’s &lt;a href=&quot;https://blog.rust-lang.org/2018/12/06/call-for-rust-2019-roadmap-blogposts.html&quot;&gt;tradition&lt;/a&gt;,
+we’re asking the community to write blog posts reflecting on Rust and
+WebAssembly in 2018 and proposing goals and directions for Rust and WebAssembly
+in 2019. We’ll read everything, and then propose an &lt;a href=&quot;https://github.com/rustwasm/rfcs&quot;&gt;RFC&lt;/a&gt; for
+the Rust and WebAssembly domain working group’s roadmap in 2019.&lt;/p&gt;
+
+&lt;p&gt;Write down your thoughts on whatever your writing platform of choice is. It
+could be:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Your personal or company blog&lt;/li&gt;
+  &lt;li&gt;A GitHub gist&lt;/li&gt;
+  &lt;li&gt;A Medium post&lt;/li&gt;
+  &lt;li&gt;Any other platform you prefer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We’re looking for posts on many different topics:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ideas for community programs&lt;/li&gt;
+  &lt;li&gt;Tooling enhancements&lt;/li&gt;
+  &lt;li&gt;Ecosystem and library needs&lt;/li&gt;
+  &lt;li&gt;Documentation improvements&lt;/li&gt;
+  &lt;li&gt;Anything else related to Rust and Wasm!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tweet your write up with &lt;a href=&quot;https://twitter.com/search?q=%23RustWasm2019&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;#RustWasm2019&lt;/code&gt; hashtag&lt;/a&gt; or drop a link
+on &lt;a href=&quot;https://github.com/rustwasm/team/issues/241&quot;&gt;this github issue&lt;/a&gt;. We’ll aggregate everything
+everyone has written in another big post on this blog. Then, the core Rust and
+WebAssembly working group team will read over all of them and write up an RFC
+for the working group’s 2019 roadmap! This RFC will follow our normal &lt;a href=&quot;https://rustwasm.github.io/rfcs/001-the-rfc-process.html&quot;&gt;RFC
+process&lt;/a&gt; and everyone will have a chance to discuss it, improve it, and help
+polish it.&lt;/p&gt;
+
+&lt;h2 id=&quot;preliminary-timeline&quot;&gt;Preliminary Timeline&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Now through January 15&lt;sup&gt;th&lt;/sup&gt;:&lt;/strong&gt; Share your &lt;code class=&quot;highlighter-rouge&quot;&gt;#RustWasm2019&lt;/code&gt; post, read
+posts by others, discuss them, bounce ideas back and forth.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;End of January:&lt;/strong&gt; We’ll formally propose the 2019 roadmap RFC, and then work
+it through the RFC process together as a community.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;End of February:&lt;/strong&gt; We’re aiming for having consensus on the 2019 roadmap and
+merging the RFC before the end of February.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;thank-you-for-a-wonderful-2018-&quot;&gt;Thank You for a Wonderful 2018! 💖&lt;/h2&gt;
+
+&lt;p&gt;Thanks to everyone who contributed to Rust and WebAssembly in 2018! (Apologies
+if we missed anyone in this list!)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;0xazure&lt;/li&gt;
+  &lt;li&gt;Aaron Turon&lt;/li&gt;
+  &lt;li&gt;Aditya Arora&lt;/li&gt;
+  &lt;li&gt;Aidan Hobson Sayers&lt;/li&gt;
+  &lt;li&gt;Aleksey Kladov&lt;/li&gt;
+  &lt;li&gt;Alex Crichton&lt;/li&gt;
+  &lt;li&gt;Alex Macleod&lt;/li&gt;
+  &lt;li&gt;Alexander Kryvomaz&lt;/li&gt;
+  &lt;li&gt;Alfie John&lt;/li&gt;
+  &lt;li&gt;Anders Pitman&lt;/li&gt;
+  &lt;li&gt;Andrew Champion&lt;/li&gt;
+  &lt;li&gt;Andrew Chin&lt;/li&gt;
+  &lt;li&gt;Andy Bell&lt;/li&gt;
+  &lt;li&gt;Anna Bogus&lt;/li&gt;
+  &lt;li&gt;Anton Danilkin&lt;/li&gt;
+  &lt;li&gt;Ashley Williams&lt;/li&gt;
+  &lt;li&gt;Ben Merritt&lt;/li&gt;
+  &lt;li&gt;Benjamin Kampmann&lt;/li&gt;
+  &lt;li&gt;Blixt&lt;/li&gt;
+  &lt;li&gt;Bradlee Speice&lt;/li&gt;
+  &lt;li&gt;Cameron Taggart&lt;/li&gt;
+  &lt;li&gt;Camille TJHOA&lt;/li&gt;
+  &lt;li&gt;Chinedu Francis Nwafili&lt;/li&gt;
+  &lt;li&gt;Chris Goller&lt;/li&gt;
+  &lt;li&gt;Chris Kolodin&lt;/li&gt;
+  &lt;li&gt;Christian Bourjau&lt;/li&gt;
+  &lt;li&gt;Christopher Lane Hinson&lt;/li&gt;
+  &lt;li&gt;Cldfire&lt;/li&gt;
+  &lt;li&gt;Corbin Uselton&lt;/li&gt;
+  &lt;li&gt;Corey Farwell&lt;/li&gt;
+  &lt;li&gt;Craig Disselkoen&lt;/li&gt;
+  &lt;li&gt;Dan Fockler&lt;/li&gt;
+  &lt;li&gt;Dan Reeves&lt;/li&gt;
+  &lt;li&gt;Daniel Gollahon&lt;/li&gt;
+  &lt;li&gt;Daniele Esposti&lt;/li&gt;
+  &lt;li&gt;Danielle Pham&lt;/li&gt;
+  &lt;li&gt;Darren Tsung&lt;/li&gt;
+  &lt;li&gt;David Flemström&lt;/li&gt;
+  &lt;li&gt;David McNeil&lt;/li&gt;
+  &lt;li&gt;David O’Connor&lt;/li&gt;
+  &lt;li&gt;DebugSteven&lt;/li&gt;
+  &lt;li&gt;Dimitrii Nemkov&lt;/li&gt;
+  &lt;li&gt;Dmitry Kashitsyn&lt;/li&gt;
+  &lt;li&gt;Eduard Kyvenko&lt;/li&gt;
+  &lt;li&gt;Erick Tryzelaar&lt;/li&gt;
+  &lt;li&gt;Erika Kloss&lt;/li&gt;
+  &lt;li&gt;Evan Shaw&lt;/li&gt;
+  &lt;li&gt;Felix Schütt&lt;/li&gt;
+  &lt;li&gt;Florian Gilcher&lt;/li&gt;
+  &lt;li&gt;Frank Hassanabad&lt;/li&gt;
+  &lt;li&gt;Frazer McLean&lt;/li&gt;
+  &lt;li&gt;Gergely Nagy&lt;/li&gt;
+  &lt;li&gt;Guy Waldman&lt;/li&gt;
+  &lt;li&gt;Hendrik Sollich&lt;/li&gt;
+  &lt;li&gt;Henrik Sjööh&lt;/li&gt;
+  &lt;li&gt;Herman J. Radtke III&lt;/li&gt;
+  &lt;li&gt;Hidehito Yabuuchi&lt;/li&gt;
+  &lt;li&gt;Ian Duke&lt;/li&gt;
+  &lt;li&gt;Ian McIntyre&lt;/li&gt;
+  &lt;li&gt;Ingvar Stepanyan&lt;/li&gt;
+  &lt;li&gt;Ioannis Valasakis&lt;/li&gt;
+  &lt;li&gt;Ivan Enderlin&lt;/li&gt;
+  &lt;li&gt;J. Ryan Stinnett&lt;/li&gt;
+  &lt;li&gt;Jamen Marz&lt;/li&gt;
+  &lt;li&gt;Jamie Kyle&lt;/li&gt;
+  &lt;li&gt;Jan Willem Henckel&lt;/li&gt;
+  &lt;li&gt;Jan-Erik Rediger&lt;/li&gt;
+  &lt;li&gt;Jannik Keye&lt;/li&gt;
+  &lt;li&gt;Jason Davies&lt;/li&gt;
+  &lt;li&gt;Jason Wohlgemuth&lt;/li&gt;
+  &lt;li&gt;Jesper Håkansson&lt;/li&gt;
+  &lt;li&gt;Jim Blandy&lt;/li&gt;
+  &lt;li&gt;Joel Gallant&lt;/li&gt;
+  &lt;li&gt;Johann Hofmann&lt;/li&gt;
+  &lt;li&gt;Johannes Henninger&lt;/li&gt;
+  &lt;li&gt;John Lewis&lt;/li&gt;
+  &lt;li&gt;Jonas Trollvik&lt;/li&gt;
+  &lt;li&gt;Jonathan Kingston&lt;/li&gt;
+  &lt;li&gt;Jonathan Sundqvist&lt;/li&gt;
+  &lt;li&gt;Josh Triplett&lt;/li&gt;
+  &lt;li&gt;Joshua Liebow-Feeser&lt;/li&gt;
+  &lt;li&gt;Joshua Sheard&lt;/li&gt;
+  &lt;li&gt;Josmar Dias&lt;/li&gt;
+  &lt;li&gt;João Lucas Lucchetta&lt;/li&gt;
+  &lt;li&gt;Julius Rakow&lt;/li&gt;
+  &lt;li&gt;Junjie Huang&lt;/li&gt;
+  &lt;li&gt;Katharina Fey&lt;/li&gt;
+  &lt;li&gt;Kevin Hoffman&lt;/li&gt;
+  &lt;li&gt;Kirill Bulatov&lt;/li&gt;
+  &lt;li&gt;Kyle Lin&lt;/li&gt;
+  &lt;li&gt;Lachezar Lechev&lt;/li&gt;
+  &lt;li&gt;Laurentiu Nicola&lt;/li&gt;
+  &lt;li&gt;Liigo Zhuang&lt;/li&gt;
+  &lt;li&gt;LongYinan&lt;/li&gt;
+  &lt;li&gt;Luke Wagner&lt;/li&gt;
+  &lt;li&gt;Mackenzie Clark&lt;/li&gt;
+  &lt;li&gt;Mackiovello&lt;/li&gt;
+  &lt;li&gt;Manas Karekar&lt;/li&gt;
+  &lt;li&gt;Marcin Baraniecki&lt;/li&gt;
+  &lt;li&gt;Mario Reder&lt;/li&gt;
+  &lt;li&gt;Mark Andrus Roberts&lt;/li&gt;
+  &lt;li&gt;Mark Hintz&lt;/li&gt;
+  &lt;li&gt;Markus Stange&lt;/li&gt;
+  &lt;li&gt;Mason Stallmo&lt;/li&gt;
+  &lt;li&gt;Matias Insaurralde&lt;/li&gt;
+  &lt;li&gt;Matt Harrison&lt;/li&gt;
+  &lt;li&gt;Matt Howell&lt;/li&gt;
+  &lt;li&gt;Matt Kraai&lt;/li&gt;
+  &lt;li&gt;Matt Long&lt;/li&gt;
+  &lt;li&gt;MaxD / vj userZero&lt;/li&gt;
+  &lt;li&gt;MaxXor&lt;/li&gt;
+  &lt;li&gt;Michael Gattozzi&lt;/li&gt;
+  &lt;li&gt;Michael Gerhaeuser&lt;/li&gt;
+  &lt;li&gt;Michael Hoffmann&lt;/li&gt;
+  &lt;li&gt;Mirclus&lt;/li&gt;
+  &lt;li&gt;Nathan Froyd&lt;/li&gt;
+  &lt;li&gt;Nick Fitzgerald&lt;/li&gt;
+  &lt;li&gt;Nik Graf&lt;/li&gt;
+  &lt;li&gt;Nikolay Volf&lt;/li&gt;
+  &lt;li&gt;Noah Lemen&lt;/li&gt;
+  &lt;li&gt;Noumir Poutipou&lt;/li&gt;
+  &lt;li&gt;OJ Kwon&lt;/li&gt;
+  &lt;li&gt;Pascal Brandt&lt;/li&gt;
+  &lt;li&gt;Pascal Hertleif&lt;/li&gt;
+  &lt;li&gt;Pat Hickey&lt;/li&gt;
+  &lt;li&gt;Peter Trotman&lt;/li&gt;
+  &lt;li&gt;R. Andrew Ohana&lt;/li&gt;
+  &lt;li&gt;Rahul Sharma&lt;/li&gt;
+  &lt;li&gt;Ralph Giles&lt;/li&gt;
+  &lt;li&gt;Renée Kooi&lt;/li&gt;
+  &lt;li&gt;Ricardo Ambrogi&lt;/li&gt;
+  &lt;li&gt;Richard Dodd (dodj)&lt;/li&gt;
+  &lt;li&gt;Robert Masen&lt;/li&gt;
+  &lt;li&gt;Roberto Huertas&lt;/li&gt;
+  &lt;li&gt;Rongjian Zhang&lt;/li&gt;
+  &lt;li&gt;Ruben Schmidmeister&lt;/li&gt;
+  &lt;li&gt;Ryan Levick&lt;/li&gt;
+  &lt;li&gt;Sallar Kaboli&lt;/li&gt;
+  &lt;li&gt;Santiago Pastorino&lt;/li&gt;
+  &lt;li&gt;Satoshi Amemiya&lt;/li&gt;
+  &lt;li&gt;Scott Johnson&lt;/li&gt;
+  &lt;li&gt;Sebastian Köln&lt;/li&gt;
+  &lt;li&gt;Sendil Kumar N&lt;/li&gt;
+  &lt;li&gt;Sergey Pepyakin&lt;/li&gt;
+  &lt;li&gt;Sharad Chand&lt;/li&gt;
+  &lt;li&gt;Sonny Scroggin&lt;/li&gt;
+  &lt;li&gt;Sophie Alpert&lt;/li&gt;
+  &lt;li&gt;Spencer Wilson&lt;/li&gt;
+  &lt;li&gt;Stefan Novak&lt;/li&gt;
+  &lt;li&gt;Stefan Zimmermann&lt;/li&gt;
+  &lt;li&gt;Stephan Renatus&lt;/li&gt;
+  &lt;li&gt;Stephan Wolski&lt;/li&gt;
+  &lt;li&gt;Steve Klabnik&lt;/li&gt;
+  &lt;li&gt;Sven Sauleau&lt;/li&gt;
+  &lt;li&gt;T. Nagasawa&lt;/li&gt;
+  &lt;li&gt;Tao He&lt;/li&gt;
+  &lt;li&gt;Ted Mielczarek&lt;/li&gt;
+  &lt;li&gt;Theemathas Chirananthavat&lt;/li&gt;
+  &lt;li&gt;Thiago Pontes&lt;/li&gt;
+  &lt;li&gt;Thomas Eizinger&lt;/li&gt;
+  &lt;li&gt;Tim Ryan&lt;/li&gt;
+  &lt;li&gt;Tobias Bieniek&lt;/li&gt;
+  &lt;li&gt;Tomohide Takao&lt;/li&gt;
+  &lt;li&gt;Tomáš Hübelbauer&lt;/li&gt;
+  &lt;li&gt;Tyler Laing&lt;/li&gt;
+  &lt;li&gt;Tyler Wilcock&lt;/li&gt;
+  &lt;li&gt;William Lundstedt&lt;/li&gt;
+  &lt;li&gt;YUyz&lt;/li&gt;
+  &lt;li&gt;Yoshua Wuyts&lt;/li&gt;
+  &lt;li&gt;Yury Delendik&lt;/li&gt;
+  &lt;li&gt;Yuval Kohavi&lt;/li&gt;
+  &lt;li&gt;Zachary Pierce&lt;/li&gt;
+  &lt;li&gt;Zack Pierce&lt;/li&gt;
+  &lt;li&gt;afdw&lt;/li&gt;
+  &lt;li&gt;alkahest&lt;/li&gt;
+  &lt;li&gt;andy-bell&lt;/li&gt;
+  &lt;li&gt;arjunyel&lt;/li&gt;
+  &lt;li&gt;ashley williams&lt;/li&gt;
+  &lt;li&gt;belfz&lt;/li&gt;
+  &lt;li&gt;bokuweb&lt;/li&gt;
+  &lt;li&gt;bspeice&lt;/li&gt;
+  &lt;li&gt;csmoe&lt;/li&gt;
+  &lt;li&gt;data-pup&lt;/li&gt;
+  &lt;li&gt;dependabot[bot]&lt;/li&gt;
+  &lt;li&gt;frankhassanbad&lt;/li&gt;
+  &lt;li&gt;gaurikholkar&lt;/li&gt;
+  &lt;li&gt;gnzlbg&lt;/li&gt;
+  &lt;li&gt;huangjj27&lt;/li&gt;
+  &lt;li&gt;janczer&lt;/li&gt;
+  &lt;li&gt;johnthagen&lt;/li&gt;
+  &lt;li&gt;kohensu&lt;/li&gt;
+  &lt;li&gt;konstin&lt;/li&gt;
+  &lt;li&gt;kryptan&lt;/li&gt;
+  &lt;li&gt;kzvi&lt;/li&gt;
+  &lt;li&gt;limira&lt;/li&gt;
+  &lt;li&gt;na-g&lt;/li&gt;
+  &lt;li&gt;pup&lt;/li&gt;
+  &lt;li&gt;robert masen&lt;/li&gt;
+  &lt;li&gt;robertdurst&lt;/li&gt;
+  &lt;li&gt;sarahmeyer&lt;/li&gt;
+  &lt;li&gt;sepiropht&lt;/li&gt;
+  &lt;li&gt;sigmaSd&lt;/li&gt;
+  &lt;li&gt;soryrawyer&lt;/li&gt;
+  &lt;li&gt;teovoinea&lt;/li&gt;
+  &lt;li&gt;toversus&lt;/li&gt;
+  &lt;li&gt;twilco&lt;/li&gt;
+  &lt;li&gt;xeqlol&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">🎉 The 2018 edition of Rust has officially shipped, and the initial Rust and WebAssembly development story along with it! 🎉</summary></entry><entry><title type="html">This Week in Rust and WebAssembly 009</title><link href="https://rustwasm.github.io/2018/11/28/this-week-in-rust-wasm-009.html" rel="alternate" type="text/html" title="This Week in Rust and WebAssembly 009" /><published>2018-11-28T00:00:00+00:00</published><updated>2018-11-28T00:00:00+00:00</updated><id>https://rustwasm.github.io/2018/11/28/this-week-in-rust-wasm-009</id><content type="html" xml:base="https://rustwasm.github.io/2018/11/28/this-week-in-rust-wasm-009.html">&lt;p&gt;Hello and welcome to another issue of &lt;em&gt;This Week in Rust and WebAssembly&lt;/em&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://rust-lang.org&quot;&gt;Rust&lt;/a&gt; is a systems language pursuing the trifecta: safety, concurrency, and speed.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://webassembly.org&quot;&gt;WebAssembly&lt;/a&gt; is a stack-based virtual machine and instruction set. It is fast, safe, portable, and part of the open Web platform. By compiling to WebAssembly, we can run Rust code on the Web!&lt;/p&gt;
+
+&lt;p&gt;This is a weekly summary of Rust and WebAssembly’s progress and community.&lt;/p&gt;
+
+&lt;p&gt;Did we miss something? Tweet to us at &lt;a href=&quot;https://twitter.com/rustwasm&quot;&gt;@rustwasm&lt;/a&gt; or &lt;a href=&quot;https://github.com/rustwasm/rustwasm.github.io&quot;&gt;send us a pull request&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Want to get involved in Rust and WebAssembly? &lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;Join the Rust and WebAssembly working group!&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;!-- TODO: check recent r/rust and users.rust-lang.org posts for &quot;wasm&quot; and &quot;webassembly: --&gt;
+&lt;!-- https://github.com/rustwasm/team/issues/79 --&gt;
+&lt;!-- https://www.reddit.com/r/rust/search?q=wasm&amp;sort=relevance&amp;restrict_sr=on&amp;t=month --&gt;
+&lt;!-- https://www.reddit.com/r/rust/search?q=webassembly&amp;restrict_sr=on&amp;sort=relevance&amp;t=month --&gt;
+&lt;!-- https://users.rust-lang.org/search?q=wasm%20after%3A2018-06-01 --&gt;
+&lt;!-- https://users.rust-lang.org/search?q=webassembly%20after%3A2018-06-01 --&gt;
+
+&lt;h2 id=&quot;news-and-blog-posts&quot;&gt;News and Blog Posts&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;Want to make sure something ends up in this list on the next This Week in Rust and WebAssembly?
+&lt;a href=&quot;https://github.com/rustwasm/team/issues/79&quot;&gt;Leave a comment on this issue.&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://rustwasm.github.io/2018/10/24/multithreading-rust-and-wasm.html&quot;&gt;Multithreading Rust and WebAssembly&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sharadchand.com/2018/10/03/ruukh-framework.html&quot;&gt;Introducing the Ruukh Framework.&lt;/a&gt; An experimental next-gen frontend framework for the Web in Rust. &lt;a href=&quot;https://github.com/csharad/ruukh/&quot;&gt;GitHub repository.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;The new website for the &lt;code class=&quot;highlighter-rouge&quot;&gt;pest&lt;/code&gt; PEG parser generator has a nice wasm-based try-it-live demo at the bottom: https://pest.rs/&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://frehberg.wordpress.com/webassembly-and-dynamic-memory/&quot;&gt;WebAssembly and Dynamic Memory.&lt;/a&gt; A comparison of portability of allocators for wasm, featuring &lt;code class=&quot;highlighter-rouge&quot;&gt;wee_alloc&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://crates.io/crates/simi&quot;&gt;Simi&lt;/a&gt; is a new, simple framework for building wasm-front-end Web application in Rust.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sterlingdemille.com/encrusted/&quot;&gt;Encrusted&lt;/a&gt; is an interpreter for Infocom-era interactive fiction games like Zork that runs in your browser and is built with Rust and WebAssembly.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://egghead.io/courses/using-webassembly-with-rust&quot;&gt;Using WebAssembly with Rust&lt;/a&gt; is a new, free Video Course on Egghead.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Pauan/SaltyBetBot&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Pauan/SaltyBetBot&lt;/code&gt;&lt;/a&gt; is a SaltyBet Bot written entirely in Rust and &lt;code class=&quot;highlighter-rouge&quot;&gt;stdweb&lt;/code&gt; and compiled to Wasm.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.scottlogic.com/2018/10/18/serverless-rust.html&quot;&gt;Serverless Rust with AWS Lambda and WebAssembly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.cloudflare.com/cloudflare-workers-as-a-serverless-rust-platform/&quot;&gt;Serverless Rust with Cloudflare Workers and WebAssembly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Hywan/php-ext-wasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;php-ext-wasm&lt;/code&gt;&lt;/a&gt; is a PHP extension written in C, calling a Rust lib through FFI, using &lt;code class=&quot;highlighter-rouge&quot;&gt;wasmi&lt;/code&gt; behind the scene.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.reddit.com/r/rust/comments/9t95fd/howto_setting_up_webassembly_on_stable_rust/&quot;&gt;HOWTO: Setting up WebAssembly on stable Rust without rustup.&lt;/a&gt; Instructions on using raw Rust and Wasm if you happen not to have &lt;code class=&quot;highlighter-rouge&quot;&gt;rustup&lt;/code&gt; available.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/wasmerio/wasmer&quot;&gt;Wasmer&lt;/a&gt; is a WebAssembly runtime built on top of Cranelift.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://wasm.fastlylabs.com/&quot;&gt;Terrarium&lt;/a&gt; is a fork of &lt;a href=&quot;https://webassembly.studio/&quot;&gt;WebAssembly Studio&lt;/a&gt;, except rather than run WebAssembly in your browser, it is deployed to a fastly server.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Vurich/runwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;runwasm&lt;/code&gt;&lt;/a&gt; is an Emscripten emulation layer built with &lt;code class=&quot;highlighter-rouge&quot;&gt;wasmi&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sindrejohansen.no/blog/willow/rust/elm/2018/11/16/willow-elm-in-rust.html&quot;&gt;Bringing Elm’s architecture to Rust and Webassembly&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://cs242.stanford.edu/&quot;&gt;Stanford’s CS 242 Programming Languages Class&lt;/a&gt; will feature Rust and WebAssembly.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://pragprog.com/book/khrust/programming-webassembly-with-rust&quot;&gt;The “Programming WebAssembly with Rust” book&lt;/a&gt; by Kevin Hoffman and published by Pragmatic Programmers is in beta and available for pre-order.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/yiransheng/rust-snake-wasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;yiransheng/rust-snake-wasm&lt;/code&gt;&lt;/a&gt; is a snake game in Rust and WebAssembly.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://crates.io/crates/console-web&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;console-web&lt;/code&gt;&lt;/a&gt; is a crate for writing to the console in wasm using &lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;updates-from-rustwasm&quot;&gt;Updates from &lt;a href=&quot;https://github.com/rustwasm&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-bindgen/blob/master/CHANGELOG.md#0228&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-bindgen&lt;/code&gt; 0.2.28 released! 🎉&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/wasm-pack/blob/master/CHANGELOG.md#-051&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wasm-pack&lt;/code&gt; 0.5.1 released! 🎉&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/twiggy/blob/master/CHANGELOG.md#030&quot;&gt;Twiggy 0.3.0 released! 🎉&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;There are two new reference sections in the Rust and Wasm book:
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;https://rustwasm.github.io/book/reference/which-crates-work-with-wasm.html&quot;&gt;Which Crates Will Work with Rust and WebAssembly?&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://rustwasm.github.io/book/reference/add-wasm-support-to-crate.html&quot;&gt;How to Add WebAssembly Support to a General-Purpose Crate&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;requests-for-contribution&quot;&gt;Requests for Contribution&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rustwasm/team/blob/master/README.md#get-involved&quot;&gt;&lt;strong&gt;Join the Rust and WebAssembly Working Group!&lt;/strong&gt;&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22good+first+issue%22&quot;&gt;All issues labeled “good first issue” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Arustwasm+archived%3Afalse+label%3A%22help+wanted%22&quot;&gt;All issues labeled “help wanted” in the &lt;code class=&quot;highlighter-rouge&quot;&gt;rustwasm/*&lt;/code&gt; repositories&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;jobs&quot;&gt;Jobs&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.fastly.com/about/jobs/apply?gh_jid=1320541&quot;&gt;Fastly is hiring&lt;/a&gt; for work on their native WebAssembly compiler, which is written in Rust, based on &lt;a href=&quot;https://github.com/CraneStation/cranelift&quot;&gt;Cranelift&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- ## `rustwasm` Projects Activity --&gt;
+
+&lt;!-- Recently merged pull requests to projects in the [`rustwasm` GitHub --&gt;
+&lt;!-- organization][rustwasm-org]: --&gt;
+
+&lt;!-- [rustwasm-org]: https://github.com/rustwasm --&gt;
+
+&lt;!-- TODO: insert the output of `pulls_since -o rustwasm -s dd.mm.yyyy` here, where --&gt;
+&lt;!-- &quot;dd.mm.yyyy&quot; is the date the *last* newsletter was published. See --&gt;
+&lt;!-- https://github.com/budziq/pulls_since or run `cargo install pulls_since`. --&gt;</content><author><name></name></author><summary type="html">Hello and welcome to another issue of This Week in Rust and WebAssembly!</summary></entry></feed>
